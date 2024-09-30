@@ -7,7 +7,7 @@ export default function Login() {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ redirect, setRedirect ] = useState(false);
-    const { setUserInfo } = useContext(UserContext);
+    const { userInfo, setUserInfo } = useContext(UserContext);
     async function logUserIn(e) {
         e.preventDefault();
         const response = await fetch("https://paperplane-blog-api.onrender.com/login", {

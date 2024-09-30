@@ -11,12 +11,14 @@ export default function Headers() {
 
     useEffect(() => {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
-            credentials:"include",
-        }).then(response =>response.json())
+            credentials:"include"})
+        .then(response => response.json())
         .then( user => {
             setUserInfo( user );
-            setUsername( user.username);
-    }); 
+            setUsername( user.username)})
+        .catch( error => {
+            console.log( error )
+        } ) 
     }, [])
     function logOut() {
         fetch('https://paperplane-blog-api.onrender.com/logout', {
@@ -24,7 +26,7 @@ export default function Headers() {
             credentials:"include",
         }).then( response => {
             setUserInfo({}) ;
-            setUsername(false)
+            setUsername(false);
         }
          );
     }
