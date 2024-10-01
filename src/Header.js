@@ -14,7 +14,6 @@ export default function Headers() {
             headers: {'Authorization': document.cookie}})
         .then(response => response.json())
         .then( user => {
-            setUserInfo( user );
             setUsername( user.username)})
         .catch( error => {
             console.log( error )
@@ -25,14 +24,18 @@ export default function Headers() {
        getUserData();
     }, [])
     function logOut() {
-        fetch('https://paperplane-blog-api.onrender.com/logout', {
-            method:"POST",
-            credentials:"include",
-        }).then( response => {
-            setUserInfo({}) ;
-            setUsername(false);
-        }
-         );
+        // fetch('https://paperplane-blog-api.onrender.com/logout', {
+        //     method:"POST",
+        //     credentials:"include",
+        //     headers:{'Authorization':''}
+        // }).then( response => {
+        //     setUserInfo({}) ;
+        //     setUsername(false);
+        // })
+        // .then()
+        setUserInfo({}) ;
+        setUsername(false);
+        document.cookie ='';
     }
     return (
         <header>
