@@ -8,7 +8,7 @@ export default function Headers() {
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false);
-    const [test, setTest ] = useState['empty'];
+    const [test, setTest ] = useState('empty');
     function getUserData() {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             credentials:"include",
