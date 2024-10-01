@@ -18,7 +18,9 @@ export default function Login() {
         })
         if (response.ok) {
             response.json().then( userInfo => {
-               setUserInfo(userInfo);
+            //    setUserInfo(userInfo);
+               console.log(userInfo);
+               document.cookie = userInfo;
                setRedirect(true);
                console.log(document.cookie)
             })
