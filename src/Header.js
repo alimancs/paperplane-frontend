@@ -8,9 +8,7 @@ export default function Headers() {
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false)
-
-    useEffect(() => {
-        console.log(document.cookie)
+    function getUserData() {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             credentials:"include",
             headers: {'Authorization': document.cookie}})
@@ -20,8 +18,12 @@ export default function Headers() {
             setUsername( user.username)})
         .catch( error => {
             console.log( error )
-        } ) 
-    }, [ userInfo ])
+        } )  
+    }
+
+    useEffect(() => {
+       getUserData();
+    }, [])
     function logOut() {
         fetch('https://paperplane-blog-api.onrender.com/logout', {
             method:"POST",
