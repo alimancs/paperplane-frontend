@@ -13,7 +13,7 @@ export default function Login() {
         const response = await fetch("https://paperplane-blog-api.onrender.com/login", {
             method:'POST',
             body:JSON.stringify( { username, password } ),
-            headers:{'content-type':'application/json'},
+            headers:{'Content-Type':'application/json', 'Access-Control-Allow-Origin': '*' },
             credentials:'include',
         })
         if (response.ok) {
