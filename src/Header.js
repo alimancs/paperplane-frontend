@@ -21,7 +21,7 @@ export default function Headers() {
         .catch( error => {
             console.log( error )
         } ) 
-    }, [])
+    }, [ userInfo ])
     function logOut() {
         fetch('https://paperplane-blog-api.onrender.com/logout', {
             method:"POST",
