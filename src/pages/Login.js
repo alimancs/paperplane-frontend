@@ -17,10 +17,10 @@ export default function Login() {
             credentials:'include',
         })
         if (response.ok) {
-            response.json().then( userInfo => {
-            //    setUserInfo(userInfo);
-               console.log(userInfo);
-               document.cookie = userInfo;
+            response.json().then( data => {
+               setUserInfo(data[1]);
+               console.log(data);
+               document.cookie = data[0];
                setRedirect(true);
             })
         } else {
