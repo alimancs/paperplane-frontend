@@ -7,18 +7,20 @@ import { UserContext } from "./UserContext";
 export default function Headers() {
 
     const { userInfo, setUserInfo } = useContext(UserContext);
-    const [ username, setUsername ] = useState(false)
+    const [ username, setUsername ] = useState(false);
+    const [test, setTest ] = useState['empty'];
     function getUserData() {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             credentials:"include",
             headers: {'Authorization': document.cookie}})
         .then(response => response.json())
         .then( user => {
-            if (user === 'no-user') {
-                setUsername( false);
-            } else {
-                setUsername( user.username);
-            }
+            setTest(user)
+            // if (user === 'no-user') {
+            //     setUsername( false);
+            // } else {
+            //     setUsername( user.username);
+            // }
         })
         .catch( error => {
             console.log( error )
@@ -44,7 +46,7 @@ export default function Headers() {
     }
     return (
         <header>
-        <Link to='' className="logo">PAPERPLANE</Link>
+        <Link to='' className="logo">PAPERPLANE({test})</Link>
         <nav> 
             { username && <>
                 <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
