@@ -8,9 +8,9 @@ export default function Headers() {
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false)
-    console.log(document.cookie);
 
     useEffect(() => {
+        console.log(document.cookie);
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             credentials:"include",
             headers: { Cookie : document.cookie }})
