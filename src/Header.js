@@ -11,7 +11,8 @@ export default function Headers() {
 
     useEffect(() => {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
-            credentials:"include"})
+            credentials:"include",
+            headers: { Cookie : document.cookie }})
         .then(response => response.json())
         .then( user => {
             setUserInfo( user );
