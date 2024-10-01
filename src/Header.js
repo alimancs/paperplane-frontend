@@ -8,6 +8,7 @@ export default function Headers() {
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false)
+    console.log(document.cookie);
 
     useEffect(() => {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
