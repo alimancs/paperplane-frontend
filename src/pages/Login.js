@@ -20,7 +20,6 @@ export default function Login() {
             response.json().then( userInfo => {
                setUserInfo(userInfo);
                setRedirect(true);
-               console.log(userInfo)
             })
         } else {
             alert("invalid username or password");
