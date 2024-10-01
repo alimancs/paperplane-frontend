@@ -10,7 +10,7 @@ export default function Headers() {
     const [ username, setUsername ] = useState(false)
 
     useEffect(() => {
-        console.log(document.cookie);
+        console.log(document.cookie)
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             credentials:"include",
             headers: {'Authorization': `Bearer ${document.cookie}`}})
