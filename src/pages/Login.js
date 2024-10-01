@@ -22,7 +22,6 @@ export default function Login() {
                console.log(userInfo);
                document.cookie = userInfo;
                setRedirect(true);
-               console.log(document.cookie)
             })
         } else {
             alert("invalid username or password");

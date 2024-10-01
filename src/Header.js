@@ -13,7 +13,7 @@ export default function Headers() {
         console.log(document.cookie)
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             credentials:"include",
-            headers: {'Authorization': `Bearer ${document.cookie}`}})
+            headers: {'Authorization': document.cookie}})
         .then(response => response.json())
         .then( user => {
             setUserInfo( user );
