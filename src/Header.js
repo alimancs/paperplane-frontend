@@ -8,19 +8,18 @@ export default function Headers() {
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false);
-    const [test, setTest ] = useState('empty');
+
     function getUserData() {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             credentials:"include",
             headers: {'Authorization': document.cookie}})
         .then(response => response.json())
         .then( user => {
-            setTest(user)
-            // if (user === 'no-user') {
-            //     setUsername( false);
-            // } else {
-            //     setUsername( user.username);
-            // }
+            if (user === 'no-user') {
+                setUsername( false);
+            } else {
+                setUsername( user.username);
+            }
         })
         .catch( error => {
             console.log( error )
@@ -30,6 +29,7 @@ export default function Headers() {
     useEffect(() => {
        getUserData();
     }, [])
+    
     function logOut() {
         // fetch('https://paperplane-blog-api.onrender.com/logout', {
         //     method:"POST",
@@ -46,7 +46,7 @@ export default function Headers() {
     }
     return (
         <header>
-        <Link to='' className="logo">PAPERPLANE({test})</Link>
+        <Link to='' className="logo">PAPERLANE</Link>
         <nav> 
             { username && <>
                 <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
