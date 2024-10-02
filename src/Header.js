@@ -46,7 +46,7 @@ export default function Headers() {
     }
     return (
         <header>
-        <Link to='' className="logo">PAPERLANE</Link>
+        <Link to='' className="logo">PAPERLANE({document.cookie})</Link>
         <nav> 
             { username && <>
                 <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
