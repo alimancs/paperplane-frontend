@@ -21,7 +21,7 @@ export default function PostPage() {
     if (!postData) return "";
     return (
         <div className="postView">
-            { userInfo.id === postData.user._id ? <Link className="logButton" to={`/edit/${ postData._id }`}>Edit Post</Link>:''}
+            { userInfo._id === postData.user._id ? <Link className="logButton" to={`/edit/${ postData._id }`}>Edit Post</Link>:''}
             <h1 className="postPageT">{postData.title}</h1>
             <p className='author'>
                 <a className='user'> by {postData.user.username}</a>
