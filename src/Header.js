@@ -11,6 +11,7 @@ export default function Headers() {
     const [test, setTest ] = useState('empty');
     function getUserData() {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
+            method:'GET',
             credentials:"include",
             headers: {'Authorization': document.cookie}})
         .then(response => response.json())
