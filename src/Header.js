@@ -16,6 +16,7 @@ export default function Headers() {
             headers: {'Authorization': document.cookie}})
         .then(response => response.json())
         .then( user => {
+            console.log(user);
             setTest(user)
             // if (user === 'no-user') {
             //     setUsername( false);

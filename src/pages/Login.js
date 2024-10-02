@@ -33,7 +33,8 @@ export default function Login() {
             response.json().then( data => {
                setUserInfo(data[1]);
                console.log(data);
-               saveTokenInCookie(data[0])
+               saveTokenInCookie(data[0]);
+               console.log(document.cookie);
                setRedirect(true);
             })
         } else {
