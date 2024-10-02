@@ -20,10 +20,6 @@ export default function Login() {
     
         document.cookie = `${cookieName}=${cookieValue}; ${expires}; path=/;`;
     };
-    
-    const handleLogin = () => {
-        fetchToken();
-    };
 
     async function logUserIn(e) {
         e.preventDefault();
