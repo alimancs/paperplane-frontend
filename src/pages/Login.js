@@ -8,6 +8,23 @@ export default function Login() {
     const [ password, setPassword ] = useState("");
     const [ redirect, setRedirect ] = useState(false);
     const { userInfo, setUserInfo } = useContext(UserContext);
+
+    const saveTokenInCookie = (token) => {
+        const cookieName = 'authToken';
+        const cookieValue = token;
+        const expiryDays = 7;
+    
+        const date = new Date();
+        date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+    
+        document.cookie = `${cookieName}=${cookieValue}; ${expires}; path=/;`;
+    };
+    
+    const handleLogin = () => {
+        fetchToken();
+    };
+
     async function logUserIn(e) {
         e.preventDefault();
         const response = await fetch("https://paperplane-blog-api.onrender.com/login", {
@@ -20,7 +37,7 @@ export default function Login() {
             response.json().then( data => {
                setUserInfo(data[1]);
                console.log(data);
-               document.cookie = data[0];
+               saveTokenInCookie(data[0])
                setRedirect(true);
             })
         } else {
