@@ -46,21 +46,22 @@ export default function Headers() {
         setUserInfo({}) ;
         setUsername(false);
         document.cookie ='';
+        console.log('successfully logged-out');
     }
     return (
         <header>
         <Link to='' className="logo">PAPERPLANE({test})</Link>
         <nav> 
-            { username && <>
+            {/* { username && <>
                 <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
                <span className="logButton" onClick={logOut} >Log out</span>
-            </>}
+            </>} */}
 
-            { !username && <>
+            {/* { !username && <>
                 <Link className="regButton" to='/register'>Register</Link>
                 <Link className="logButton" to='/login'>Login</Link>
             </>
-            }
+            } */}
         </nav>
         </header>
     );
