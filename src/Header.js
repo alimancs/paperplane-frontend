@@ -32,7 +32,7 @@ export default function Headers() {
 
     useEffect(() => {
        checkUserData();
-    }, [ userInfo.username ])
+    }, [ username ])
     function logOut() {
         // fetch('https://paperplane-blog-api.onrender.com/logout', {
         //     method:"POST",
