@@ -8,7 +8,6 @@ export default function Headers() {
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false);
-    const [test, setTest ] = useState('empty');
     function checkUserData() {
         const authToken = localStorage.getItem('authToken');
         fetch('https://paperplane-blog-api.onrender.com/profile', {
@@ -33,7 +32,7 @@ export default function Headers() {
 
     useEffect(() => {
        checkUserData();
-    }, [])
+    }, [ userInfo.username ])
     function logOut() {
         // fetch('https://paperplane-blog-api.onrender.com/logout', {
         //     method:"POST",
