@@ -20,12 +20,11 @@ export default function Headers() {
             console.log(user);
             setTest(user);
             const cookieArr = document.cookie.split(';');
-            let cookieObj = {};
+            const cookieObj = {};
             for (let cookie in cookieArr) {
                 if (cookie.includes('=')) {
-                   const [ key, value ] = cookie.split('=');
-                   console.log([ key, value]);
-                   cookieObj[key] = value;
+                   const arr = cookie.split('=');
+                   cookieObj[arr[0]] = arr[1];
                 } else {
                     const key = cookie;
                     const value = cookie;
@@ -33,8 +32,8 @@ export default function Headers() {
                 }
             }
             console.log(document.cookie);
-            console.log(cookieObj);
             console.log(cookieArr)
+            console.log(cookieObj);
 
             // if (user === 'no-user') {
             //     setUsername( false);
