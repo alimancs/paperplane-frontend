@@ -23,7 +23,7 @@ export default function Headers() {
             let cookieObj = {};
             for (let cookie in cookieArr) {
                 if (cookie.includes('=')) {
-                   const [ key, value ] = cookie.trim().split('=');
+                   const [ key, value ] = cookie.split('=');
                    console.log([ key, value]);
                    cookieObj[key] = value;
                 } else {
