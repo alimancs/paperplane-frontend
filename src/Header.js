@@ -18,13 +18,12 @@ export default function Headers() {
         .then(response => response.json())
         .then( user => {
             console.log(user);
-            // setTest(user);
 
-            // if (user === 'no-user') {
-            //     setUsername( false);
-            // } else {
-            //     setUsername( user.username);
-            // }
+            if (user === 'no-user') {
+                setUsername( false);
+            } else {
+                setUsername( user.username);
+            }
         })
         .catch( error => {
             throw error;
