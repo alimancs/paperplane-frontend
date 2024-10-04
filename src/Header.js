@@ -56,6 +56,7 @@ export default function Headers() {
                 <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
                <span className="logButton" onClick={logOut} >Log out</span>
             </>} */}
+            <span className="logButton" onClick={logOut} >Log out</span>
 
             {/* { !username && <>
                 <Link className="regButton" to='/register'>Register</Link>
