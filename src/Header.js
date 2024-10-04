@@ -19,11 +19,11 @@ export default function Headers() {
         .then( user => {
             console.log(user);
 
-            if (user === 'no-user') {
-                setUsername( false);
-            } else {
-                setUsername( user.username);
-            }
+            // if (user === 'no-user') {
+            //     setUsername( false);
+            // } else {
+            //     setUsername( user.username);
+            // }
         })
         .catch( error => {
             throw error;
