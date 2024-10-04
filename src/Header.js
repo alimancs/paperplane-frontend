@@ -9,11 +9,12 @@ export default function Headers() {
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false);
     const [test, setTest ] = useState('empty');
-    function getUserData() {
+    function checkUserData() {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             method:'GET',
             credentials:"include",
-            headers: {'Authorization': document.cookie}})
+            headers:{ 'Cookie' : document.cookie }
+        })
         .then(response => response.json())
         .then( user => {
             console.log(user);
@@ -25,12 +26,12 @@ export default function Headers() {
             // }
         })
         .catch( error => {
-            console.log( error )
+            throw error;
         } )  
     }
 
     useEffect(() => {
-       getUserData();
+       checkUserData();
     }, [])
     function logOut() {
         // fetch('https://paperplane-blog-api.onrender.com/logout', {
