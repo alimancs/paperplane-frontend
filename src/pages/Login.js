@@ -32,11 +32,7 @@ export default function Login() {
         if (response.ok) {
             response.json().then( data => {
                setUserInfo(data);
-               console.log(data);
-               const cookieOBJ = document.cookie.split(';');
-               console.log(document.cookie);
-               console.log(cookieOBJ);
-            //    setRedirect(true);
+               setRedirect(true);
             })
         } else {
             alert("invalid username or password");
