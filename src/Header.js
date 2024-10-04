@@ -13,12 +13,15 @@ export default function Headers() {
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             method:'GET',
             credentials:"include",
-            headers:{ 'Cookie' : document.cookie }
+            headers:{ 'Cookie' : document.cookie },
         })
         .then(response => response.json())
         .then( user => {
             console.log(user);
-            setTest(user)
+            setTest(user);
+            const cookieOBJ = document.cookie.split(';');
+            console.log(document.cookie);
+            console.log(cookieOBJ);
             // if (user === 'no-user') {
             //     setUsername( false);
             // } else {
