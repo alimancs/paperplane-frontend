@@ -31,7 +31,8 @@ export default function Login() {
         })
         if (response.ok) {
             response.json().then( data => {
-               setUserInfo(data);
+               setUserInfo(data.userData);
+               localStorage.setItem('authToken', data.authToken);
                setRedirect(true);
             })
         } else {

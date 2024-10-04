@@ -5,17 +5,16 @@ import { UserContext } from "./UserContext";
 
 
 export default function Headers() {
-    document.cookie ='';
-    console.log(document.cookie);
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false);
     const [test, setTest ] = useState('empty');
     function checkUserData() {
+        const authToken = localStorage.getItem('authToken');
         fetch('https://paperplane-blog-api.onrender.com/profile', {
             method:'GET',
             credentials:"include",
-            headers:{ 'Authorization' : document.cookie },
+            headers:{ 'Authorization' : authToken },
         })
         .then(response => response.json())
         .then( user => {
