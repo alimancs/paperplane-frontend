@@ -18,13 +18,12 @@ export default function Headers() {
         })
         .then(response => response.json())
         .then( user => {
-            console.log(user);
-
-
-            if ( user === null ) {
+            if ( !user ) {
                 setUsername( false);
+                setUserInfo({});
             } else {
                 setUsername( user.username);
+                setUserInfo(user);
             }
         })
         .catch( error => {

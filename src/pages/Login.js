@@ -9,17 +9,7 @@ export default function Login() {
     const [ redirect, setRedirect ] = useState(false);
     const { userInfo, setUserInfo } = useContext(UserContext);
 
-    const saveTokenInCookie = (token) => {
-        const cookieName = 'authToken';
-        const cookieValue = token;
-        const expiryDays = 7;
-    
-        const date = new Date();
-        date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
-        const expires = `expires=${date.toUTCString()}`;
-    
-        document.cookie = `${cookieName}=${cookieValue}; ${expires}; path=/;`;
-    };
+
 
     async function logUserIn(e) {
         e.preventDefault();
