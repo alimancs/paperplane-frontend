@@ -19,9 +19,21 @@ export default function Headers() {
         .then( user => {
             console.log(user);
             setTest(user);
-            const cookieOBJ = document.cookie.split(';');
+            const cookieArr = document.cookie.split(';');
+            let cookieObj = {};
+            for (let cookie in cookieArr) {
+                if (cookie.includes('=')) {
+                   const [ key, value ] = cookie.trim().split('=');
+                   cookieObj[key] = value;
+                } else {
+                    const key = cookie;
+                    const value = cookie;
+                    cookieObj[key] = value;
+                }
+            }
             console.log(document.cookie);
-            console.log(cookieOBJ);
+            console.log(cookieObj);
+            
             // if (user === 'no-user') {
             //     setUsername( false);
             // } else {
