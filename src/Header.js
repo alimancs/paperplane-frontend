@@ -21,7 +21,7 @@ export default function Headers() {
             setTest(user);
             const cookieArr = document.cookie.split(';');
             const cookieObj = {};
-            for (let cookie in cookieArr) {
+            for (let cookie of cookieArr) {
                 if (cookie.includes('=')) {
                    const arr = cookie.split('=');
                    cookieObj[arr[0]] = arr[1];
