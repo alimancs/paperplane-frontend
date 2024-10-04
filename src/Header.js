@@ -24,6 +24,7 @@ export default function Headers() {
             for (let cookie in cookieArr) {
                 if (cookie.includes('=')) {
                    const [ key, value ] = cookie.trim().split('=');
+                   console.log([ key, value]);
                    cookieObj[key] = value;
                 } else {
                     const key = cookie;
@@ -33,7 +34,8 @@ export default function Headers() {
             }
             console.log(document.cookie);
             console.log(cookieObj);
-            
+            console.log(cookieArr)
+
             // if (user === 'no-user') {
             //     setUsername( false);
             // } else {
