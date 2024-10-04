@@ -31,9 +31,8 @@ export default function Login() {
         })
         if (response.ok) {
             response.json().then( data => {
-               setUserInfo(data[1]);
+               setUserInfo(data);
                console.log(data);
-               saveTokenInCookie(data[0]);
                console.log(document.cookie);
                setRedirect(true);
             })
