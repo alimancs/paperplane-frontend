@@ -19,11 +19,12 @@ export default function Headers() {
         .then( user => {
             console.log(user);
 
-            // if (user === 'no-user') {
-            //     setUsername( false);
-            // } else {
-            //     setUsername( user.username);
-            // }
+
+            if ( user === null ) {
+                setUsername( false);
+            } else {
+                setUsername( user.username);
+            }
         })
         .catch( error => {
             throw error;
@@ -46,23 +47,21 @@ export default function Headers() {
         setUserInfo({}) ;
         setUsername(false);
         document.cookie ='';
-        console.log('successfully logged-out');
     }
     return (
         <header>
         <Link to='' className="logo">PAPERPLANE({test})</Link>
         <nav> 
-            {/* { username && <>
+            { username && <>
                 <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
                <span className="logButton" onClick={logOut} >Log out</span>
-            </>} */}
-            <span className="logButton" onClick={logOut} >Log out</span>
+            </>}
 
-            {/* { !username && <>
+            { !username && <>
                 <Link className="regButton" to='/register'>Register</Link>
                 <Link className="logButton" to='/login'>Login</Link>
             </>
-            } */}
+            }
         </nav>
         </header>
     );
