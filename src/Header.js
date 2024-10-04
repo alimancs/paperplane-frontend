@@ -46,7 +46,7 @@ export default function Headers() {
         // .then()
         setUserInfo({}) ;
         setUsername(false);
-        document.cookie ='';
+        localStorage.setItem( 'authToken', '');
     }
     return (
         <header>

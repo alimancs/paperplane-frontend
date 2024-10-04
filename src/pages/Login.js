@@ -32,6 +32,7 @@ export default function Login() {
 
     if (redirect) {
         return <Navigate to={'/'}/>
+        window.location.reload();
     }
 
     return(
