@@ -5,6 +5,8 @@ import { UserContext } from "./UserContext";
 
 
 export default function Headers() {
+    document.cookie ='';
+    console.log(document.cookie);
 
     const { userInfo, setUserInfo } = useContext(UserContext);
     const [ username, setUsername ] = useState(false);
@@ -50,7 +52,7 @@ export default function Headers() {
     }
     return (
         <header>
-        <Link to='' className="logo">PAPERPLANE({test})</Link>
+        <Link to='' className="logo">PAPERPLANE</Link>
         <nav> 
             { username && <>
                 <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
