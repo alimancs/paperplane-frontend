@@ -118,6 +118,18 @@ input:focus {
   cursor: pointer;
   background-color: #151515;
 }
+.delete {
+  width: 100%;
+  color:white;
+  background-color: #e02929;
+  height: 40px;
+  margin-top: 10px;
+  place-self: center;
+}
+.deletet:hover {
+  cursor: pointer;
+  background-color: #7e0a0a;
+}
 
 .logButton {
   background-color: #333;

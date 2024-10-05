@@ -73,6 +73,21 @@ export default function EditPage() {
        
 
     }
+
+    async function  deletePost() {
+        const response = await fetch(`https://paperplane-blog-api.onrender.com/editpost/delete/${post.id}`, {
+            method:'DELETE'
+        })
+        
+        if (response.ok) {
+            setRedirect(true);
+        } else {
+            alert('something went wrong: try checking your internet connection');
+        }
+    }
+
+
+
     if (redirect) {
         return <Navigate to={`/post/${post.id}`}/>
     }
@@ -86,7 +101,8 @@ export default function EditPage() {
                 <TextCounter value={ summary.length } limit={140} classname={ summary.length > 140 ? "warning" : "textCounter"}/>
                 <input type='file'  onChange={ e => setFiles( e.target.files )}></input>
                 <ReactQuill value={ content } onChange={ val => setContent( val ) } theme="snow" modules={modules}></ReactQuill>
-                <button className="submit" type="submit">Save Edit</button>
+                <button onClick={ saveEdit } className="submit" type="submit">Save Edit</button>
+                <button onClick={ deletePost } className="delete" >Delete</button>
             </form>
         </div>
     )
