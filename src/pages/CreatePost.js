@@ -34,6 +34,7 @@ export default function CreatePost() {
    async function addPost(e) {
         e.preventDefault();
         if ( check(summary.length, 140) && check(title.length, 90) ) {
+            const authToken = localStorage.getItem('authToken');
             const data = new FormData();
             data.set( 'title', title );
             data.set( 'summary', summary );
@@ -44,7 +45,7 @@ export default function CreatePost() {
                 method:"POST",
                 body: data,
                 credentials:"include",
-                headers:{ 'Authorization':document.cookie }
+                headers:{ 'Authorization':authToken }
             });
     
             if (response.ok) {

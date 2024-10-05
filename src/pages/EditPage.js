@@ -54,10 +54,13 @@ export default function EditPage() {
             data.set( 'file', files?.[0]);
             data.set( 'id', post.id);
 
+            const authToken = localStorage.getItem("authToken");
+
             const response = await fetch(`https://paperplane-blog-api.onrender.com/post`, {
                 method : "PUT",
                 body : data,
                 credentials : "include",
+                headers:{ 'Authorization': authToken },
             })
             if (response.ok) {
                 setRedirect(true);
