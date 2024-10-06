@@ -5,9 +5,9 @@ import { UserContext } from "./UserContext";
 
 
 export default function Headers() {
-    const { setUserInfo } = useContext( UserContext )
+    const { userInfo, setUserInfo } = useContext( UserContext )
     const [ username, setUsername ] = useState(false);
-    const [ hamOpen, setHamOpen ] = useState(false)
+    const [ hamOpen, setHamOpen ] = useState(false);
     
     function checkUserData() {
         const authToken = localStorage.getItem('authToken');
@@ -33,17 +33,8 @@ export default function Headers() {
 
     useEffect(() => {
        checkUserData();
-    }, [ ])
+    }, [ userInfo ])
     function logOut() {
-        // fetch('https://paperplane-blog-api.onrender.com/logout', {
-        //     method:"POST",
-        //     credentials:"include",
-        //     headers:{'Authorization':''}
-        // }).then( response => {
-        //     setUserInfo({}) ;
-        //     setUsername(false);
-        // })
-        // .then()
         setUserInfo({}) ;
         setUsername(false);
         localStorage.setItem( 'authToken', '');

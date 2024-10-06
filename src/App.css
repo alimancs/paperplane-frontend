@@ -286,10 +286,11 @@ input:focus {
   height:500px;
   width:70%;
   position: absolute;
-  right:-70%;
+  right:10px;
   margin-top: 10px;
   background-color: #fefefe;
   box-shadow: 0px 0px 5px rgb(173, 173, 173);
+  display:none;
 }
 .hamOpen {
   height:500px;
@@ -299,6 +300,7 @@ input:focus {
   margin-top: 10px;
   background-color: #fefefe;
   box-shadow: 0px 0px 5px rgb(173, 173, 173);
+  display: block;
 }
 .m-navbox {
   height:fit-content;
