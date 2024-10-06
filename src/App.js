@@ -18,7 +18,7 @@ function App() {
           <Route index element={<Home/>}></Route>
           <Route path={'/login'} element={<Login/>}></Route>
           <Route path={'/register'} element={<Register/>}></Route>
-          <Route path={"/createpost/:id"} element={<CreatePost/>}></Route>
+          <Route path={"/createpost"} element={<CreatePost/>}></Route>
           <Route path={"/post/:id"} element={<PostPage/>}></Route>
           <Route path={"/edit/:id"} element={<EditPage/>}></Route>
         </Route>

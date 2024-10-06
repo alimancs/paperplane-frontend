@@ -20,11 +20,11 @@ header {
   border-bottom:0.3px solid rgb(215, 215, 215);
 }
 main {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0px auto;
 }
 .bodyContainer, .lr {
-  max-width: 700px;
+  max-width: 900px;
   padding-left:15px;
   padding-right: 15px;
 }
@@ -37,6 +37,7 @@ header a {
   font-weight: 600;
   font-size: 25px;
   height:30px;
+  font-family: 'TitleCustomFont';
 }
 
 nav {
@@ -45,9 +46,9 @@ nav {
 }
 .postcard {
   display:grid;
-  grid-template-columns: 0.7fr 1fr;
-  gap: 20px;
-  height:230px;
+  grid-template-columns: 0.4fr 1fr;
+  gap: 5%;
+  height:190px;
   padding: 5px;
   margin-top: 0px;
   margin-bottom: 20px;
@@ -62,7 +63,7 @@ nav {
   margin-bottom: 5px;
 }
 .postCardImage {
-  height: 210px;;
+  height: 150px;;
 }
 .author {
   margin-top:10px;
@@ -93,7 +94,7 @@ nav {
 }
 .postText {
   height:fit-content;
-  max-width:400px;
+  max-width:100%;
   line-height: 23px;
   margin-top: 5px;
 }
@@ -163,11 +164,12 @@ input:focus {
   place-content: center;
   border: none;
   height:30px;
-  font-family: 'TitleCustomFont';
+  font-family: helvetica;
   font-size: 17px;
 }
 .logButton:hover {
-  background-color: #676767;
+  background-color: #9e9e9e;
+  color:white;
   cursor: pointer;
 }
 .regButton {
@@ -179,7 +181,23 @@ input:focus {
   background-color:#ff3d00;
   text-align: center;
   color:white;
-  font-family: 'TitleCustomFont';
+  font-family: helvetica;
+}
+.writeButton {
+  height:30px;
+  font-size: 17px;
+  width: fit-content;
+  height:fit-content;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: helvetica;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #d3d3d3;
+  place-content: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 .regButton:hover {
   background-color: #b92b00;
@@ -187,12 +205,10 @@ input:focus {
 .userHeader {
   width:30px;
   height:30px;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 600;
-  border-radius: 50%;
-  background-color: rgb(49, 195, 54);
-  transition: opacity 0.3s ease-in-out;
+}
+.m-userHeader {
+  width:40px;
+  height:40px;
 }
 .userHeader:hover {
   cursor: pointer;
@@ -259,9 +275,59 @@ input:focus {
   font-size:16px;
   font-weight: 500;
 }
-
+.headerIcon {
+  height:20px;
+  width:23px;
+}
+.mobileNav {
+  display:none;
+}
+.hamClose {
+  height:500px;
+  width:70%;
+  position: absolute;
+  right:-70%;
+  margin-top: 10px;
+  background-color: #fefefe;
+  box-shadow: 0px 0px 5px rgb(173, 173, 173);
+}
+.hamOpen {
+  height:500px;
+  width:70%;
+  position: absolute;
+  right:10px;
+  margin-top: 10px;
+  background-color: #fefefe;
+  box-shadow: 0px 0px 5px rgb(173, 173, 173);
+}
+.m-navbox {
+  height:fit-content;
+  display:flex;
+  flex-direction: column;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom:0.3px solid rgb(215, 215, 215);
+}
+.hamNav {
+  padding-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.m-writeButton, .m-logButton, .m-profileButton {
+  display:flex;
+  flex-direction: row;
+}
+.hamtext {
+  margin-left: 15px;
+}
 
 @media (max-width:700px) {
+  .desktopNav {
+    display:none;
+  }
+  .mobileNav {
+    display:block;
+  }
   .postcard {
     display:grid;
     grid-template-columns: 1fr;
@@ -281,5 +347,13 @@ input:focus {
   header {
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 5px;
+  }
+  .regButton, .logButton {
+    width: fit-content;
+    padding:5px 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    place-self: center;
   }
 }
