@@ -61,8 +61,10 @@ export default function EditPage() {
     }
 
     async function  deletePost() {
+        const authToken = localStorage.getItem("authToken");
         const response = await fetch(`https://paperplane-blog-api.onrender.com/editpost/delete/${post.id}`, {
-            method:'DELETE'
+            method:'DELETE',
+            headers:{ 'Authorization': authToken },
         })
         
         if (response.ok) {
