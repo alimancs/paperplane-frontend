@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'TitleCustomFont';
+  src: url('Nexa-Heavy.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,9 +15,9 @@ header {
   justify-content: space-between;
   margin-bottom: 10px;
   margin-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-bottom:1px solid rgb(157, 157, 157);
+  padding-left: 30px;
+  padding-right: 30px;
+  border-bottom:0.3px solid rgb(215, 215, 215);
 }
 main {
   max-width: 700px;
@@ -40,11 +47,11 @@ nav {
   display:grid;
   grid-template-columns: 0.7fr 1fr;
   gap: 20px;
-  height:250px;
-  box-shadow: 0px 0px 5px #3333;
+  height:230px;
   padding: 5px;
   margin-top: 0px;
   margin-bottom: 20px;
+  border-bottom:0.3px solid rgb(215, 215, 215);
 }
 .postcard:hover {
   cursor: pointer;
@@ -54,34 +61,47 @@ nav {
   font-size: 25px;
   margin-bottom: 5px;
 }
+.postCardImage {
+  height: 210px;;
+}
 .author {
-  margin-top:0px;
+  margin-top:10px;
   color:#666;
   display:flex;
   gap:10px;
+  flex-wrap: wrap;
+  font-family: sans-serif;
+  margin-bottom: 0px;
 }
 .author .user {
-  color:#333;
+  color:#000000;
 }
 .summary {
   color:#333;
   margin-bottom: 0px;
-  margin-top: 0px;
-  line-height: 17px;
+  margin-top: 20px;
 }
 .postTitle {
   color:black;
   text-decoration: none;
   font-size:20px;
-  font-weight: 600;
+  font-weight: 900;
+  font-family:  'TitleCustomFont' ;
 }
 .postPageT {
   font-size: 40px;
 }
 .postText {
-  height:100px;
+  height:fit-content;
   max-width:400px;
-  overflow:hidden;
+  line-height: 23px;
+  margin-top: 5px;
+}
+.summary {
+  color:#333;
+  font-family: helvetica;
+  font-size: 16px;
+  text-decoration: none;
 }
 .postInfo {
   height:100%;
@@ -106,6 +126,9 @@ input:focus {
   outline: none;
   background-color: #dfdfdf;
 }
+.editBox {
+  display:flex;
+}
 .submit {
   width: 100%;
   color:white;
@@ -113,6 +136,7 @@ input:focus {
   height: 40px;
   margin-top: 10px;
   place-self: center;
+  border:none;
 }
 .submit:hover {
   cursor: pointer;
@@ -125,6 +149,7 @@ input:focus {
   height: 40px;
   margin-top: 10px;
   place-self: center;
+  border:none;
 }
 .deletet:hover {
   cursor: pointer;
@@ -132,29 +157,36 @@ input:focus {
 }
 
 .logButton {
-  background-color: #333;
-  color:white;
+  background-color: white;
+  color:#333;
   padding: 1px 10px;
   place-content: center;
-  border: 1px solid #333;
-  height:50px;
+  border: none;
+  height:30px;
+  font-family: 'TitleCustomFont';
+  font-size: 17px;
 }
 .logButton:hover {
   background-color: #676767;
   cursor: pointer;
 }
 .regButton {
-  border: 1px solid #333;
+  height:30px;
+  font-size: 17px;
+  border: none;
   padding: 1px 10px;
   place-content: center;
-  height:50px;
+  background-color:#ff3d00;
+  text-align: center;
+  color:white;
+  font-family: 'TitleCustomFont';
 }
 .regButton:hover {
-  background-color: #dadada;
+  background-color: #b92b00;
 }
 .userHeader {
-  width:50px;
-  height:50px;
+  width:30px;
+  height:30px;
   text-align: center;
   font-size: 30px;
   font-weight: 600;
@@ -226,4 +258,28 @@ input:focus {
 .postContent {
   font-size:16px;
   font-weight: 500;
+}
+
+
+@media (max-width:700px) {
+  .postcard {
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr, 0.5fr;
+    gap: 0px;
+    height:fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  .postCardImage {
+    height:180px;
+  }
+  header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

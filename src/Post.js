@@ -4,6 +4,9 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 
 export default function Post( { _id, title, summary, cover, user, createdAt}) {
+    const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const date = formatISO9075( new Date(createdAt)).split(' ')[0].split('-');
+    const dateStr = `${months[date[1]-1]} ${date[2]}, ${date[0]}`
     return (
         <div className='postcard'>
         <div>
@@ -14,18 +17,22 @@ export default function Post( { _id, title, summary, cover, user, createdAt}) {
           </Link>
         </div>
         <div className='postInfo'>
-          <div className="postText">
-            <Link className='postTitle' to={`/post/${_id}`}>
-            <span>{title}</span>
-            </Link>
-          </div>
           <p className='author'>
-            <a className='user'>{user.username}</a>
-            <time>{ formatISO9075( new Date(createdAt)) }</time>
+            <a className='user'>By {user.username[0].toUpperCase() + user.username.slice(1)}</a>
           </p>
+          <Link className='postTitle' to={`/post/${_id}`}>
           <div className="postText">
-              <span className='summary'> { summary  }</span>
+            <span>{ title.length > 90 ? title[0].toUpperCase() + title.slice(1, 90) + '...': title[0].toUpperCase() + title.slice(1) }</span>
           </div>
+          </Link>
+          <Link className='summary' to={`/post/${_id}`}>
+          <div className="postText">
+              <span className='summary'> { summary.slice(0, 90) + '...'  }</span>
+          </div>
+          </Link>
+          <p className='author'>
+            <span>{dateStr}</span>
+          </p>
         </div>
       </div>
     );

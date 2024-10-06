@@ -18,7 +18,7 @@ export default function Home() {
     return(
         <div className="bodyContainer">
           { postsList.length > 0 && postsList.map( post=> {
-             return <Post {...post} />
+             return <Post key={` post NO.${postsList.indexOf(post)}`} {...post} />
           }) }
         </div> 
     );

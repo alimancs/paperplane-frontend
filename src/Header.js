@@ -52,13 +52,13 @@ export default function Headers() {
         <Link to='' className="logo">PAPERPLANE</Link>
         <nav> 
             { username && <>
-                <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> Create post </Link>
+                <span className="userHeader">{username[0].toUpperCase()}</span> <Link className="regButton" to={`/createpost/${userInfo.id}`}> New post + </Link>
                <span className="logButton" onClick={logOut} >Log out</span>
             </>}
 
             { !username && <>
-                <Link className="regButton" to='/register'>Register</Link>
-                <Link className="logButton" to='/login'>Login</Link>
+                <Link className="regButton" to='/register'>Sign up</Link>
+                <Link className="logButton" to='/login'>Sign in</Link>
             </>
             }
         </nav>
