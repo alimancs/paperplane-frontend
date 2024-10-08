@@ -16,7 +16,7 @@ export default function CreatePost() {
     const [ title, setTitle ] = useState("");
     const [ summary, setSummary ] = useState("");
     const [ content, setContent ] = useState("");
-    const [ files, setFiles ] = useState([]);
+    const [ file, setFile ] = useState('');
     const [ redirect, setRedirect ] = useState(false);
     const { userInfo } = useContext(UserContext);
 
@@ -28,7 +28,7 @@ export default function CreatePost() {
         data.set( 'title', title );
         data.set( 'summary', summary );
         data.set( 'content', content );
-        data.set( 'file', files[0] );
+        data.set( 'cover', file );
         
         const response = await  fetch("https://paperplane-blog-api.onrender.com/addpost", {
             method:"POST",
@@ -44,6 +44,18 @@ export default function CreatePost() {
         }
 
     }
+
+    const handleImageChange = (e) => {
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+
+            setFile( reader.result );
+        };
+        reader.readAsDataURL(e.target.files[0])
+
+    }
+
     if ( redirect | userInfo === null)  {
        return <Navigate to={'/'}/>
     }
@@ -52,7 +64,7 @@ export default function CreatePost() {
             <form onSubmit={ addPost }>
                 <textarea value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></textarea>
                 <textarea value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></textarea>
-                <input  type="file" onChange={ e => setFiles(e.target.files) } />
+                <input  type="file" onChange={ handleImageChange } />
                 <ReactQuill className="editor" value={ content } onChange={ val => setContent( val ) } theme="snow" modules={modules}></ReactQuill>
                 <button className="submit" type="submit">Publish</button>
             </form>

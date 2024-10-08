@@ -15,7 +15,7 @@ export default function EditPage() {
     const [ title, setTitle ] = useState("");
     const [ summary, setSummary ] = useState("");
     const [ content, setContent ] = useState("");
-    const [ files, setFiles ] = useState('');
+    const [ file, setFile ] = useState('');
     const [ redirect, setRedirect ] = useState(false);
     const [ backHome, setBackHome ] = useState(false);
 
@@ -40,7 +40,7 @@ export default function EditPage() {
         data.set( 'title', title );
         data.set( 'summary', summary );
         data.set( 'content', content);
-        data.set( 'file', files?.[0]);
+        data.set( 'cover', file);
         data.set( 'id', post.id);
 
         const authToken = localStorage.getItem("authToken");
@@ -73,7 +73,14 @@ export default function EditPage() {
             alert('something went wrong: try checking your internet connection');
         }
     }
-
+    
+    const handleImageChange = (e) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setFile(reader.result);
+        }
+        reader.readAsDataURL( e.target.files[0])
+    }
 
 
     if (redirect) {
@@ -87,7 +94,7 @@ export default function EditPage() {
             <form onSubmit={ saveEdit }>
                 <textarea value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></textarea>
                 <textarea value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></textarea>
-                <input type='file'  onChange={ e => setFiles( e.target.files )}></input>
+                <input type='file'  onChange={ handleImageChange}></input>
                 <ReactQuill value={ content } onChange={ val => setContent( val ) } theme="snow" modules={modules}></ReactQuill>
                 <div className="editBox">
                     <button onClick={ saveEdit } className="submit" type="submit">Publish Edit</button>
