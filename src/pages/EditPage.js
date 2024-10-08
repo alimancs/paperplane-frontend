@@ -15,7 +15,7 @@ export default function EditPage() {
     const [ title, setTitle ] = useState("");
     const [ summary, setSummary ] = useState("");
     const [ content, setContent ] = useState("");
-    const [ file, setFile ] = useState('');
+    const [ file, setFile ] = useState(false);
     const [ redirect, setRedirect ] = useState(false);
     const [ backHome, setBackHome ] = useState(false);
 
@@ -28,7 +28,6 @@ export default function EditPage() {
             setTitle(postData.title);
             setSummary(postData.summary);
             setContent(postData.content);
-            setFiles(postData.file);
         })
 
     }, [])
