@@ -11,7 +11,7 @@ const modules = {
 
 export default function EditPage() {
     
-    const post = useParams();
+    const { id } = useParams();
     const [ title, setTitle ] = useState("");
     const [ summary, setSummary ] = useState("");
     const [ content, setContent ] = useState("");
@@ -21,7 +21,7 @@ export default function EditPage() {
 
     useEffect(() => {
 
-        fetch(`https://paperplane-blog-api.onrender.com/post/${post.id}`)
+        fetch(`https://paperplane-blog-api.onrender.com/post/${id}`)
         .then( response => response.json())
         .then( postData => {
             setTitle(postData.title);
@@ -39,11 +39,10 @@ export default function EditPage() {
         data.set( 'summary', summary );
         data.set( 'content', content);
         data.set( 'cover', file);
-        data.set( 'id', post.id);
 
         const authToken = localStorage.getItem("authToken");
 
-        const response = await fetch(`https://paperplane-blog-api.onrender.com/post`, {
+        const response = await fetch(`https://paperplane-blog-api.onrender.com/post/${id}`, {
             method : "PUT",
             body : data,
             credentials : "include",
