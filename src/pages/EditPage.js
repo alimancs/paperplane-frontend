@@ -17,7 +17,6 @@ export default function EditPage() {
     const [ content, setContent ] = useState("");
     const [ file, setFile ] = useState(false);
     const [ redirect, setRedirect ] = useState(false);
-    const [ backHome, setBackHome ] = useState(false);
 
 
     useEffect(() => {
@@ -48,7 +47,7 @@ export default function EditPage() {
             method : "PUT",
             body : data,
             credentials : "include",
-            headers:{ 'Authorization': authToken },
+            headers:{ 'Authorization': authToken, 'Access-Control-Allow-Origin': '*' },
         })
         if (response.ok) {
             setRedirect(true);
@@ -67,7 +66,7 @@ export default function EditPage() {
         })
         
         if (response.ok) {
-            setBackHome(true);
+            setRedirect(true);
         } else {
             alert('something went wrong: try checking your internet connection');
         }
@@ -85,9 +84,7 @@ export default function EditPage() {
     if (redirect) {
         return <Navigate to={`/post/${post.id}`}/>
     }
-    if (backHome) {
-        return <Navigate to={`/`}/>
-    }
+    
     return(
         <div className="bodyContainer"> 
             <form onSubmit={ saveEdit }>

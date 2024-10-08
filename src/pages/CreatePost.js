@@ -34,7 +34,7 @@ export default function CreatePost() {
             method:"POST",
             body: data,
             credentials:"include",
-            headers:{ 'Authorization':authToken }
+            headers:{ 'Authorization':authToken, 'Access-Control-Allow-Origin': '*' }
         });
 
         if (response.ok) {
