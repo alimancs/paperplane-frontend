@@ -50,11 +50,11 @@ export default function CreatePost() {
     return(
         <div className="bodyContainer"> 
             <form onSubmit={ addPost }>
-                <input value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></input>
-                <input value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></input>
+                <textarea value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></textarea>
+                <textarea value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></textarea>
                 <input  type="file" onChange={ e => setFiles(e.target.files) } />
                 <ReactQuill className="editor" value={ content } onChange={ val => setContent( val ) } theme="snow" modules={modules}></ReactQuill>
-                <button className="submit" type="submit">Create Post</button>
+                <button className="submit" type="submit">Publish</button>
             </form>
         </div>
     )

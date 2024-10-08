@@ -85,12 +85,12 @@ export default function EditPage() {
     return(
         <div className="bodyContainer"> 
             <form onSubmit={ saveEdit }>
-                <input value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></input>
-                <input value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></input>
+                <textarea value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></textarea>
+                <textarea value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></textarea>
                 <input type='file'  onChange={ e => setFiles( e.target.files )}></input>
                 <ReactQuill value={ content } onChange={ val => setContent( val ) } theme="snow" modules={modules}></ReactQuill>
                 <div className="editBox">
-                    <button onClick={ saveEdit } className="submit" type="submit">Save Edit</button>
+                    <button onClick={ saveEdit } className="submit" type="submit">Publish Edit</button>
                     <button onClick={ deletePost } className="delete" >Delete</button>
                 </div>
             </form>

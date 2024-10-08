@@ -6,9 +6,20 @@ import { LazyLoadComponent } from "react-lazy-load-image-component";
 import Image from "../Image"
 
 export default function PostPage() {
+    const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const [ date, setdate ] = useState('Month Day, Year')
 
     const [ postData, setPostData ] = useState(null);
     const { userInfo } = useContext(UserContext);
+
+    //calculate approximate reading time;
+    function calculateReadingTime(text) {
+        const wordsPerMinute = 150; // Adjust this based on your reading speed
+        const wordCount = text.split(/\s+/).length; // Count words by splitting on whitespace
+      
+        const readingTimeMinutes = Math.ceil(wordCount / wordsPerMinute);
+        return readingTimeMinutes;
+      }
     
     const { id } = useParams();
     useEffect(() => {
@@ -16,17 +27,21 @@ export default function PostPage() {
         .then( response => response.json())
         .then( data => {
          setPostData(data);
+         const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
+         setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
         })
     }, [])
     if (!postData) return "";
     return (
         <div className="postView">
             { userInfo.id === postData.user._id ? <Link className="logButton" to={`/edit/${ postData._id }`}>Edit Post</Link>:''}
-            <h1 className="postPageT">{postData.title}</h1>
-            <p className='author'>
-                <a className='user'> by {postData.user.username}</a>
-                <time>{ formatISO9075( new Date(postData.createdAt)) }</time>
-            </p>
+            <div className='pp-author'>
+                <Link to={`/profile/${postData.user.username}`}>
+                    <a className='pp-user'> By {postData.user.username[0].toUpperCase() + postData.user.username.slice(1)}</a>
+                    <time>{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
+                </Link>
+            </div>
+            <h1 className="pp-tt">{postData.title}</h1>
             <div className="ppImage">
                 <LazyLoadComponent>
                     <img alt="blog cover" className="blogPageImage" src={ `https://paperplane-blog-api.onrender.com/${postData.cover}`}/>

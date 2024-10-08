@@ -8,6 +8,8 @@ import CreatePost from './pages/CreatePost';
 import PostPage from "./pages/PostPage";
 import EditPage from './pages/EditPage';
 import { UserContextProvider } from './UserContext';
+import Profile from './pages/Profile';
+import Regsuccess from './pages/Regsuccess';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path={"/createpost"} element={<CreatePost/>}></Route>
           <Route path={"/post/:id"} element={<PostPage/>}></Route>
           <Route path={"/edit/:id"} element={<EditPage/>}></Route>
+          <Route path={'/profile/:username'} element={<Profile/>}></Route>
+          <Route path={'/registration-success'} element={<Regsuccess/>}></Route>
         </Route>
       </Routes>
 

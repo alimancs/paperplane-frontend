@@ -17,9 +17,11 @@ export default function Post( { _id, title, summary, cover, user, createdAt}) {
           </Link>
         </div>
         <div className='postInfo'>
-          <p className='author'>
-            <a className='user'>By {user.username[0].toUpperCase() + user.username.slice(1)}</a>
-          </p>
+         <Link to={`/profile/${user.username}`}>
+            <p className='author'>
+              <span className='user'>By {user.username[0].toUpperCase() + user.username.slice(1)}</span>
+            </p>
+          </Link>
           <Link className='postTitle' to={`/post/${_id}`}>
           <div className="postText">
             <span>{ title.length > 90 ? title[0].toUpperCase() + title.slice(1, 90) + '...': title[0].toUpperCase() + title.slice(1) }</span>
