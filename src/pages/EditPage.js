@@ -16,6 +16,7 @@ export default function EditPage() {
     const [ summary, setSummary ] = useState("");
     const [ content, setContent ] = useState("");
     const [ file, setFile ] = useState(false);
+    
     const [ redirect, setRedirect ] = useState(false);
 
 
