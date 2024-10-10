@@ -7,23 +7,6 @@ import Image from "../Image"
 
 export default function PostPage() {
 
-    function base64ToImageURL(cover) {
-
-        // convertion to Blob
-        const bytestr = atob(cover.split(',')[0]);
-        const mimeStr = cover.split(',')[0].split(':')[1].split(';')[0];
-        const ia = new Uint8Array(bytestr.length);
-  
-        for ( let i = 0; i<bytestr.length; i++ ) {
-          ia[i] = bytestr.charCodeAt[i];
-        }
-  
-        const blob =  Blob([ia], { type: mimeStr});
-        return URL.createObjectURL(blob);
-      }
-  
-    let coverImage;
-
     const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const [ date, setdate ] = useState('Month Day, Year')
 
@@ -45,7 +28,6 @@ export default function PostPage() {
         .then( response => response.json())
         .then( data => {
          setPostData(data);
-         coverImage = base64ToImageURL(data.cover);
          const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
          setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
         })
@@ -63,7 +45,7 @@ export default function PostPage() {
             <h1 className="pp-tt">{postData.title}</h1>
             <div className="ppImage">
                 <LazyLoadComponent>
-                    <img alt="blog cover" className="blogPageImage" src={ coverImage }/>
+                    <img alt="blog cover" className="blogPageImage" src={ postData.cover }/>
                 </LazyLoadComponent>
             </div>
             <div className="postContent" dangerouslySetInnerHTML={{__html : postData.content}} ></div>

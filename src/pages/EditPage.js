@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import { useParams, Navigate } from "react-router-dom";
+import axios from 'axios';
 
 const modules = {
     toolbar: [
@@ -15,9 +16,10 @@ export default function EditPage() {
     const [ title, setTitle ] = useState("");
     const [ summary, setSummary ] = useState("");
     const [ content, setContent ] = useState("");
-    const [ file, setFile ] = useState(false);
+    const [ cover, setCover ] = useState(false);
     
     const [ redirect, setRedirect ] = useState(false);
+    const [ toHome, setToHome ] = useState(false);
 
 
     useEffect(() => {
@@ -35,47 +37,45 @@ export default function EditPage() {
     async function saveEdit(e) {
        e.preventDefault();
 
-        const data = new FormData();
-        data.set( 'title', title );
-        data.set( 'summary', summary );
-        data.set( 'content', content);
-        data.set( 'cover', file);
+        const data = {
+            title,
+            summary,
+            content,
+            cover,
+        };
 
         const authToken = localStorage.getItem("authToken");
 
-        const response = await fetch(`https://paperplane-blog-api.onrender.com/post/${id}`, {
-            method : "PUT",
-            body : data,
-            credentials : "include",
+        axios.put(`https://paperplane-blog-api.onrender.com/post/${id}`, data, {
             headers:{ 'Authorization': authToken, 'Access-Control-Allow-Origin': '*' },
         })
-        if (response.ok) {
+        .then(response => {
             setRedirect(true);
-        } else {
+        })
+        .catch(error => {
             alert('something went wrong: try checking your internet connection');
-        }
+        })
        
 
     }
 
     async function  deletePost() {
         const authToken = localStorage.getItem("authToken");
-        const response = await fetch(`https://paperplane-blog-api.onrender.com/editpost/delete/${id}`, {
-            method:'DELETE',
+        axios.delete(`https://paperplane-blog-api.onrender.com/editpost/delete/${id}`, {
             headers:{ 'Authorization': authToken },
         })
-        
-        if (response.ok) {
-            setRedirect(true);
-        } else {
+        .then(response => {
+            setToHome(true);
+        })
+        .catch(error => {
             alert('something went wrong: try checking your internet connection');
-        }
+        })
     }
     
     const handleImageChange = (e) => {
         const reader = new FileReader();
         reader.onloadend = () => {
-            setFile(reader.result);
+            setCover(reader.result);
         }
         reader.readAsDataURL( e.target.files[0])
     }
@@ -83,6 +83,9 @@ export default function EditPage() {
 
     if (redirect) {
         return <Navigate to={`/post/${id}`}/>
+    }
+    if (toHome) {
+        return <Navigate to={`/`}/>
     }
     
     return(
