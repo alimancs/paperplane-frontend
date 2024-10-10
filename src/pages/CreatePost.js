@@ -24,7 +24,7 @@ export default function CreatePost() {
    async function addPost(e) {
         e.preventDefault();
         const authToken = localStorage.getItem('authToken');
-        const dataStr = `title===${title};;;summary===${summary};;;content===${content};;;cover===${file}`;
+        // const dataStr = `title===${title};;;summary===${summary};;;content===${content};;;cover===${file}`;
         // const data = new FormData();
         // data.set( 'title', title );
         // data.set( 'summary', summary );
