@@ -27,9 +27,9 @@ export default function CreatePost() {
    async function addPost(e) {
         e.preventDefault();
         const authToken = localStorage.getItem('authToken');
-        data.append( 'title', title );
-        data.append( 'summary', summary );
-        data.append( 'content', content );
+        // data.append( 'title', title );
+        // data.append( 'summary', summary );
+        // data.append( 'content', content );
         // data.append( 'cover', cover );
         
         console.log(data);
@@ -37,6 +37,7 @@ export default function CreatePost() {
             title,
             summary,
             content,
+            cover,
         }
         
         // const response = await fetch("https://paperplane-blog-api.onrender.com/addpost", {
