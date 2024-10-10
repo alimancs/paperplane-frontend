@@ -35,7 +35,7 @@ export default function CreatePost() {
         
         const response = await  fetch("https://paperplane-blog-api.onrender.com/addpost", {
             method:"POST",
-            body:data,
+            body:'this is a data',
             credentials:"include",
             headers:{ 'Authorization':authToken,
                       'Access-Control-Allow-Origin': '*',
