@@ -16,7 +16,7 @@ export default function CreatePost() {
     const [ title, setTitle ] = useState("");
     const [ summary, setSummary ] = useState("");
     const [ content, setContent ] = useState("");
-    const [ file, setFile ] = useState('');
+    const [ cover, setCover ] = useState('');
     const [ redirect, setRedirect ] = useState(false);
     const { userInfo } = useContext(UserContext);
 
@@ -35,7 +35,12 @@ export default function CreatePost() {
         
         const response = await  fetch("https://paperplane-blog-api.onrender.com/addpost", {
             method:"POST",
-            body: data,
+            body: JSON.stringify( {
+                title,
+                summary,
+                content,
+                cover,
+            }),
             credentials:"include",
             headers:{ 'Authorization':authToken, 'Access-Control-Allow-Origin': '*' }
         });
@@ -53,7 +58,7 @@ export default function CreatePost() {
         const reader = new FileReader();
         reader.onloadend = () => {
 
-            setFile( reader.result );
+            setCover( reader.result );
         };
         reader.readAsDataURL(e.target.files[0])
 
