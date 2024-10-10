@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../UserContext";
+import axios from 'axios';
 
 const modules = {
     toolbar: [
@@ -33,20 +34,25 @@ export default function CreatePost() {
         
         console.log(data);
         
-        const response = await  fetch("https://paperplane-blog-api.onrender.com/addpost", {
-            method:"POST",
-            body:'this is a data',
-            credentials:"include",
-            headers:{ 'Authorization':authToken,
-                      'Access-Control-Allow-Origin': '*',
-                     }
-        });
-
-        if (response.ok) {
-            // setRedirect(true);
-        } else {
+        // const response = await fetch("https://paperplane-blog-api.onrender.com/addpost", {
+        //     method:"POST",
+        //     body:'this is a data',
+        //     headers:{ 'Authorization':authToken,
+        //              }
+        // });
+        axios.post("https://paperplane-blog-api.onrender.com/addpost", data )
+        .then( response => {
+            console.log(response.data)
+        })
+        .catch(error => {
             alert('something went wrong: try checking your internet connection');
-        }
+        })
+
+        // if (response.ok) {
+        //     // setRedirect(true);
+        // } else {
+        //     alert('something went wrong: try checking your internet connection');
+        // }
 
     }
 
