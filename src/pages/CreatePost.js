@@ -29,7 +29,7 @@ export default function CreatePost() {
         data.append( 'title', title );
         data.append( 'summary', summary );
         data.append( 'content', content );
-        data.append( 'cover', cover );
+        // data.append( 'cover', cover );
         
         console.log(data);
         
@@ -43,7 +43,7 @@ export default function CreatePost() {
         });
 
         if (response.ok) {
-            setRedirect(true);
+            // setRedirect(true);
         } else {
             alert('something went wrong: try checking your internet connection');
         }
