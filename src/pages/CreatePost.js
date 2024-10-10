@@ -33,6 +33,11 @@ export default function CreatePost() {
         // data.append( 'cover', cover );
         
         console.log(data);
+        const data2 = {
+            title,
+            summary,
+            content,
+        }
         
         // const response = await fetch("https://paperplane-blog-api.onrender.com/addpost", {
         //     method:"POST",
@@ -40,13 +45,13 @@ export default function CreatePost() {
         //     headers:{ 'Authorization':authToken,
         //              }
         // });
-        axios.post("https://paperplane-blog-api.onrender.com/addpost", data )
+        axios.post("https://paperplane-blog-api.onrender.com/addpost", data2 )
         .then( response => {
             console.log(response.data)
         })
         .catch(error => {
             alert('something went wrong: try checking your internet connection');
-        })
+        });
 
         // if (response.ok) {
         //     // setRedirect(true);
