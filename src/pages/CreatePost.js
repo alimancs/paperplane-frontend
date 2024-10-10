@@ -39,14 +39,17 @@ export default function CreatePost() {
             content,
             cover,
         }
-        
         // const response = await fetch("https://paperplane-blog-api.onrender.com/addpost", {
         //     method:"POST",
         //     body:'this is a data',
         //     headers:{ 'Authorization':authToken,
         //              }
         // });
-        axios.post("https://paperplane-blog-api.onrender.com/addpost", data2 )
+        axios.post("https://paperplane-blog-api.onrender.com/addpost", data2, {
+            headers:{
+                'Authorization': authToken,
+            }
+        })
         .then( response => {
             console.log(response.data)
         })
