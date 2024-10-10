@@ -42,7 +42,10 @@ export default function CreatePost() {
                 cover,
             }),
             credentials:"include",
-            headers:{ 'Authorization':authToken, 'Access-Control-Allow-Origin': '*' }
+            headers:{ 'Authorization':authToken,
+                      'Access-Control-Allow-Origin': '*',
+                      'Content-Type':'application/json',
+                     }
         });
 
         if (response.ok) {
