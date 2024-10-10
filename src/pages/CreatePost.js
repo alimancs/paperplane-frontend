@@ -20,18 +20,18 @@ export default function CreatePost() {
     const [ redirect, setRedirect ] = useState(false);
     const { userInfo } = useContext(UserContext);
 
+    const data = new FormData();
+
 
    async function addPost(e) {
         e.preventDefault();
         const authToken = localStorage.getItem('authToken');
-        // const dataStr = `title===${title};;;summary===${summary};;;content===${content};;;cover===${file}`;
-        const data = new FormData();
         data.append( 'title', title );
         data.append( 'summary', summary );
         data.append( 'content', content );
         data.append( 'cover', cover );
         
-        // console.log(data);
+        console.log(data);
         
         const response = await  fetch("https://paperplane-blog-api.onrender.com/addpost", {
             method:"POST",
