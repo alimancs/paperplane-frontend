@@ -7,8 +7,11 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [ redirect, setRedirect ] = useState(false);
 
+    const [ str, setStr ] = useState('Sign up');
+
     async function register(e){
        e.preventDefault();
+       setStr('registering...');
        const response = await fetch("https://paperplane-blog-api.onrender.com/register", {
         method:"POST",
         body:JSON.stringify({ username, password }),
@@ -18,6 +21,7 @@ export default function Register() {
        if (response.status === 200) {
          setRedirect(true);
        } else {
+        setStr('Sign up');
         alert("Something went wrong please try again");
        }
     };
@@ -27,11 +31,11 @@ export default function Register() {
     }
     return (
         <div className="lr">
-            <h1>Register</h1>
+            <h1 className="signtext">Sign up</h1>
             <form onSubmit={register} >
                 <input onChange={ e => {setUsername(e.target.value)}} value={username} type="text" placeholder="Username"/>
                 <input onChange={ e => {setPassword(e.target.value)}} value={password} type="text" placeholder="Password"/>
-                <button className="submit">Register</button>
+                <button className="submit">{str}</button>
             </form>
         </div>
     );

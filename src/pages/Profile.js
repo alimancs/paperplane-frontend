@@ -3,6 +3,7 @@ import { useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { formatISO9075 } from 'date-fns';
+import Loader from "../Loader";
 
 export default function Profile() {
 
@@ -11,6 +12,9 @@ export default function Profile() {
     const [ postsList, setPostsList ] = useState([]);
     const { username } = useParams();
     const [ userDate, setUserDate ] = useState('Month 00, 0000');
+    const [ err, setErr ] = useState('');
+    const [ loader, setLoader ] = useState('loading');
+    const [ lBox, setLBox ] = useState('loaderOpen');
 
     async function userProfile(username) {
         const response = await fetch(`https://paperplane-blog-api.onrender.com/profile/${username}`, {
@@ -20,11 +24,16 @@ export default function Profile() {
         .then( response => response.json())
         .then( data => { 
             setPostsList(data.posts);
+            setLBox('loaderClose');
 
             const date = formatISO9075( new Date(data.joinDate)).split(' ')[0].split('-');
             const dateStr = `${months[date[1]-1]} ${date[2]}, ${date[0]}`;
             setUserDate(dateStr);
          })
+         .catch( err => {
+            setErr('Something went wrong 😢, please try again');
+            setLoader('nloading');
+          })
     }
     useEffect(() => {
         userProfile(username);
@@ -54,6 +63,7 @@ export default function Profile() {
             { postsList.length > 0 && postsList.map( post=> {
                 return <Post key={` post NO.${postsList.indexOf(post)}`} {...post} />
             }) }
+             <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader>
             </div>
 
         </div>

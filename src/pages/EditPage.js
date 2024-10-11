@@ -21,6 +21,9 @@ export default function EditPage() {
     const [ redirect, setRedirect ] = useState(false);
     const [ toHome, setToHome ] = useState(false);
 
+    const [ str, setStr ] = useState('Publish');
+    const [ del, setDel ] = useState('Delete');
+
 
     useEffect(() => {
 
@@ -36,6 +39,7 @@ export default function EditPage() {
 
     async function saveEdit(e) {
        e.preventDefault();
+       setStr('Publishing...');
 
         const data = {
             title,
@@ -53,6 +57,7 @@ export default function EditPage() {
             setRedirect(true);
         })
         .catch(error => {
+            setStr('Publish');
             alert('something went wrong: try checking your internet connection');
         })
        
@@ -60,6 +65,7 @@ export default function EditPage() {
     }
 
     async function  deletePost() {
+        setDel('Deleting...')
         const authToken = localStorage.getItem("authToken");
         axios.delete(`https://paperplane-blog-api.onrender.com/editpost/delete/${id}`, {
             headers:{ 'Authorization': authToken },
@@ -68,6 +74,7 @@ export default function EditPage() {
             setToHome(true);
         })
         .catch(error => {
+            setDel('Delete')
             alert('something went wrong: try checking your internet connection');
         })
     }
@@ -96,8 +103,8 @@ export default function EditPage() {
                 <input type='file'  onChange={ handleImageChange}></input>
                 <ReactQuill value={ content } onChange={ val => setContent( val ) } theme="snow" modules={modules}></ReactQuill>
                 <div className="editBox">
-                    <button onClick={ saveEdit } className="submit" type="submit">Publish Edit</button>
-                    <button onClick={ deletePost } className="delete" >Delete</button>
+                    <button onClick={ saveEdit } className="submit" type="submit">{str}</button>
+                    <button onClick={ deletePost } className="delete" >{del}</button>
                 </div>
             </form>
         </div>

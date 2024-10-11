@@ -413,6 +413,69 @@ textarea:focus, input:focus {
   color:red;
   font-size: 20px;
 }
+.loaderOpen {
+  height:450px;
+  display:flex;
+  flex-direction: row;
+  place-content: center;
+}
+.loaderClose {
+  display: none;
+}
+.loading {
+  width:30px;
+  height: 30px;
+  border: 5px solid white;
+  border-radius: 50%;
+  animation-name: loader;
+  animation-duration:0.4s;
+  animation-iteration-count: infinite;
+  margin-top: 15px;
+  display:block;
+}
+.nloading {
+  display:none;
+}
+.errLoading {
+  font-family: helvetica;
+  color:red;
+  margin-top: 30px;
+}
+.editPost {
+  text-decoration: none;
+  background-color:#ff3d00;
+  color: white;
+  font-family: helvetica;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.signtext {
+  color:grey;
+}
+.time {
+  color:rgb(167, 167, 167);
+  font-size: 14px;
+}
+@keyframes loader {
+  20% { rotate:72deg ;
+        border-bottom: 5px solid grey;
+      }
+  40% { rotate:144deg;
+        border-left: 5px solid grey;
+      }
+  60% { rotate: 216deg;
+        border-top:5px solid grey;
+        border-bottom: 5px solid white;
+      }
+  80% { rotate: 288deg;
+      border-right:5px solid grey;
+      border-left: 5px solid white;
+  }
+  100% { rotate: 360deg;
+      border-top:5px solid white;
+      border-right: 5px solid white;
+  }
+}
 
 @media (max-width:700px) {
   .desktopNav {

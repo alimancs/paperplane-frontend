@@ -9,10 +9,12 @@ export default function Login() {
     const [ redirect, setRedirect ] = useState(false);
     const { userInfo, setUserInfo } = useContext(UserContext);
 
+    const [ str, setStr ] = useState('Sign in');
 
 
     async function logUserIn(e) {
         e.preventDefault();
+        setStr('Loading...')
         const response = await fetch("https://paperplane-blog-api.onrender.com/login", {
             method:'POST',
             body:JSON.stringify( { username, password } ),
@@ -26,6 +28,7 @@ export default function Login() {
                setRedirect(true);
             })
         } else {
+            setStr('Sign in')
             alert("invalid username or password");
         }
     }
@@ -36,11 +39,11 @@ export default function Login() {
 
     return(
         <div className="lr">
-            <h1>Login</h1>
+            <h1 className="signtext">Sign in</h1>
             <form onSubmit={ logUserIn }>
                 <input type="text" placeholder="Username" value={ username } onChange={ ev=> setUsername(ev.target.value) }/>
                 <input type="text" placeholder="Password" value={ password } onChange={ ev=> setPassword(ev.target.value) }/>
-                <button className="submit" type="submit">Login</button>
+                <button className="submit" type="submit">{str}</button>
             </form>
         </div>
     );

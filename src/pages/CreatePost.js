@@ -23,10 +23,13 @@ export default function CreatePost() {
 
     const data = new FormData();
 
+    const [ str, setStr ] = useState('Publish');
+
 
    async function addPost(e) {
         e.preventDefault();
-        
+        setStr('Publishing...');
+
         const authToken = localStorage.getItem('authToken');
         const data = {
             title,
@@ -44,6 +47,7 @@ export default function CreatePost() {
             setRedirect(true);
         })
         .catch(error => {
+            setStr('Publish')
             alert('something went wrong: try checking your internet connection');
         });
 
@@ -70,7 +74,7 @@ export default function CreatePost() {
                 <textarea value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></textarea>
                 <input  type="file" onChange={ handleImageChange } />
                 <ReactQuill className="editor" value={ content } onChange={ val => setContent( val ) } theme="snow" modules={modules}></ReactQuill>
-                <button className="submit" type="submit">Publish</button>
+                <button className="submit" type="submit">{str}</button>
             </form>
         </div>
     )
