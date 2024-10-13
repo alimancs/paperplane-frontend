@@ -27,7 +27,7 @@ export default function PostPage() {
 
     //copy text to clipboard
     function copyText() {
-        navigator.clipboard.writeText(`https://paperplane-blog-api.onrender.com/post/${id}`)
+        navigator.clipboard.writeText(`https://paperplane-blog.onrender.com/post/${id}`)
         .then( ()=> {
             console.log('copied URL to clipboard');
             clipSuccess();
