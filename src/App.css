@@ -441,13 +441,28 @@ textarea:focus, input:focus {
   color:red;
   margin-top: 30px;
 }
+.postBottom {
+  border-top:0.3px solid rgb(215, 215, 215) ;
+  padding-top: 10px;
+  display:flex;
+  flex-direction: row;
+  justify-content: right;
+}
 .editPost {
   text-decoration: none;
-  background-color:#ff3d00;
-  color: white;
+  color: grey;
   font-family: helvetica;
   padding-left: 10px;
   padding-right: 10px;
+  border:none;
+  font-size: 17px;
+  background-color: transparent;
+  margin-left: 10px;
+}
+.editPost:hover {
+ color:black;
+ cursor: copy;
+ border-color: #000000;
 }
 .signtext {
   color:grey;

@@ -16,6 +16,11 @@ export default function PostPage() {
     const [ loader, setLoader ] = useState('loading');
     const [ lBox, setLBox ] = useState('loaderOpen');
 
+    //copy text to clipboard
+    async function copyText() {
+
+    }
+
     //calculate approximate reading time;
     function calculateReadingTime(text) {
         const wordsPerMinute = 150; // Adjust this based on your reading speed
@@ -45,20 +50,28 @@ export default function PostPage() {
     );
     return (<>
         <div className="postView">
+
             <div className='pp-author'>
                 <Link to={`/profile/${postData.user.username}`}>
                     <span className='pp-user'> By {postData.user.username[0].toUpperCase() + postData.user.username.slice(1)}</span>
                 </Link>
                     <time className="time">{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
             </div>
+
             <h1 className="pp-tt">{postData.title}</h1>
+
             <div className="ppImage">
                 <LazyLoadComponent>
                     <img alt="blog cover" className="blogPageImage" src={ postData.cover }/>
                 </LazyLoadComponent>
             </div>
+
             <div className="postContent" dangerouslySetInnerHTML={{__html : postData.content}} ></div>
-            { userInfo.id === postData.user._id ? <Link className="editPost" to={`/edit/${ postData._id }`}>Edit Post</Link>:''}
+
+            <div className="postBottom" >
+                { userInfo.id === postData.user._id ? <Link className="editPost" to={`/edit/${ postData._id }`}>Edit Post</Link>:''}
+                <button className="editPost" onClick={copyText} >Share</button>
+            </div>
         </div>
         </>
     )
