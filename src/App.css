@@ -458,11 +458,27 @@ textarea:focus, input:focus {
   font-size: 17px;
   background-color: transparent;
   margin-left: 10px;
+  height: 20px;
 }
 .editPost:hover {
  color:black;
  cursor: copy;
  border-color: #000000;
+}
+.notButton {
+  border:1px solid;
+  position: absolute;
+  background-color: rgb(238, 238, 238);
+  font-size: 14px;
+  border-radius: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  display:block;
+}
+.notOff {
+  display:none;
 }
 .signtext {
   color:grey;

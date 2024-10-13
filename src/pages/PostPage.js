@@ -15,9 +15,25 @@ export default function PostPage() {
     const [ err, setErr ] = useState('');
     const [ loader, setLoader ] = useState('loading');
     const [ lBox, setLBox ] = useState('loaderOpen');
+    const [ clip, setClip ] = useState('notOff');
+
+    //show clipboard success
+    function clipSuccess() {
+      setClip('notButton');
+      setTimeout(() => {
+        setClip('notOff');
+      }, 5000);
+    }
 
     //copy text to clipboard
-    async function copyText() {
+    function copyText() {
+        navigator.clipboard.writeText(`https://paperplane-blog-api.onrender.com/post/${id}`)
+        .then( ()=> {
+            console.log('copied URL to clipboard');
+            clipSuccess();
+        }, () => {
+            console.log('failed to copy');
+        })
 
     }
 
@@ -70,7 +86,10 @@ export default function PostPage() {
 
             <div className="postBottom" >
                 { userInfo.id === postData.user._id ? <Link className="editPost" to={`/edit/${ postData._id }`}>Edit Post</Link>:''}
-                <button className="editPost" onClick={copyText} >Share</button>
+                <button className="editPost" onClick={copyText} >
+                    Share
+                    <div className={clip} >Copied</div>
+                </button>
             </div>
         </div>
         </>
