@@ -41,8 +41,8 @@ export default function Login() {
         <div className="lr">
             <h1 className="signtext">Sign in</h1>
             <form onSubmit={ logUserIn }>
-                <input type="text" placeholder="Username" value={ username } onChange={ ev=> setUsername(ev.target.value) }/>
-                <input type="text" placeholder="Password" value={ password } onChange={ ev=> setPassword(ev.target.value) }/>
+                <input className="inputForm"  type="text" placeholder="Username" value={ username } onChange={ ev=> setUsername(ev.target.value) }/>
+                <input className="inputForm"  type="text" placeholder="Password" value={ password } onChange={ ev=> setPassword(ev.target.value) }/>
                 <button className="submit" type="submit">{str}</button>
             </form>
         </div>
