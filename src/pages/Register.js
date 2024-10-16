@@ -114,11 +114,11 @@ export default function Register() {
     }
 
 
-     async function register(){
+     function register(){
        const data = { otp };
        setStr('confirming...');
          axios.post('https://paperplane-blog-api.onrender.com/verify-otp', data)
-         .then(response => {
+         .then( async (response) => {
             if(response.data.verification) {
                 console.log('OTP was verified');
                 setStr('Registering...');
