@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import axios from 'axios';
 
 const modules = {
@@ -96,7 +96,8 @@ export default function EditPage() {
     }
     
     return(
-        <div className="bodyContainer"> 
+        <div className="bodyContainer">
+            <Link to={`/post/${id}`} className="backbutton"> ⇱ Back</Link>
             <form onSubmit={ saveEdit }>
                 <textarea value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></textarea>
                 <textarea value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></textarea>

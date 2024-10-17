@@ -4,25 +4,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 
 export default function Post( { _id, title, summary, cover, user, createdAt}) {
-
-    // function base64ToImageURL(cover) {
-
-    //   // convertion to Blob
-    //   const bytestr = atob(cover.split(',')[0]);
-    //   const mimeStr = cover.split(',')[0].split(':')[1].split(';')[0];
-    //   const ia = new Uint8Array(bytestr.length);
-
-    //   for ( let i = 0; i<bytestr.length; i++ ) {
-    //     ia[i] = bytestr.charCodeAt[i];
-    //   }
-
-    //   const blob =  Blob([ia], { type: mimeStr});
-    //   return URL.createObjectURL(blob);
-    // }
-
-    // const coverImage = base64ToImageURL(cover);
-
-    
+  
     const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const date = formatISO9075( new Date(createdAt)).split(' ')[0].split('-');
     const dateStr = `${months[date[1]-1]} ${date[2]}, ${date[0]}`;

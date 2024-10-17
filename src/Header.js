@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import { UserContext } from "./UserContext";
+import ham from './ham.svg';
+import close from './closeham.svg';
 
 
 
@@ -8,6 +10,7 @@ export default function Headers() {
     const { userInfo, setUserInfo } = useContext( UserContext )
     const [ username, setUsername ] = useState(false);
     const [ hamOpen, setHamOpen ] = useState(false);
+    const [hambutton, setHambutton] = useState(ham);
     
     function checkUserData() {
         const authToken = localStorage.getItem('authToken');
@@ -43,11 +46,17 @@ export default function Headers() {
     //close and open nav
     function setNav() {
         setHamOpen(!hamOpen);
+        if (!hamOpen) {
+            setHambutton(close);
+        } else {
+            setHambutton(ham);
+        }
     }
 
     // close hamburger 
     function closeHam() {
         setHamOpen(false);
+        setHambutton(ham);
     }
     return (
         <header>
@@ -81,12 +90,12 @@ export default function Headers() {
 
 
         <nav className="mobileNav"> 
-            <div onClick={setNav} className="m-userHeader">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <img alt="ham" src={hambutton}  onClick={setNav} className="m-userHeader">
+                {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                     <path class="fa-secondary" opacity=".4" fill="#000000" d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zm0 96a88 88 0 1 1 -88 88A88 88 0 0 1 248 104zm0 344a191.6 191.6 0 0 1 -146.5-68.2C120.3 344.4 157.1 320 200 320a24.8 24.8 0 0 1 7.1 1.1 124.7 124.7 0 0 0 81.8 0A24.8 24.8 0 0 1 296 320c42.9 0 79.7 24.4 98.5 59.8A191.6 191.6 0 0 1 248 448z"/>
                     <path class="fa-primary" fill="#000000" d="M248 280a88 88 0 1 0 -88-88A88 88 0 0 0 248 280zm48 40a24.8 24.8 0 0 0 -7.1 1.1 124.7 124.7 0 0 1 -81.8 0A24.8 24.8 0 0 0 200 320c-42.9 0-79.7 24.4-98.5 59.8 68.1 80.9 188.8 91.3 269.8 23.3A192 192 0 0 0 394.5 379.8C375.7 344.4 338.9 320 296 320z"/>
-                </svg>
-            </div>
+                </svg> */}
+            </img>
 
             <div className={hamOpen?'hamOpen':'hamClose'}>
             { !username && <>
