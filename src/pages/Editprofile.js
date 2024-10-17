@@ -31,7 +31,8 @@ export default function Editprofile() {
         setMenu('dp-menu-off');
     }
 
-    function saveEdit() {
+    function saveEdit(e) {
+        e.preventDefault();
         setSavestr('Saving...');
         const data = {
             username,
@@ -72,8 +73,7 @@ export default function Editprofile() {
         <div  className="ep-box">
             <Link to={`/profile/${user}`} className="backbutton"> ⇱ Back</Link>
             <div className="ep-top">
-                <img alt="avatar" src={dp} className="pr-header"></img>
-                <button onClick={()=>{setMenu('dp-menu')}} className="dp-button">+</button>
+                <img alt="avatar" onClick={()=>{setMenu('dp-menu')}} src={dp} className="pr-header"></img>
                 <div className={menu}>
                 <span onClick={()=>setMenu('dp-menu-off')} id="dp-cl" className="dp-op">×</span>                           
                     <span onClick={()=>setMenu('dp-menu-off')}  className="dp-op">

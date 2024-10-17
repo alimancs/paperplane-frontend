@@ -446,10 +446,13 @@ textarea:focus, input:focus {
 .pr-button {
   border:1px solid rgb(176, 176, 176);
   height:30px;
-  width:100px;
+  width:fit-content;
   background-color: transparent;
   font-size: 14px;
   font-family: helvetica;
+  color:black;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 .pr-b {
   text-decoration: none;
@@ -662,6 +665,7 @@ textarea:focus, input:focus {
   margin-top: 20px;
   border:1px solid grey;
   background-color:transparent ;
+  color:black;
 }
 .ep-save:hover {
   background-color: rgb(185, 185, 185);

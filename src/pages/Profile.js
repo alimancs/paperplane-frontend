@@ -72,12 +72,12 @@ export default function Profile() {
             <div className="pr-table">
                 <span className="pb"> Published</span>
             </div>
-            {/* <div className="bodyContainer">
+            <div className="bodyContainer">
             { postsList.length > 0 && postsList.map( post=> {
                 return <Post key={` post NO.${postsList.indexOf(post)}`} {...post} />
             }) }
              <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader>
-            </div> */}
+            </div>
 
         </div>
         </div>
