@@ -35,7 +35,7 @@ export default function Editprofile() {
         e.preventDefault();
         setSavestr('Saving...');
         const data = {
-            username,
+            name:username,
             firstname,
             lastname,
             bio,
