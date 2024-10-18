@@ -43,7 +43,7 @@ export default function Editprofile() {
         }
         axios.put(`https://paperplane-blog-api.onrender.com/save-edit/${user}`, data)
         .then( response => {
-            console.log(response.data);
+            console.log(response.data.message);
             setRedirect(true);
         })
         .catch(error=> {
