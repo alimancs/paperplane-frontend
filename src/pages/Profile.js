@@ -13,8 +13,10 @@ export default function Profile() {
     const [ postsList, setPostsList ] = useState([]);
     const { username } = useParams();
     const { userInfo } = useContext(UserContext);
+    const [userid, setUserid] = useState('');
     const [fullname, setFullname] = useState('User Fullname'); 
     const [ userDate, setUserDate ] = useState('Month 00, 0000');
+    const [ clipnote, setClipnote] = useState('noteOff');
     const [bio, setBio] = useState('');
     const [ dp , setDp ] = useState(avatar);
     const [ err, setErr ] = useState('');
@@ -31,7 +33,7 @@ export default function Profile() {
             setPostsList(data.posts);
             setLBox('loaderClose');
             setBio(data.bio);
-
+            setUserid(data.id);
             const date = formatISO9075( new Date(data.joinDate)).split(' ')[0].split('-');
             const dateStr = `${months[date[1]-1]} ${date[2]}, ${date[0]}`;
             setFullname(data.fullname);
@@ -47,6 +49,19 @@ export default function Profile() {
         userProfile(username);
     }, [])
 
+    // save profile link to clip board
+    async function copyProfileLink() {
+        navigator.clipboard.writeText(`https://paperplane-blog-api.onrender.com/profile/${username}`)
+        .then(() => {
+            console.log('Link copied to clip board');
+            setClipnote('note');
+            setTimeout(()=> {
+               setClipnote('noteOff');
+            }, 3000);
+        }, ()=> {
+            console.log('Link not copied, somethinh went wrong');
+        });
+    }
 
     return (
         <div>
@@ -63,11 +78,14 @@ export default function Profile() {
                 </div>
             </div>
             <div className="pr-bio">
-                <span className="bio">Hey, I am using paperplane</span>
+                <span className="bio">{bio}</span>
             </div>
             <div className="pr-bbox">
-                <button to={`/edit-profile/${userInfo.id}`} className="pr-button"><Link className="pr-b" to={`/edit-profile/${username}`}>Edit profile</Link></button>
-                <button className="pr-button">Share profile</button>
+               { userid === userInfo.id ? <button to={`/edit-profile/${userInfo.id}`} className="pr-button"><Link className="pr-b" to={`/edit-profile/${username}`}>Edit profile</Link></button> : ''} 
+                <button id='pr-share' onClick={copyProfileLink} className="pr-button">
+                    Share profile
+                    <div className={clipnote}>Profile Link copied</div>
+                </button>
             </div>
             <div className="pr-table">
                 <span className="pb"> Published</span>

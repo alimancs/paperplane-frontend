@@ -683,6 +683,27 @@ textarea:focus, input:focus {
 .backbutton:hover {
   background-color: rgb(202, 202, 202);
 }
+.note {
+  Border:none;
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  position:absolute;
+  margin-top: 50px;
+  margin-left: -20px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgb(173, 173, 173);
+  background-color: white;
+  display:block;
+}
+.noteOff {
+  display:none;
+}
+#pr-share {
+  display:flex;
+  flex-direction: column;
+  place-content: center;
+}
 
 
 @keyframes loader {

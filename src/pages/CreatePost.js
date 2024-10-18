@@ -1,7 +1,7 @@
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../UserContext";
 import axios from 'axios';
@@ -69,6 +69,7 @@ export default function CreatePost() {
     }
     return(
         <div className="bodyContainer"> 
+            <Link to={`/`} className="backbutton"> ⇱ Home</Link>
             <form onSubmit={ addPost }>
                 <textarea value={ title } onChange={ e => setTitle( e.target.value ) } type="title" placeholder="Title"></textarea>
                 <textarea value={ summary } onChange={ e => setSummary( e.target.value ) } type="summary" placeholder="Summary"></textarea>
