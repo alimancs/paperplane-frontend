@@ -66,7 +66,7 @@ export default function PostPage() {
     );
     return (<>
         <div className="postView">
-
+        <Link to={`/`} className="backbutton"> ⇱ Home</Link>
             <div className='pp-author'>
                 <Link to={`/profile/${postData.user.username}`}>
                     <span className='pp-user'> By {postData.user.username[0].toUpperCase() + postData.user.username.slice(1)}</span>

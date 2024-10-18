@@ -6,7 +6,7 @@ export default function Footer() {
         <Link className="footerText" to={'/about'}>
         <span >About</span>
         </Link>
-        <Link className="footerText" to={'/privacy-and-terms'}>
+        <Link className="footerText" to={'/privacy'}>
         <span >Privacy & Terms</span>
         </Link>
         <Link className="footerText" to={'/developer'}>

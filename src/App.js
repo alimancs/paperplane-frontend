@@ -11,6 +11,8 @@ import { UserContextProvider } from './UserContext';
 import Profile from './pages/Profile';
 import Regsuccess from './pages/Regsuccess';
 import Editprofile from './pages/Editprofile';
+import About from './pages/About';
+import Privacy from './pages/Privacy';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path={'/profile/:username'} element={<Profile/>}></Route>
           <Route path={'/registration-success'} element={<Regsuccess/>}></Route>
           <Route path={'/edit-profile/:username'} element={<Editprofile/>}></Route>
+          <Route path={'/about'} element={<About/>}></Route>
+          <Route path={'/privacy'} element={<Privacy/>}></Route>
         </Route>
       </Routes>
 
