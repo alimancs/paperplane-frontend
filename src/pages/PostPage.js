@@ -57,11 +57,11 @@ export default function PostPage() {
 
             if (!likes.includes(liker)) {
                 const newlist = likes;
-                const state = likecolor==='black'?'addlike':'removelike';
+                const like = likecolor==='black'?true:false;
                 setLikecolor( likecolor==='black'?'red':'black');
                 newlist.push(liker);
                 setLikes(newlist);
-                const data = { state, liker };
+                const data = { like, liker };
 
                 axios.put(`https://paperplane-blog-api-onrender.com/like/${id}`, data )
                 .then( response => {
@@ -135,7 +135,7 @@ export default function PostPage() {
          setPostData(data);
          setLBox('loaderClose');
          setLikes(data.likes);
-         setComments(data.comments);
+        setComments(data.comments?data.comments:[]);
          const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
          setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
         })
@@ -193,7 +193,7 @@ export default function PostPage() {
                    </button>
                 </div>
                 <div className="pb">
-                   {<Link className="editPost" to={`/edit/${ 'gh'}`}>Edit Post</Link>}
+                   { userInfo.id === postData.user._id ? <Link className="editPost" to={`/edit/${ 'gh'}`}>Edit Post</Link> : ''}
                     <button className="editPost" onClick={copyText} >
                         Share
                         <div className={clip} >Copied</div>
@@ -204,12 +204,12 @@ export default function PostPage() {
             <div className="comment">
                 <div onClick={()=>{setCommentstate(commentstate==='noteOff'?'comments':'noteOff')}} className="cm-head">({comments.length}) Comments {commentstate==='noteOff'?'⇲':'⇱'} </div>
                 <div className={commentstate}>
-                    {comments.length === 0 ?<div className="no-com"> No comment see here... </div>: comments.map(comment => <Comment datas={comment} />)}
+                    {comments.length === 0  ?<div className="no-com"> No comment see here... </div>: comments.map(comment => <Comment datas={comment} />)}
                 </div>
-                <div className="comment-i">
+                { userInfo ? <div className="comment-i">
                     <input value={commenttext} onChange={e => { setCommenttext(e.target.value)}} placeholder="Replying to ali's post..." type="text" className="textscreen"></input>
                     <button onClick={addComment} className="send-text">Send</button>
-                </div>
+                </div>:''}
             </div>
             </>
         </div>
