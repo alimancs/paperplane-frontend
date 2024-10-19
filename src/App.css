@@ -512,7 +512,25 @@ textarea:focus, input:focus {
   padding-top: 10px;
   display:flex;
   flex-direction: row;
-  justify-content: right;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.pb {
+  display: flex;
+  flex-direction: row;
+}
+.likebutton {
+  background-color: white;
+  margin-left: 2px;
+  border:none;
+}
+.likebutton:hover {
+  cursor:pointer;
+}
+.likebox {
+  color:grey;
+  font-size: 17px;
 }
 .editPost {
   text-decoration: none;
@@ -736,6 +754,96 @@ textarea:focus, input:focus {
   text-align: left;
   margin: 10px;
   color:rgb(71, 71, 71);
+}
+.comment {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.comments {
+  height: fit-content;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display:flex;
+  flex-direction: column;
+}
+.textscreen {
+  height:40px;
+  width: inherit;
+  margin-right: 15px;
+  border:1px solid rgb(178, 178, 178);
+  padding-left: 10px;
+  font-size: 16px;
+}
+.comment-i {
+  width :100%;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  display:flex;
+  flex-direction: row;
+}
+.send-text {
+  width:fit-content;
+  height:40px;
+  border:none;
+  background-color:#c03409;
+  color:white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.send-text:hover {
+  background-color: #8e2303;
+  cursor: pointer;
+}
+.cm-head {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: helvetica;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  width: 100%;
+  border-bottom:0.3px solid rgb(215, 215, 215) ;
+}
+.cm-head:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.no-com {
+  height:fit-content;
+  color:rgb(167, 167, 167);
+}
+.cm-body {
+  height:fit-content;
+  display:flex;
+  flex-direction: row;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: helvetica;
+  border-bottom:0.3px solid rgb(215, 215, 215) ;
+  width:100%;
+}
+.cm-sub {
+  display:flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.cm-img {
+  border-radius:50%;
+  background-color: rgb(164, 164, 164);
+}
+.cm-user {
+  font-size: 15px;
+  font-weight: 600;
+}
+.cm-text {
+  font-size: 13.5px;
+}
+.cm-state {
+  font-size: 12px;
+  color:rgb(156, 156, 156);
 }
 
 
