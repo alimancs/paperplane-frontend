@@ -15,9 +15,7 @@ export default function Headers() {
     
     function checkUserData() {
         const authToken = localStorage.getItem('authToken');
-        axios.get('https://paperplane-blog-api.onrender.com/profile', {
-            headers:{ 'Authorization' : authToken },
-        })
+        axios.post('https://paperplane-blog-api.onrender.com/profile',  { authToken })
         .then( response => {
             const user = response.data ;
             if ( !user ) {
