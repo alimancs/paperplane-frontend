@@ -21,11 +21,7 @@ export default function PostPage() {
     const [ clip, setClip ] = useState('notOff');
     const [ likecolor, setLikecolor ] = useState('black');
     const [likes, setLikes] = useState([]);
-    const [ comments, setComments ] = useState( [
-        { user: 'Patient', text:'Thank you for the information', dp:avatar, state:''},
-        { user: 'Kelvin', text:'Why is the federal government not handling the issue', dp:avatar, state:''},
-        { user: 'Bambi', text:'i heard the he us was arrested few days back', dp: avatar, state:''}
-    ]);
+    const [ comments, setComments ] = useState( []);
     const [commentstate, setCommentstate] = useState('noteOff');
     const [commenttext, setCommenttext] = useState('');
 
@@ -78,6 +74,7 @@ export default function PostPage() {
 
     // add comment
     function addComment() {
+        console.log(userInfo);
         if (userInfo.username) {
         const commenter = userInfo.username;
         const userdp = userInfo.dp;
@@ -141,7 +138,7 @@ export default function PostPage() {
          setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
         })
         .catch( err => {
-            setErr('Something went wrong 😢, please try again');
+            setErr('Something went wrong, please try again');
             setLoader('nloading');
         })
     }, [])
@@ -207,7 +204,7 @@ export default function PostPage() {
                 <div className={commentstate}>
                     {comments.length === 0  ?<div className="no-com"> No comment see here... </div>: comments.map(comment => <Comment datas={comment} />)}
                 </div>
-                { userInfo ? <div className="comment-i">
+                { userInfo.id ? <div className="comment-i">
                     <input value={commenttext} onChange={e => { setCommenttext(e.target.value)}} placeholder="Replying to ali's post..." type="text" className="textscreen"></input>
                     <button onClick={addComment} className="send-text">Send</button>
                 </div>:''}

@@ -4,7 +4,7 @@ export default function Comment( { datas }) {
     return (
     <div className="cm-body">
         <div className="cm-ibox">
-            <img height='30px' width='30px' className="cm-img" alt="dp" src={datas.dp}></img>
+            <img height='30px' width='30px' className="cm-img" alt="dp" src={datas.dp === ''?avatar:datas.dp}></img>
         </div>
         <div className="cm-sub">
             <span className='cm-user'>{datas.user}</span>
