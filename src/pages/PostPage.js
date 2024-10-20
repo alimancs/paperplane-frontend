@@ -93,12 +93,13 @@ export default function PostPage() {
         }
         comments.push(commentObj )
         const commentIndex = comments.length-1;
+        const data = { commentObj, commentIndex }
         setCommentstate('noteOff');
         setTimeout(()=> {
             setCommentstate('comments')
         }, 1)
 
-        axios.put(`https://paperplane-blog-api.onrender.com/addcomment/${id}`, commentObj)
+        axios.put(`https://paperplane-blog-api.onrender.com/addcomment/${id}`, data)
         .then( (response) => {
             comments[commentIndex].state = '';
             setCommentstate('noteOff');
