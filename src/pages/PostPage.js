@@ -63,7 +63,7 @@ export default function PostPage() {
                 setLikes(newlist);
                 const data = { like, liker };
 
-                axios.put(`https://paperplane-blog-api-onrender.com/like/${id}`, data )
+                axios.put(`https://paperplane-blog-api.onrender.com/like/${id}`, data )
                 .then( response => {
                     console.log(response.message);
                 })
@@ -93,7 +93,7 @@ export default function PostPage() {
         }
         comments.push(commentObj )
         const commentIndex = comments.length-1;
-        const data = { commentObj, commentIndex }
+        const data = { commentObj }
         setCommentstate('noteOff');
         setTimeout(()=> {
             setCommentstate('comments')
