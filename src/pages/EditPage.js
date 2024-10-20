@@ -27,9 +27,9 @@ export default function EditPage() {
 
     useEffect(() => {
 
-        fetch(`https://paperplane-blog-api.onrender.com/post/${id}`)
-        .then( response => response.json())
-        .then( postData => {
+        axios.get(`https://paperplane-blog-api.onrender.com/post/${id}`)
+        .then( response => {
+            const postData = response.data;
             setTitle(postData.title);
             setSummary(postData.summary);
             setContent(postData.content);
@@ -39,7 +39,7 @@ export default function EditPage() {
 
     async function saveEdit(e) {
        e.preventDefault();
-       setStr('Publishing...');
+       setStr('Publishing...'); 
 
         const data = {
             title,
