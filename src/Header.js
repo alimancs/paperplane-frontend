@@ -3,6 +3,7 @@ import { useEffect, useContext, useState } from "react";
 import { UserContext } from "./UserContext";
 import ham from './ham.svg';
 import close from './closeham.svg';
+import axios from 'axios';
 
 
 
@@ -14,13 +15,11 @@ export default function Headers() {
     
     function checkUserData() {
         const authToken = localStorage.getItem('authToken');
-        fetch('https://paperplane-blog-api.onrender.com/profile', {
-            method:'GET',
-            credentials:"include",
+        axios.get('https://paperplane-blog-api.onrender.com/profile', {
             headers:{ 'Authorization' : authToken },
         })
-        .then(response => response.json())
-        .then( user => {
+        .then( response => {
+            const user = response.data ;
             if ( !user ) {
                 setUsername( false);
                 setUserInfo({});
@@ -31,7 +30,7 @@ export default function Headers() {
         })
         .catch( error => {
             throw error;
-        } )  
+        } )  ;
     }
 
     useEffect(() => {
