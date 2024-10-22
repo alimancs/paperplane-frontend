@@ -143,13 +143,13 @@ export default function PostPage() {
     }, [])
 
     if (!postData) return (
-            // <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader>  
-            <div className='pp-author'>
-            <Link to={`/profile/${postData.user.username}`}>
-                <span className='pp-user'> James</span>
-            </Link>
-                <time className="time">{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
-        </div>   
+            <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader>  
+            // <div className='pp-author'>
+            // <Link to={`/profile/${postData.user.username}`}>
+            //     <span className='pp-user'> James</span>
+            // </Link>
+            //     <time className="time">{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
+            // </div>   
     );
     return (<>
         <div className="postView">
