@@ -127,8 +127,8 @@ export default function PostPage() {
 
     useEffect(() => {
         axios.get(`https://paperplane-blog-api.onrender.com/post/${id}`)
-        .then( response => response.json())
-        .then( data => {
+        .then( response => {
+            const data = response.data;
             setPostData(data);
             setLBox('loaderClose');
             setLikes(data.likes);
@@ -142,15 +142,7 @@ export default function PostPage() {
         })
     }, [])
 
-    if (!postData) return (
-            <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader>  
-            // <div className='pp-author'>
-            // <Link to={`/profile/${postData.user.username}`}>
-            //     <span className='pp-user'> James</span>
-            // </Link>
-            //     <time className="time">{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
-            // </div>   
-    );
+    if (!postData) return <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader> 
     return (<>
         <div className="postView">
         <Link to={`/`} className="backbutton"> ⇱ Home</Link>
