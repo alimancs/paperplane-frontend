@@ -77,14 +77,12 @@ export default function PostPage() {
         console.log(userInfo);
         if (userInfo.username) {
         const commenter = userInfo.username;
-        const userdp = userInfo.dp;
         const ctext = commenttext;
 
         setCommenttext('');
         const oldcomments = comments;
         const commentObj =  {
             user:commenter,
-            dp:userdp,
             text:ctext,
             state:'posting...',
         }
