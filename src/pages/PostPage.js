@@ -124,22 +124,24 @@ export default function PostPage() {
       }
     
     const { id } = useParams();
+
     useEffect(() => {
-        fetch(`https://paperplane-blog-api.onrender.com/post/${id}`)
+        axios.get(`https://paperplane-blog-api.onrender.com/post/${id}`)
         .then( response => response.json())
         .then( data => {
-         setPostData(data);
-         setLBox('loaderClose');
-         setLikes(data.likes);
-        setComments(data.comments?data.comments:[]);
-         const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
-         setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
+            setPostData(data);
+            setLBox('loaderClose');
+            setLikes(data.likes);
+            setComments(data.comments?data.comments:[]);
+            const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
+            setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
         })
         .catch( err => {
             setErr('Something went wrong, please try again');
             setLoader('nloading');
         })
     }, [])
+
     if (!postData) return (
             // <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader>  
             <div className='pp-author'>
