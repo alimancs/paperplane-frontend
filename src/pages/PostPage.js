@@ -19,8 +19,9 @@ export default function PostPage() {
     const [ loader, setLoader ] = useState('loading');
     const [ lBox, setLBox ] = useState('loaderOpen');
     const [ clip, setClip ] = useState('notOff');
-    const [ likecolor, setLikecolor ] = useState('black');
     const [likes, setLikes] = useState([]);
+    const [ likecolor, setLikecolor ] = useState( likes.includes(userInfo.username)?'red':'black' );
+
     const [ comments, setComments ] = useState( []);
     const [commentstate, setCommentstate] = useState('noteOff');
     const [commenttext, setCommenttext] = useState('');
@@ -54,7 +55,7 @@ export default function PostPage() {
         const newlist = likes;
         const like = likecolor==='black'?true:false;
         setLikecolor( likecolor==='black'?'red':'black');
-        if (like) {newlist.push(liker)}
+        if (like) {newlist.push(liker)};
         if (!like) {newlist.splice(newlist.indexOf(liker), 1)};
         setLikes(newlist);
         const data = { like, liker };
@@ -133,10 +134,6 @@ export default function PostPage() {
             setComments(data.comments?data.comments:[]);
             const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
             setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
-
-            if (data.likes.includes(userInfo.username)) {
-                setLikecolor('red');
-            }
         })
         .catch( err => {
             setErr('Something went wrong, please try again');
@@ -144,9 +141,6 @@ export default function PostPage() {
         })
     }, [])
 
-    if (likes.includes(userInfo.username)) {
-        setLikecolor('red');
-    }
 
     if (!postData) return <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader> 
     return (<>
