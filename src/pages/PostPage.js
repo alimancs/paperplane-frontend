@@ -24,6 +24,7 @@ export default function PostPage() {
     const [ comments, setComments ] = useState( []);
     const [commentstate, setCommentstate] = useState('noteOff');
     const [commenttext, setCommenttext] = useState('');
+    const { id } = useParams();
 
     //show clipboard success
     function clipSuccess() {
@@ -124,7 +125,6 @@ export default function PostPage() {
         return readingTimeMinutes;
       }
     
-    const { id } = useParams();
 
     useEffect(() => {
         axios.get(`https://paperplane-blog-api.onrender.com/post/${id}`)
@@ -190,7 +190,7 @@ export default function PostPage() {
                    </button>
                 </div>
                 <div className="pb">
-                   { userInfo.id === postData.user._id ? <Link className="editPost" to={`/edit/${ 'gh'}`}>Edit Post</Link> : ''}
+                   { userInfo.id === postData.user._id ? <Link className="editPost" to={`/edit/${id}`}>Edit Post</Link> : ''}
                     <button className="editPost" onClick={copyText} >
                         Share
                         <div className={clip} >Copied</div>
