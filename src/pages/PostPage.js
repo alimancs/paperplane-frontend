@@ -136,6 +136,9 @@ export default function PostPage() {
             setComments(data.comments?data.comments:[]);
             const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
             setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
+            if (likes.includes(userInfo.username)) {
+                setLikecolor('red');
+            }
         })
         .catch( err => {
             setErr('Something went wrong, please try again');
