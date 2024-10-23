@@ -82,6 +82,7 @@ export default function PostPage() {
         setCommenttext('');
         const oldcomments = comments;
         const commentObj =  {
+            dp:userInfo.dp,
             user:commenter,
             text:ctext,
             state:'posting...',
