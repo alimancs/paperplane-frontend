@@ -48,27 +48,23 @@ export default function PostPage() {
 
     // Like blog post
     function likePost() {
-        if (userInfo.username) {
+        const liker = userInfo.username;
+        if (!liker) return ;
 
-            const liker = userInfo.username;
+        const newlist = likes;
+        const like = likecolor==='black'?true:false;
+        setLikecolor( likecolor==='black'?'red':'black');
+        newlist.push(liker);
+        setLikes(newlist);
+        const data = { like, liker };
 
-            if (!likes.includes(liker)) {
-                const newlist = likes;
-                const like = likecolor==='black'?true:false;
-                setLikecolor( likecolor==='black'?'red':'black');
-                newlist.push(liker);
-                setLikes(newlist);
-                const data = { like, liker };
-
-                axios.put(`https://paperplane-blog-api.onrender.com/like/${id}`, data )
-                .then( response => {
-                    console.log(response.message);
-                })
-                .catch(() => {
-                    console.log('something went wrong');
-                })
-            }
-        }
+        axios.put(`https://paperplane-blog-api.onrender.com/like/${id}`, data )
+        .then( response => {
+            console.log(response.message);
+        })
+        .catch(() => {
+            console.log('something went wrong');
+        })
 
 
     };
@@ -136,7 +132,8 @@ export default function PostPage() {
             setComments(data.comments?data.comments:[]);
             const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
             setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
-            if (likes.includes(userInfo.username)) {
+
+            if (data.likes.includes(userInfo.username)) {
                 setLikecolor('red');
             }
         })
