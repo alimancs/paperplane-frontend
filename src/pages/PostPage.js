@@ -54,7 +54,8 @@ export default function PostPage() {
         const newlist = likes;
         const like = likecolor==='black'?true:false;
         setLikecolor( likecolor==='black'?'red':'black');
-        newlist.push(liker);
+        if (like) {newlist.push(liker)}
+        if (!like) {newlist.splice(newlist.indexOf(liker), 1)};
         setLikes(newlist);
         const data = { like, liker };
 
@@ -142,6 +143,10 @@ export default function PostPage() {
             setLoader('nloading');
         })
     }, [])
+
+    if (likes.includes(userInfo.username)) {
+        setLikecolor('red');
+    }
 
     if (!postData) return <Loader box={lBox} errorMessage={err} loaderStatus={loader}></Loader> 
     return (<>
