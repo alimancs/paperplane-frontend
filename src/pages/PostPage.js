@@ -13,6 +13,7 @@ export default function PostPage() {
     const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const [ date, setdate ] = useState('Month Day, Year')
 
+    // const [ postData, setPostData ] = useState(null);
     const [ postData, setPostData ] = useState(null);
     const { userInfo } = useContext(UserContext);
     const [ err, setErr ] = useState('');
@@ -124,6 +125,7 @@ export default function PostPage() {
       }
     
 
+    // Load post data
     useEffect(() => {
         axios.get(`https://paperplane-blog-api.onrender.com/post/${id}`)
         .then( response => {
@@ -148,10 +150,13 @@ export default function PostPage() {
         <div className="postView">
         <Link to={`/`} className="backbutton"> ⇱ Home</Link>
             <div className='pp-author'>
-                <Link to={`/profile/${postData.user.username}`}>
-                    <span className='pp-user'> By {postData.user.username[0].toUpperCase() + postData.user.username.slice(1)}</span>
-                </Link>
-                    <time className="time">{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
+            <img height='60px' width='60px' className="cm-img" alt="dp" src={postData.user.profilePic === ''?avatar:postData.user.profilePic}></img>
+                <div className="author-subbox">
+                    <Link to={`/profile/${postData.user.username}`}>
+                        <span className='pp-user'> By {postData.user.username[0].toUpperCase() + postData.user.username.slice(1)}</span>
+                    </Link>
+                        <time className="time">{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
+                </div>
             </div>
 
             <h1 className="pp-tt">{postData.title}</h1>

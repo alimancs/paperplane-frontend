@@ -98,6 +98,15 @@ nav {
   line-height: 23px;
   margin-top: 5px;
 }
+.user {
+  color:black;
+  text-decoration: none;
+  margin-top: 5px;
+}
+.user-link {
+  color:black;
+  text-decoration: none;
+}
 .summary {
   color:#333;
   font-family: helvetica;
@@ -371,11 +380,18 @@ textarea:focus, input:focus {
 }
 .pp-author {
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 25px;
   margin-bottom: -25px;
   border-bottom:0.3px solid rgb(215, 215, 215);
   padding-bottom: 15px;
+}
+.author-subbox {
+  display:flex;
+  flex-direction: column;
+  border-bottom:0.3px solid rgb(215, 215, 215);
+  margin-left: 10px;
+  place-content: center;
 }
 .pp-user {
   color:black;

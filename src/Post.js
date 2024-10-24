@@ -1,6 +1,7 @@
 import { formatISO9075 } from 'date-fns';
 import { Link } from "react-router-dom";
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import avatar from "./avatar.PNG";
 
 
 export default function Post( { _id, title, summary, cover, user, createdAt}) {
@@ -18,9 +19,10 @@ export default function Post( { _id, title, summary, cover, user, createdAt}) {
           </Link>
         </div>
         <div className='postInfo'>
-         <Link to={`/profile/${user.username}`}>
+         <Link className='user-link' to={`/profile/${user.username}`}>
             <p className='author'>
-              <span className='user'>By {user.username[0].toUpperCase() + user.username.slice(1)}</span>
+              <img height='30px' width='30px' className="cm-img" alt="dp" src={user.profilePic === ''?avatar:user.profilePic}></img>
+              <span className='user'>{user.username[0].toUpperCase() + user.username.slice(1)}</span>
             </p>
           </Link>
           <Link className='postTitle' to={`/post/${_id}`}>
