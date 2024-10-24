@@ -59,7 +59,7 @@ export default function Login() {
                 <span className={loginerror}>Invalid Username or password</span>
                 <input className="inputForm"  type="text" placeholder="Username" value={ username } onChange={ ev=> setUsername(ev.target.value) }/>
                 <span className={usererror}>This field is required*</span>
-                <input className="inputForm"  type="text" placeholder="Password" value={ password } onChange={ ev=> setPassword(ev.target.value) }/>
+                <input type='password' className="inputForm"  placeholder="Password" value={ password } onChange={ ev=> setPassword(ev.target.value) }/>
                 <span className={passerror}>This field is required*</span>
                 <button className="submit" type="submit">{str}</button>
             </form>
