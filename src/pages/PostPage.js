@@ -20,7 +20,7 @@ export default function PostPage() {
     const [ lBox, setLBox ] = useState('loaderOpen');
     const [ clip, setClip ] = useState('notOff');
     const [likes, setLikes] = useState([]);
-    const [ likecolor, setLikecolor ] = useState( likes.includes(userInfo.username)?'red':'black' );
+    const [ likecolor, setLikecolor ] = useState( 'black');
 
     const [ comments, setComments ] = useState( []);
     const [commentstate, setCommentstate] = useState('noteOff');
@@ -134,6 +134,7 @@ export default function PostPage() {
             setComments(data.comments?data.comments:[]);
             const date = formatISO9075( new Date(data.createdAt)).split(' ')[0].split('-');
             setdate(`${months[date[1]-1]} ${date[2]}, ${date[0]}`);
+            setLikecolor(data.likes.includes(userInfo.username)?'red':'black' );
         })
         .catch( err => {
             setErr('Something went wrong, please try again');
