@@ -152,8 +152,8 @@ export default function PostPage() {
             <div className='pp-author'>
             <img height='60px' width='60px' className="cm-img" alt="dp" src={postData.user.profilePic === ''?avatar:postData.user.profilePic}></img>
                 <div className="author-subbox">
-                    <Link to={`/profile/${postData.user.username}`}>
-                        <span className='pp-user'> By {postData.user.username[0].toUpperCase() + postData.user.username.slice(1)}</span>
+                    <Link className="user-link" to={`/profile/${postData.user.username}`}>
+                        <span className='pp-user'>{postData.user.username[0].toUpperCase() + postData.user.username.slice(1)}</span>
                     </Link>
                         <time className="time">{ date } • { calculateReadingTime(postData.content)} Minute{calculateReadingTime(postData.content)>1?'s':''} read</time>
                 </div>
