@@ -1,24 +1,29 @@
 import { Link } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import { UserContext } from "./UserContext";
-import ham from './ham.svg';
-import close from './closeham.svg';
 import axios from 'axios';
+import { useSelector } from "react-redux";
+import { colorGrades } from "./ui/theme";
+import Menu from "./ui/Menu";
+import Close from "./ui/Close";
 
 
 
 export default function Headers() {
+    const mode = useSelector( (state)=>state.mode );
+    const palette = colorGrades(mode);
+
+
     const { userInfo, setUserInfo } = useContext( UserContext )
     const [ username, setUsername ] = useState(false);
     const [ hamOpen, setHamOpen ] = useState(false);
-    const [hambutton, setHambutton] = useState(ham);
     
-    function checkUserData() {
+    async function checkUserData() {
         const authToken = localStorage.getItem('authToken');
-        axios.post('https://paperplane-blog-api.onrender.com/profile',  {}, {
-            headers:{ 'Authorization': authToken }
-        })
-        .then( response => {
+        try {
+            const response = await axios.post('https://paperplane-blog-api.onrender.com/profile',  {}, {
+                headers:{ 'Authorization': authToken }
+            });
             const user = response.data ;
             if ( !user ) {
                 setUsername( false);
@@ -27,10 +32,9 @@ export default function Headers() {
                 setUsername( user.username);
                 setUserInfo(user);
             }
-        })
-        .catch( error => {
-            throw error;
-        } )  ;
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 
     useEffect(() => {
@@ -45,20 +49,14 @@ export default function Headers() {
     //close and open nav
     function setNav() {
         setHamOpen(!hamOpen);
-        if (!hamOpen) {
-            setHambutton(close);
-        } else {
-            setHambutton(ham);
-        }
     }
 
     // close hamburger 
     function closeHam() {
         setHamOpen(false);
-        setHambutton(ham);
     }
     return (
-        <header>
+        <header style={{ borderBottom: (palette.line)}}>
         <Link to='' className="logo">PAPERPLANE</Link>
         <nav className="desktopNav"> 
             { username && <>
@@ -81,21 +79,23 @@ export default function Headers() {
             </>}
 
             { !username && <>
+                <Link style={{ color: palette.text}} className="logButton" to='/login'>Sign in</Link>
                 <Link className="regButton" to='/register'>Sign up</Link>
-                <Link className="logButton" to='/login'>Sign in</Link>
             </>
             }
         </nav>
 
 
         <nav className="mobileNav"> 
-            <img alt="ham" src={hambutton}  onClick={setNav} className="m-userHeader"></img>
+            <button className="iconButton" onClick={setNav}>
+                { hamOpen ? <Close/> : <Menu/> }
+            </button>
 
-            <div className={hamOpen?'hamOpen':'hamClose'}>
+            <div style={{ backgroundColor: (palette.background)}} className={hamOpen?'hamOpen':'hamClose'}>
             { !username && <>
-                <div className="m-navbox">
+                <div style={{ borderBottom: (palette.line)}} className="m-navbox">
                     <Link onClick={closeHam} className="regButton" to='/register'>Sign up</Link>
-                    <Link onClick={closeHam} className="logButton" to='/login'>Sign in</Link>
+                    <Link style={{ color: palette.text}} onClick={closeHam} className="logButton" to='/login'>Sign in</Link>
                 </div>
                </>
             }
@@ -149,4 +149,4 @@ export default function Headers() {
         </nav>
         </header>
     );
-};
+    };

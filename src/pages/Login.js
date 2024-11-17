@@ -2,8 +2,13 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { colorGrades } from "../ui/theme";
 
 export default function Login() {
+    const mode = useSelector( (state)=>state.mode);
+    const palette = colorGrades(mode);
+
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ redirect, setRedirect ] = useState(false);

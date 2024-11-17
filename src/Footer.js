@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { colorGrades } from "./ui/theme";
 
 export default function Footer() {
+    const mode = useSelector( (state)=>state.mode);
+    const palette = colorGrades(mode);
  return (
-    <div className="footer">
+    <div style={{ color: (palette.text ), borderTop: (palette.line)}} className="footer">
         <Link className="footerText" to={'/about'}>
         <span >About</span>
         </Link>
