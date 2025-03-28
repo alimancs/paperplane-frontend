@@ -36,11 +36,17 @@ const Landing:React.FC = () => {
         setShowSignUp(false);
     }
 
+    const toIntro = () => {
+        setShowSignIn(false);
+        setShowIntro(true);
+        setShowSignUp(false);
+    }
+
     return (
         <>
             { showIntro && <Intro getStarted={toSignUp} isLoggedIn={isLoggedIn} />}
-            { showSignIn && <SignInOptions toSignUp={toSignUp}/>}
-            { showSignUp && <RegOptions toSignIn={toSignIn}/>}
+            { showSignIn && <SignInOptions toIntro={toIntro} toSignUp={toSignUp}/>}
+            { showSignUp && <RegOptions toIntro={toIntro} toSignIn={toSignIn}/>}
         </>
     )
 }
