@@ -36,7 +36,7 @@ const MainSignUpScreen:React.FC = () => {
             { presentStep === 2 && <EnterOtp email={email} prevScreen={toPrevScreen} nextScreen={toNextScreen}/> }
             <div className="h-fit md:w-[100%] w-[80%] mx-auto absolute md:left-0 left-[10%] bottom-[100px]">
                 <p className="text-center text-[13px] text-gray-600">
-                    This site is protected by a secure authentication. see our   
+                    This site is protected by a secure authentication system. see our   
                     <span className="underline"> Terms of service </span> 
                     and 
                     <span className="underline"> Privacy Policy </span>
