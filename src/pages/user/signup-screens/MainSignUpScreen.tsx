@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import CloseIcon from "../../../assets/icons/CloseIcon";
 import React, { useState } from "react";
 import EnterEmail from "./EnterEmail";
-import EnterOtp from "./enterOtp";
+import EnterOtp from "./EnterOtp";
 
 
 const MainSignUpScreen:React.FC = () => {
