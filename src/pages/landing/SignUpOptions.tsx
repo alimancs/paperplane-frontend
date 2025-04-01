@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import CloseIcon from "../../assets/icons/CloseIcon";
 import EmailIcon from "../../assets/icons/EmailIcon";
 import GoogleIcon from "../../assets/icons/GoogleIcon";
@@ -9,6 +10,7 @@ interface props {
 }
 
 const RegOptions:React.FC<props> = ( { toSignIn, toIntro }) => {
+    const navigate = useNavigate();
     return (
         <div className="h-screen w-screen flex flex-col gap-3 bg-[#ecf0f1]">
             <button onClick={toIntro} className="h-[40px] hover:scale-105 hover:opacity-50 cursor-pointer w-[40px] absolute z-50 top-[3%] right-[3%]"><CloseIcon size='20px' /></button>
@@ -18,7 +20,7 @@ const RegOptions:React.FC<props> = ( { toSignIn, toIntro }) => {
                     <button className="px-[20px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 h-[40px] border-1 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out border-[#17124f]">
                         <GoogleIcon/>Sign Up with Google
                     </button>
-                    <button className="px-[20px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 h-[40px] border-1 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out border-[#17124f]">
+                    <button onClick={()=>{navigate('/sign-up')}} className="px-[20px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 h-[40px] border-1 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out border-[#17124f]">
                         <EmailIcon/>Sign Up with email
                     </button>
                 </div>
