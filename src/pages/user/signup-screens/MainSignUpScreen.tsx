@@ -34,7 +34,7 @@ const MainSignUpScreen:React.FC = () => {
             <button onClick={toIntro} className="h-[40px] hover:scale-105 hover:opacity-50 cursor-pointer w-[40px] absolute z-50 top-[3%] right-[3%]"><CloseIcon size='20px' /></button>
             { presentStep === 1 && <EnterEmail email={email} nextScreen={toNextScreen} toHome={toIntro} setEmail={setEmail}/> }
             { presentStep === 2 && <EnterOtp email={email} prevScreen={toPrevScreen} nextScreen={toNextScreen}/> }
-            <div className="h-fit md:w-[100%] w-[80%] mx-auto bottom-[100px]">
+            <div className="h-fit md:w-[100%] w-[80%] mx-auto absolute md:left-0 left-[10%] bottom-[100px]">
                 <p className="text-center text-[13px] text-gray-600">
                     This site is protected by a secure authentication. see our   
                     <span className="underline"> Terms of service </span> 
