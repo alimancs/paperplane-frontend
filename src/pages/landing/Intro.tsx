@@ -9,7 +9,7 @@ interface props {
 
 const Intro:React.FC<props> = ( { isLoggedIn, getStarted } ) => {
     return (
-        <div className="h-screen w-screen flex flex-col justify-between pb-[15px] gap-4 bg-[#ecf0f1]">
+        <div className="h-screen w-screen flex flex-col justify-between gap-4 bg-[#ecf0f1]">
             <div className="h-[70px] px-[3%] border-b-[0.5px] border-b-[#17124f] flex flex-row justify-between items-center text-[#17124f]">
                 <span className="text-[24px] font-semibold text-center">Paperplane</span>
                 { !isLoggedIn ? <Loader/> : (
@@ -31,7 +31,8 @@ const Intro:React.FC<props> = ( { isLoggedIn, getStarted } ) => {
                     <ChevronIcon size="15px" bg="white"/>
                 </button>
             </div>
-            <p className="text-center text-[12px] text-gray-600">&copy; 2025 Paperplane. All rights reserved.</p>
+            <div></div>
+            <p className="text-center absolute mx-[20px] bottom-[15px] text-[12px] text-gray-600">&copy; 2025 Paperplane. All rights reserved.</p>
         </div>
     )
 }
