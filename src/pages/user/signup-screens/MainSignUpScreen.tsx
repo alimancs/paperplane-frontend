@@ -1,10 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import ChevronIcon from "../../../assets/icons/ChevronIcon";
 import CloseIcon from "../../../assets/icons/CloseIcon";
-import EmailIcon from "../../../assets/icons/EmailIcon";
-import GoogleIcon from "../../../assets/icons/GoogleIcon";
 import React, { useState } from "react";
-import EnterEmail from "./enterEmail";
+import EnterEmail from "./EnterEmail";
 import EnterOtp from "./enterOtp";
 
 
