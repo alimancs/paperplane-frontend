@@ -15,28 +15,24 @@ const Landing:React.FC = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState<boolean>(false);
     
     const router = useNavigate();
-    const [ queries, setQueries ] = useState<query>({ to:'' });
 
     useEffect( () => {
         const  params = new URLSearchParams(window.location.search);
         const to = params.get('to');
-        setQueries({ to });
-        console.log(queries);
-
-        handleIntro();
+        if (to) {
+            handleIntro(to);
+        }
     }, []);
 
-    const handleIntro = () => {
+    const handleIntro = (to:string) => {
         //check if the user is loggedIn
         setTimeout(() => {
             // router('/feed'); send user to home page
             setIsLoggedIn(true);
-            if ( queries.to === 'signUp') {
+            if ( to === 'signUp') {
                 toSignUp();
-                console.log(queries.to)
-            } else if ( queries.to === 'signIn') {
+            } else if ( to === 'signIn') {
                 toSignIn();
-                console.log(queries.to)
             }
         }, 5000);
     }
