@@ -20,10 +20,10 @@ const Intro:React.FC<props> = ( { isLoggedIn, getStarted } ) => {
             <div className="flex flex-col justify-center items-start px-[3%]">
                 <div className="flex flex-col gap-4">
                     <div className="md:max-w-[55%] max-w-[80%]">
-                        <span style={{lineHeight:'35px'}} className="text-[50px] text-[#17124f] font-extrabold">Human stories & ideas</span>
+                        <span style={{lineHeight:'35px'}} className="text-[50px] text-[#17124f] font-extrabold">Authentic insights & unique ideas</span>
                     </div>
                     <div className="md:max-w-[60%]">
-                        <span style={{lineHeight:'21px'}} className="text-[#17124f] text-[25px]">A place to read, write, and deepen your understanding.</span>
+                        <span style={{lineHeight:'21px'}} className="text-[#17124f] text-[25px]">A space to share thoughts, spark ideas, and learn from others.</span>
                     </div>
                 </div>
                 <button className="px-[40px] mt-[45px] flex flex-row gap-2 justify-center items-center bg-[#44bd32] transition-all ease-in-out duration-300 cursor-pointer hover:bg-[#538f49] rounded-[35px] text-[white] h-[45px]">
