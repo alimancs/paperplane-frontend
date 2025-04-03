@@ -10,16 +10,16 @@ interface props {
     setLastname:(value:string)=>void,
     username:string,
     setUsername:(value:string)=>void,
-    toHome:()=>void,
     nextScreen:()=>void,
 }
 
-const EnterBasicInfo:React.FC<props> = ( { firstname, setFirstname, lastname, setLastname, toHome, nextScreen, username, setUsername }) => {
+const EnterBasicInfo:React.FC<props> = ( { firstname, setFirstname, lastname, setLastname, nextScreen, username, setUsername }) => {
 
     const navigate = useNavigate();
     const [ sendingEmail, setSendingEmail ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('Unknwon error');
     const [ showError, setShowError ] = useState(false);
+
 
     return (
         <div className="flex-1 flex gap-3 flex-col justify-center items-center text-[#17124f]">

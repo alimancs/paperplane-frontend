@@ -20,20 +20,20 @@ const Landing:React.FC = () => {
         const  params = new URLSearchParams(window.location.search);
         const to = params.get('to');
         if (to) {
-            handleIntro(to);
-        }
-    }, []);
-
-    const handleIntro = (to:string) => {
-        //check if the user is loggedIn
-        setTimeout(() => {
-            // router('/feed'); send user to home page
-            setIsLoggedIn(true);
             if ( to === 'signUp') {
                 toSignUp();
             } else if ( to === 'signIn') {
                 toSignIn();
             }
+        }
+        handleIntro();
+    }, []);
+
+    const handleIntro = () => {
+        //check if the user is loggedIn
+        setTimeout(() => {
+            // router('/feed'); send user to home page
+            setIsLoggedIn(true);
         }, 5000);
     }
 
