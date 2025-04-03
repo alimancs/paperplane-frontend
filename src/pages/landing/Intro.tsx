@@ -28,7 +28,7 @@ const Intro:React.FC<props> = ( { isLoggedIn, getStarted } ) => {
                 </div>
                 <button className="px-[40px] mt-[45px] flex flex-row gap-2 justify-center items-center bg-[#44bd32] transition-all ease-in-out duration-300 cursor-pointer hover:bg-[#538f49] rounded-[35px] text-[white] h-[45px]">
                     Start reading
-                    <ChevronIcon size="15px" bg="white"/>
+                   <ChevronIcon size="15px" bg="white"/>
                 </button>
             </div>
             <div></div>

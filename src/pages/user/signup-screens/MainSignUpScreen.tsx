@@ -40,7 +40,7 @@ const MainSignUpScreen:React.FC = () => {
 
 
     return (
-        <div className="h-screen w-screen flex flex-col gap-3 pb-[30px] bg-[#ecf0f1]">
+        <div className="h-screen w-screen flex flex-col gap-3 bg-[#ecf0f1]">
             <button onClick={toIntro} className="h-[40px] hover:scale-105 hover:opacity-50 cursor-pointer w-[40px] absolute z-50 top-[3%] right-[3%]"><CloseIcon size='20px' /></button>
 
             { presentStep === 1 && <EnterEmail email={email} nextScreen={toNextScreen} toHome={toIntro} setEmail={setEmail}/> }
