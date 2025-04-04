@@ -55,7 +55,7 @@ const MainSignUpScreen:React.FC = () => {
                                     registerInProgress={registerInProgress}
                                     registerUser={register}  /> }
 
-            <div className="h-fit md:w-[100%] w-[80%] mx-auto absolute md:left-0 left-[10%] bottom-[100px]">
+            <div className="h-fit md:w-[100%] w-[80%] mx-auto absolute md:left-0 left-[10%] bottom-[60px]">
                 <p className="text-center text-[13px] text-gray-600">
                     This site is protected by a secure authentication system. see our   
                     <span className="underline"> Terms of service </span> 

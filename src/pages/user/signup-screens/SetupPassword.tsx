@@ -17,6 +17,12 @@ const SetupPassword:React.FC<props> = ( { password, setPassword, registerUser, r
     const [ errorMessage, setErrorMessage ] = useState('Unknwon error');
     const [ showError, setShowError ] = useState(false);
 
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const isLongEnough = password.length >= 6;
+
     const resetError = () => {
         setTimeout(() => {
             setShowError(false);
@@ -25,11 +31,6 @@ const SetupPassword:React.FC<props> = ( { password, setPassword, registerUser, r
     }
 
     const validatePassword = (password: string) => {
-        const hasUpperCase = /[A-Z]/.test(password);
-        const hasLowerCase = /[a-z]/.test(password);
-        const hasNumber = /\d/.test(password);
-        const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-        const isLongEnough = password.length >= 6;
         const passwordMatch = password === confirmPassword;
 
     
@@ -59,7 +60,7 @@ const SetupPassword:React.FC<props> = ( { password, setPassword, registerUser, r
             resetError();
         }
         if (!passwordMatch) {
-            setErrorMessage("Password do not match");
+            setErrorMessage("Passwords do not match");
             setShowError(true);
             resetError();
         }
@@ -88,8 +89,16 @@ const SetupPassword:React.FC<props> = ( { password, setPassword, registerUser, r
                         <label>Confirm password</label>
                         <input value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}  className="w-[100%] mt-[10px] rounded-[5px] outline-none mx-auto px-[10px] border-[0.5px] h-[40px] border-[#17124f] bg-transparent" placeholder="Confirm your password..." type="Username"/>
                     </div>
+                    <div className="flex flex-col text-[13px] mt-[15px]">
+                        <span className="text-[13px] font-bold">Your password must meet the following requiresments:</span>
+                        <span><span className="text-[9px]">{isLongEnough?'\u2705':'\u274C'}</span> At least 6 characters long</span>
+                        <span><span className="text-[9px]">{hasLowerCase?'\u2705':'\u274C'}</span>Contains at least one uppercase letter (A-Z)</span>
+                        <span><span className="text-[9px]">{hasUpperCase?'\u2705':'\u274C'}</span>Contains at least one lowercase letter (a-z)</span>
+                        <span><span className="text-[9px]">{hasNumber?'\u2705':'\u274C'}</span>Includes at least one number (0-9)</span>
+                        <span><span className="text-[9px]">{hasSymbol?'\u2705':'\u274C'}</span>Includes at least one special character (!@#$%^& etc)</span>
+                    </div>
                     <span className={`text-center text-red-600 text-[14px] transition-all duration-200 ease-in-out ${showError?'opacity-100':'opacity-0'}`}>{errorMessage}</span>
-                    <button onClick={handleReg} className="px-[20px] mx-auto w-[100%] text-center mt-[15px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 text-[#ecf0f1] h-[35px] cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out bg-[#17124f]">
+                    <button onClick={handleReg} className="px-[20px] mx-auto w-[100%] text-center mt-[10px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 text-[#ecf0f1] h-[35px] cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out bg-[#17124f]">
                         Continue
                     </button>
                     </>
