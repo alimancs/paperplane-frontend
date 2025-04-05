@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ChevronIcon from "../../../assets/icons/ChevronIcon";
 import React, { useState } from "react";
 import Loader from "../../general-components/Loader";
+import axios from "axios";
 
 interface props {
     email:string,
@@ -13,26 +14,46 @@ interface props {
 const EnterEmail:React.FC<props> = ( { email, setEmail, nextScreen, toHome }) => {
 
     const navigate = useNavigate();
-    const [ sendingEmail, setSendingEmail ] = useState(false);
-    const [ errorMessage, setErrorMessage ] = useState('Unknwon error');
-    const [ showError, setShowError ] = useState(false);
+    const [ sendingEmail, setSendingEmail ] = useState<boolean>(false);
+    const [ errorMessage, setErrorMessage ] = useState<string>('Unknwon error');
+    const [ showError, setShowError ] = useState<boolean>(false);
 
+    const displayError = (errMsg:string) => {
+        setErrorMessage(errMsg);
+        setShowError(true);
+        setTimeout(() => {
+            setShowError(false);
+            setTimeout(() => {
+                setErrorMessage('Unknwon error');  
+            }, 1000);
+        }, 5000);
+    }
 
-    const sendOtpAndVerify = () => {
+    const handleSendOTP = async () => {
+        setSendingEmail(true);
+        const data = { email };
+        try {
+            await axios.post('https://pplane-backend.onrender.com/api/auth/otp', data);
+            return { success:true };
+        } catch(err) {
+            setSendingEmail(false);
+            if (err instanceof Error) {
+                displayError(`Error verifying email, ${err.message}`);
+              } else {
+                displayError(`Unknown`);
+            }
+            return { success:false }
+        }
+    }
+
+    const sendOtpAndVerify = async() => {
         if ( email !== '' ) {
-            setSendingEmail(true);
-            setTimeout(() => {
+            const send = await handleSendOTP();
+            if ( send.success ) {
                 nextScreen();
-            }, 5000);
+            } 
         } else {
-            setErrorMessage('Invalid email, input field is empty')
-            setShowError(true);
-            setTimeout(() => {
-                setShowError(false);
-                setTimeout(() => {
-                    setErrorMessage('Unknwon error');  
-                }, 1000);
-            }, 2000);
+            displayError('Invalid email, input is empty');
         }
     }
     return (

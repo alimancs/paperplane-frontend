@@ -1,6 +1,7 @@
 import Loader from "../../../pages/general-components/Loader";
 import React from "react";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 interface components {
     email:string,
@@ -11,8 +12,9 @@ interface components {
 const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
     const [ activeInput, setActiveInput ] = useState<number>(0);
     const [ boxArray, setBoxArray ] = useState(['', '', '', '', '', ''])
-    const  [ errorMessage,setErrorMesage ] = useState<string>('')
     const [ verifyingOtp, setVerifyingOtp ] = useState(false);
+    const [ errorMessage, setErrorMessage ] = useState<string>('Unknwon error');
+    const [ showError, setShowError ] = useState<boolean>(false);
      
 
     useEffect( () => {
@@ -26,7 +28,7 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
         boxArray.map( (_, index) => {
             const inputBox = document.getElementById(`otp-${index}`);
           if(inputBox){
-        inputBox.style.borderColor ='red'
+            inputBox.style.borderColor ='red'
           }
            
         })
@@ -36,7 +38,7 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
         boxArray.map( (_, index) => {
             const inputBox = document.getElementById(`otp-${index}`);
           if(inputBox){
-        inputBox.style.borderColor ='#9ca3af'
+            inputBox.style.borderColor ='#9ca3af'
           }
            
         })  
@@ -45,7 +47,7 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
     const handleInput = ( e:React.ChangeEvent<HTMLInputElement>, index:number) => {
         if(errorMessage){
             makeOTPBoxesDefaultColor()
-            setErrorMesage('')
+            setErrorMessage('');
         }
         const str = e.target.value;
         // only accept digits. if non-digit ignore
@@ -69,11 +71,56 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
         }
     }
 
-    const sendOtpAndVerify = () => {
-        setVerifyingOtp(true);
+    const displayError = (errMsg:string) => {
+        setErrorMessage(errMsg);
+        setShowError(true);
+        makeOTPBoxesRed();
         setTimeout(() => {
-            nextScreen();
+            setShowError(false);
+            setTimeout(() => {
+                setErrorMessage('Unknwon error');
+                makeOTPBoxesDefaultColor();
+            }, 1000);
         }, 5000);
+    }
+
+    const handleVerify = async (otpToken:string) => {
+        const data = { otpToken, email };
+        setVerifyingOtp(true);
+        try {
+            const response = await axios.post('https://pplane-backend.onrender.com/api/auth/verifyOtp', data);
+            if ( response.data.isVerified ) {
+                return { isVerified:true }
+            } else {
+                return { isVerified:false, msg:response.data.msg }
+            }
+        } catch(err) {
+            setVerifyingOtp(false);
+            if (err instanceof Error) {
+                displayError(`Error verifying email, ${err.message}`);
+              } else {
+                displayError(`Unknown`);
+            }
+            return { isVerified:false }
+        }
+    }
+
+    const sendOtpAndVerify = async () => {
+        let otpToken = ''
+        boxArray.map((num)=>{
+            otpToken = `${otpToken}${num}`;
+        })
+        if (otpToken.length===6) {
+            const confirm = await handleVerify(otpToken);
+            if (confirm.isVerified) {
+                nextScreen();
+            } else {
+                setVerifyingOtp(false);
+                displayError(confirm.msg);
+            }
+        } else {
+            displayError('Invalid OTP code, check your input');
+        }
     }
 
 
@@ -86,13 +133,13 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
                             <span className="text-[15px] text-center">We sent you a 6-digit code via your email <span className="font-semibold">{email}</span></span>
                             </div>
 
-                            <div className="flex flex-row gap-2 w-[100%] mt-[15px] justify-center items-center">
+                            <div className="flex flex-row gap-2 w-[100%] mt-[15px] mb-[7px] justify-center items-center">
                                 { boxArray.map( (_, index) => {
-                                    return <input key={index} pattern="\d*" onKeyDown={(e) => handleKeyDown(e, index)} inputMode="numeric" id={`otp-${index}`} value={boxArray[index]} onChange={(e)=>{handleInput(e, index)}} className='h-[36px] w-[35px] border-[1px] border-gray-400 rounded-[5px] text-center bg-transparent' type="tel" maxLength={1} />
+                                    return <input key={index} pattern="\d*" onKeyDown={(e) => handleKeyDown(e, index)} inputMode="numeric" id={`otp-${index}`} value={boxArray[index]} onChange={(e)=>{handleInput(e, index)}} className='h-[40px] w-[40px] border-[1px] border-gray-400 rounded-[5px] text-center bg-transparent' type="tel" maxLength={1} />
                                 
                                 })}
                             </div>
-
+                            <span className={`text-center text-red-600 text-[14px] transition-all duration-200 ease-in-out ${showError?'opacity-100':'opacity-0'}`}>{errorMessage}</span>
                             <div className="w-full mt-[6px] justify-center place-items-center font-light gap-2 flex">
                                 <span className="text-left text-[15px]">Did&apos;t receive the code?</span>
                                 <button className={"hover:underline decoration-[#44bd32] cursor-pointer text-[#44bd32] w-fit"} >Resend code</button>
