@@ -33,8 +33,8 @@ const EnterEmail:React.FC<props> = ( { email, setEmail, nextScreen, toHome }) =>
         setSendingEmail(true);
         const data = { email };
         try {
-            await axios.post('https://paperplane-blog-api.onrender.com/api/auth/otp', data);
-            return { success:true };
+            const response = await axios.post('https://paperplane-blog-api.onrender.com/api/auth/otp', data);
+            return { success:response.data.success, msg:response.data.msg }
         } catch(err) {
             setSendingEmail(false);
             if (err instanceof Error) {
@@ -51,7 +51,9 @@ const EnterEmail:React.FC<props> = ( { email, setEmail, nextScreen, toHome }) =>
             const send = await handleSendOTP();
             if ( send.success ) {
                 nextScreen();
-            } 
+            } else {
+                displayError(send.msg);
+            }
         } else {
             displayError('Invalid email, input is empty');
         }

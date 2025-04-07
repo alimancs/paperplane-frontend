@@ -5,6 +5,9 @@ import EnterEmail from "./EnterEmail";
 import EnterOtp from "./EnterOtp";
 import EnterBasicInfo from "./EnterBasicInfo";
 import SetupPassword from "./SetupPassword";
+import RegLoad from "./RegLoad";
+import axios from "axios";
+import RegSuccess from "./RegSuccess";
 
 
 const MainSignUpScreen:React.FC = () => {
@@ -16,7 +19,8 @@ const MainSignUpScreen:React.FC = () => {
     const [ lastname, setLastname ] = useState('');
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] =useState('');
-    const [ registerInProgress, setRegisterInProgress ] = useState(false);
+
+    const [ regState, setRegState ] = useState<string>('Processing...');
 
     const toNextScreen = () => {
         if (presentStep<4) {
@@ -24,8 +28,25 @@ const MainSignUpScreen:React.FC = () => {
         }
     }
 
-    const register = () => {
-
+    const register = async () => {
+        toNextScreen();
+        setRegState('Setting up your profile...');
+        const data = {
+            password,
+            username,
+            firstname,
+            lastname,
+            email,
+        }
+        try {
+            const response = await axios.post('https://paperplane-blog-api.onrender.com/api/auth/register', data);
+            setRegState('Finalizing...')
+            if ( response.data.success ) {
+                toNextScreen();
+            }
+        } catch (err:any) {
+            console.log('Error occured', err.message)
+        }
     }
 
     const toPrevScreen = () => {
@@ -52,10 +73,11 @@ const MainSignUpScreen:React.FC = () => {
                                     nextScreen={toNextScreen} /> }
             { presentStep === 4 && <SetupPassword 
                                     password={password} setPassword={setPassword} 
-                                    registerInProgress={registerInProgress}
                                     registerUser={register}  /> }
+            { presentStep === 5 && <RegLoad processText={regState}/> } 
+            { presentStep === 6 && <RegSuccess username={username}/> }                     
 
-            <div className="h-fit md:w-[100%] w-[80%] mx-auto absolute md:left-0 left-[10%] bottom-[60px]">
+            <div className={`h-fit md:w-[100%] w-[80%] mx-auto absolute md:left-0 left-[10%] bottom-[60px] ${presentStep===6 || presentStep === 5?'opacity-0':'opacity-100'}`}>
                 <p className="text-center text-[13px] text-gray-600">
                     This site is protected by a secure authentication system. see our   
                     <span className="underline"> Terms of service </span> 
