@@ -88,7 +88,7 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
         const data = { otpToken, email };
         setVerifyingOtp(true);
         try {
-            const response = await axios.post('https://pplane-backend.onrender.com/api/auth/verifyOtp', data);
+            const response = await axios.post('https://paperplane-blog-api.onrender.com/api/auth/verifyOtp', data);
             if ( response.data.isVerified ) {
                 return { isVerified:true }
             } else {

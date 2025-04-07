@@ -33,7 +33,7 @@ const EnterEmail:React.FC<props> = ( { email, setEmail, nextScreen, toHome }) =>
         setSendingEmail(true);
         const data = { email };
         try {
-            await axios.post('https://pplane-backend.onrender.com/api/auth/otp', data);
+            await axios.post('https://paperplane-blog-api.onrender.com/api/auth/otp', data);
             return { success:true };
         } catch(err) {
             setSendingEmail(false);
