@@ -13,24 +13,27 @@ import RegSuccess from "./RegSuccess";
 const MainSignUpScreen:React.FC = () => {
 
     const navigate = useNavigate();
-    const [ presentStep, setPresentStep ] = useState(1);
-    const [ email, setEmail ] = useState('');
-    const [ firstname, setFirstname ] = useState('');
-    const [ lastname, setLastname ] = useState('');
-    const [ username, setUsername ] = useState('');
-    const [ password, setPassword ] =useState('');
+    const [ presentStep, setPresentStep ] = useState<number>(1);
+    const [ email, setEmail ] = useState<string>('');
+    const [ firstname, setFirstname ] = useState<string>('');
+    const [ lastname, setLastname ] = useState<string>('');
+    const [ username, setUsername ] = useState<string>('');
+    const [ password, setPassword ] =useState<string>('');
 
     const [ regState, setRegState ] = useState<string>('Processing...');
+    const [ isRegSuccess, setIsRegSuccess ] = useState<boolean>(false);
+    const [ isRegistrying, setIsRegistrying ] = useState<boolean>(false);
+    const [ regError, setRegError ] = useState<string>('Unknown error');
 
     const toNextScreen = () => {
-        if (presentStep<4) {
+        if (presentStep<7) {
             setPresentStep(presentStep+1);
         }
     }
 
     const register = async () => {
-        toNextScreen();
         setRegState('Setting up your profile...');
+        setIsRegistrying(true);
         const data = {
             password,
             username,
@@ -39,13 +42,16 @@ const MainSignUpScreen:React.FC = () => {
             email,
         }
         try {
-            const response = await axios.post('https://paperplane-blog-api.onrender.com/api/auth/register', data);
-            setRegState('Finalizing...')
+            const response = await axios.post('http://localhost:3000/api/auth/register', data);
+            setRegState('Finalizing...');
             if ( response.data.success ) {
                 toNextScreen();
             }
         } catch (err:any) {
-            console.log('Error occured', err.message)
+            console.log('Error occured', err.message);
+            setIsRegistrying(false);
+            setIsRegSuccess(false);
+            setRegError(err.message);
         }
     }
 
@@ -73,9 +79,8 @@ const MainSignUpScreen:React.FC = () => {
                                     nextScreen={toNextScreen} /> }
             { presentStep === 4 && <SetupPassword 
                                     password={password} setPassword={setPassword} 
-                                    registerUser={register}  /> }
-            { presentStep === 5 && <RegLoad processText={regState}/> } 
-            { presentStep === 6 && <RegSuccess username={username}/> }                     
+                                    registerUser={register} isRegistrying={isRegistrying} isSuccess={isRegSuccess} errMsg={regError}  /> }
+            { presentStep === 5 && <RegSuccess username={username}/> }                     
 
             <div className={`h-fit md:w-[100%] w-[80%] mx-auto absolute md:left-0 left-[10%] bottom-[60px] ${presentStep===6 || presentStep === 5?'opacity-0':'opacity-100'}`}>
                 <p className="text-center text-[13px] text-gray-600">

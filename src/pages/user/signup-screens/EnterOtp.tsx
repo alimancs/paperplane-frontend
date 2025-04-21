@@ -135,7 +135,7 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
 
                             <div className="flex flex-row gap-2 w-[100%] mt-[15px] mb-[7px] justify-center items-center">
                                 { boxArray.map( (_, index) => {
-                                    return <input key={index} pattern="\d*" onKeyDown={(e) => handleKeyDown(e, index)} inputMode="numeric" id={`otp-${index}`} value={boxArray[index]} onChange={(e)=>{handleInput(e, index)}} className='h-[40px] w-[40px] border-[1px] border-gray-400 rounded-[5px] text-center bg-transparent' type="tel" maxLength={1} />
+                                    return <input key={index} pattern="\d*" onKeyDown={(e) => handleKeyDown(e, index)} inputMode="numeric" id={`otp-${index}`} value={boxArray[index]} onChange={(e)=>{handleInput(e, index)}} className='h-[40px] w-[40px] border-[1px] border-gray-400 text-center bg-transparent' type="tel" maxLength={1} />
                                 
                                 })}
                             </div>
@@ -146,7 +146,7 @@ const EnterOtp:React.FC<components> = ( { email, nextScreen, prevScreen } ) => {
                             </div>
                             <button 
                                 onClick={sendOtpAndVerify} 
-                                className="px-[20px] mx-auto w-[100%] text-center mt-[40px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 text-[#ecf0f1] h-[35px] cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out bg-[#17124f]" >
+                                className="px-[20px] mx-auto w-[100%] text-center mt-[40px] text-[14px] flex flex-row justify-center items-center gap-3 text-[#ecf0f1] h-[35px] cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out bg-[#17124f]" >
                                 Continue
                             </button>
                         </>  

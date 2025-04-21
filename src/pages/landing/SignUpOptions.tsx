@@ -17,10 +17,10 @@ const RegOptions:React.FC<props> = ( { toSignIn, toIntro }) => {
             <div className="flex-1 flex gap-3 flex-col justify-center items-center text-[#17124f]">
                 <span className="font-semibold text-[18px]">Join Paperplane.</span>
                 <div className="flex flex-col mt-[20px] gap-2">
-                    <button className="px-[20px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 h-[40px] border-1 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out border-[#17124f]">
+                    <button className="px-[20px] text-[14px] flex flex-row justify-center items-center gap-3 h-[40px] border-1 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out border-[#17124f]">
                         <GoogleIcon/>Sign Up with Google
                     </button>
-                    <button onClick={()=>{navigate('/sign-up')}} className="px-[20px] text-[14px] rounded-[20px] flex flex-row justify-center items-center gap-3 h-[40px] border-1 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out border-[#17124f]">
+                    <button onClick={()=>{navigate('/sign-up')}} className="px-[20px] text-[14px] flex flex-row justify-center items-center gap-3 h-[40px] border-1 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out border-[#17124f]">
                         <EmailIcon/>Sign Up with email
                     </button>
                 </div>
