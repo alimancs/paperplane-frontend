@@ -5,7 +5,7 @@ import { InputWithIcon } from "./ui/Input";
 
 const Header:React.FC = () => {
     return (
-        <div className={`h-fit pb-5 pt-9 flex flex-row justify-between items-center md:px-10 px-4 w-screen border-b-[0.1px] border-b-[${colors.line}]`}>
+        <div className={`h-fit pb-5 pt-5 flex flex-row justify-between items-center md:px-10 px-4 w-full border-b-[0.1px] border-b-[${colors.line}]`}>
             <div className="h-fit w-fit flex flex-row items-center gap-2">
                 <span className={`text-[24px] text-[${colors.primary}] font-extralight text-center`}>PAPERPLANE</span>
                 <div className="hidden md:flex flex-row items-center gap-2">

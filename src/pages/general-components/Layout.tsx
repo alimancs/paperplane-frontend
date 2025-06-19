@@ -6,12 +6,12 @@ import colors from "../../utils/colors";
 
 const Layout:React.FC = () => {
     return (
-        <div className={`bg-[${colors.secondary}] w-full flex flex-col min-h-screen`}>
-            <Header/>
-            <div className="h-full">
-                <Outlet/>
+        <div className={`bg-[${colors.secondary}] w-full min-h-screen flex flex-col`}>
+            <Header />
+            <div className="flex-1 w-full overflow-hidden">
+                <Outlet />
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }
