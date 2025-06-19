@@ -32,27 +32,7 @@ const MainSignUpScreen:React.FC = () => {
     }
 
     const register = async () => {
-        setRegState('Setting up your profile...');
-        setIsRegistrying(true);
-        const data = {
-            password,
-            username,
-            firstname,
-            lastname,
-            email,
-        }
-        try {
-            const response = await axios.post('http://localhost:3000/api/auth/register', data);
-            setRegState('Finalizing...');
-            if ( response.data.success ) {
-                toNextScreen();
-            }
-        } catch (err:any) {
-            console.log('Error occured', err.message);
-            setIsRegistrying(false);
-            setIsRegSuccess(false);
-            setRegError(err.message);
-        }
+        toNextScreen();
     }
 
     const toPrevScreen = () => {

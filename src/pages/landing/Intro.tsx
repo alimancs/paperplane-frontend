@@ -10,10 +10,10 @@ interface props {
 const Intro:React.FC<props> = ( { isLoggedIn, getStarted } ) => {
     return (
         <div className="h-screen w-screen flex flex-col justify-between gap-4 bg-[#ecf0f1]">
-            <div className="h-[70px] px-[3%] border-b-[0.5px] border-b-[#17124f] flex flex-row justify-between items-center text-[#17124f]">
+            <div className="h-fit px-[3%] border-b-[0.5px] border-b-[#dad9eb] flex flex-row pt-6 pb-3 justify-between items-center text-[#17124f]">
                 <span className="text-[24px] font-semibold text-center">Paperplane</span>
                 { !isLoggedIn ? <Loader/> : (
-                    <button onClick={getStarted} className={`h-[40px] w-[150px] transition-all ease-in-out hover:bg-[#55517e] cursor-pointer text-[14px] duration-500 bg-[#17124f] text-[#ecf0f1]`}>Get Started</button>
+                    <button onClick={getStarted} className={`h-[40px] w-[150px] transition-all ease-in-out hover:bg-[#55517e] cursor-pointer text-[14px] duration-500 bg-[#17124f] text-[#ecf0f1]`}>Sign In</button>
                 )
                 }
             </div>

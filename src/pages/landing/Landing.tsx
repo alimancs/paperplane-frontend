@@ -58,7 +58,7 @@ const Landing:React.FC = () => {
 
     return (
         <>
-            { showIntro && <Intro getStarted={toSignUp} isLoggedIn={isLoggedIn} />}
+            { showIntro && <Intro getStarted={toSignIn} isLoggedIn={isLoggedIn} />}
             { showSignIn && <SignInOptions toIntro={toIntro} toSignUp={toSignUp}/>}
             { showSignUp && <RegOptions toIntro={toIntro} toSignIn={toSignIn}/>}
         </>
