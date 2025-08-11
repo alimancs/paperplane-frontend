@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ChevronIcon from "../../../assets/icons/ChevronIcon";
 import React, { useState } from "react";
-import Loader from "../../general-components/Loader";
+import Loader from "../../../components/Loader";
 
 interface props {
     password:string,

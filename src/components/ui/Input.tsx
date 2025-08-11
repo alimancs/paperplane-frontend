@@ -1,5 +1,5 @@
 import React from 'react';
-import colors from '../../../utils/colors';
+import colors from '../../utils/colors';
 
 interface ComponentProps {
     setVal: (val: string) => void;
@@ -23,15 +23,16 @@ interface InputWithIconProps {
     type: string;
     placeholder?: string;
     icon: React.ReactNode;
+    className: string;
 }
 
-const InputWithIcon: React.FC<InputWithIconProps> = ({ setVal, val, type, placeholder, icon }) => {
+const InputWithIcon: React.FC<InputWithIconProps> = ({ setVal, val, type, placeholder, icon, className }) => {
     return (
-        <div style={{ border: `0.5px solid ${colors.line}` }} className={`w-fit h-[40px] flex-row flex justify-center items-center border-[0.5px] px-2 bg-[#f8f9fa]`}>
-            <span className="w-[30px] h-[30px] flex justify-center items-center">
+        <div className={`w-fit h-[35px] flex-row flex justify-center border-none items-center border-[0.5px] px-2 bg-[#eeeeee] ${className}`}>
+            <span className="w-[20px] h-[20px] flex justify-center items-center">
                 {icon}
             </span>
-            <input value={val} onChange={(e) => setVal(e.target.value)} className="flex-grow h-[40px] outline-none mx-auto px-[10px] border-[0.5px] border-none bg-transparent" placeholder={placeholder} type={type} />
+            <input value={val} onChange={(e) => setVal(e.target.value)} className="flex-grow h-[35px] text-[14px] outline-none mx-auto px-[10px] border-[0.5px] border-none bg-transparent" placeholder={placeholder} type={type} />
         </div>
     )
 }
