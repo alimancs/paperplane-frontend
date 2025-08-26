@@ -47,9 +47,9 @@ const CategoryCarousel: React.FC<conponents> = ( { className='' }) => {
   return (
     <div className={`flex flex-row items-center md:px-0 px-4 mt-[10px] overflow-hidden overflow-x-hidden ${className}`}>
 
-      <div className={`${hideLeftScroll?'justify-end':(hideRightScroll ? 'justify-start':'justify-between' )} bg-transparent pointer-events-none flex items-center flex-row md:ml-[25px] h-[30px] ml-[5.5%] w-[82%] self-center md:w-[47%] absolute z-10`}>
-        <div className={`w-[15%] ${hideLeftScroll?'hidden':''} h-full bg-gradient-to-r from-white to-transparent`}/>
-        <div className={`w-[15%] ${hideRightScroll?'hidden':''} h-full bg-gradient-to-l from-white to-transparent`}/>
+      <div className={`${hideLeftScroll?'justify-end':(hideRightScroll ? 'justify-start':'justify-between' )} bg-transparent pointer-events-none flex items-center flex-row md:ml-[25px] h-[30px] ml-[5.5%] w-[82%] self-center md:w-[45.5%] absolute z-10`}>
+        <div className={`w-[14%] ${hideLeftScroll?'hidden':''} h-full bg-gradient-to-r from-white to-transparent`}/>
+        <div className={`w-[14%] ${hideRightScroll?'hidden':''} h-full bg-gradient-to-l from-white to-transparent`}/>
       </div>
 
       <button onClick={() => scroll('left')} className={`${hideLeftScroll?'opacity-0':'opacity-100'} cursor-pointer text-gray-400 hover:text-black`} aria-label="Scroll Left">

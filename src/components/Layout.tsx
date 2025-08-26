@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import React from "react";
 import Header from "./header";
-import Footer from "./Footer";
 import colors from "../utils/colors";
 
 const Layout:React.FC = () => {
@@ -11,7 +10,6 @@ const Layout:React.FC = () => {
             <div className="flex-1 w-full overflow-hidden">
                 <Outlet />
             </div>
-            <Footer />
         </div>
     )
 }
