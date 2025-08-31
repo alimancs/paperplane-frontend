@@ -20,7 +20,7 @@ const Header:React.FC = () => {
 
     return (
         <>
-        <div className={`h-fit pb-5 pt-5 flex flex-row justify-between items-center md:px-10 px-4 w-full border-b-[0.1px] border-b-gray-200`}>
+        <div className={`h-[70px] z-[1000] fixed bg-white flex flex-row justify-between items-center md:px-10 px-4 w-full border-b-[0.1px] border-b-gray-200`}>
             <div className="h-fit w-fit flex flex-row items-center gap-2">
                 <span onClick={() => { navigateTo("/"); }} className={`text-[24px] text-[${colors.primary}] cursor-pointer font-lobster text-center`}>Paperplane</span>
                 <div className="hidden md:flex flex-row items-center gap-2">

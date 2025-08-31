@@ -19,10 +19,10 @@ const ProfileLayout: React.FC = () => {
 
     return (
        <div className="flex flex-row font-ptsans-regular w-full h-[90vh]">
-            <div className="w-full md:w-2/3 px-[9%] pt-[35px] h-full overflow-auto">
+            <div className="w-full md:w-2/3 overflow-hidden px-[9%] pt-[35px] h-full ">
                <Outlet />
             </div>
-            <div className={`border-l-[0.1px] px-[3%] py-[35px] md:flex flex-col justify-between border-l-gray-200 hidden bottom-0 right-0 h-full w-1/3`}>
+            <div className={`border-l-[0.1px] px-[3%] fixed pt-[100px] py-[35px] md:flex flex-col justify-between border-l-gray-200 hidden bottom-0 right-0 h-full w-1/3`}>
                 <div className="w-full flex flex-col">
                     <UserCircle2 strokeWidth={1} className="h-25 w-25 text-gray-500"/>
                     <div className="w-full flex flex-col mt-2">
