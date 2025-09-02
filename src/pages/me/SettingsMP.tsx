@@ -1,43 +1,28 @@
-import { Ellipsis } from "lucide-react";
 import React from "react";
 import colors from "../../utils/colors";
 import { useNavigate } from "react-router-dom";
-import EllipsisOption from "../../components/ui/EllipsisOption";
-import EditAbout from "../profile/components/EditAbout";
-import About from "../profile/components/About";
+import PlainHorizontalNavigations from "../../components/ui/PlainHorizontalNavigation";
+import HorizontalNavigationCarousel from "../../components/ui/HorizontalNavigationCarousel";
 
 const SettingsMP: React.FC = () => {
     const navigate = useNavigate();
 
-    const [ activeComponent, setActiveComponent ] = React.useState("ABOUT");
-
-    const handleActiveComponentChange = (component: string) => {
-        setActiveComponent(component);
-    };
+    const settingsNavigation = [
+        { title:"Account", url:"/me/settings", current:false }, 
+        { title:"Publishing", url:"/me/settings/publishing", current:false },
+        { title:"Notifications", url:"/me/settings/notifications", current:false },
+        { title:"Membership & payment", url:"/me/settings/membership", current:true },
+        { title:"Security & apps", url:"/me/settings/security", current:false }
+    ]
 
     return (
         <div className="w-full">
             <div className="w-full flex flex-row justify-start items-center">
-                <span className={`text-[40px] font-bold text-[${colors.primary}]`}>Settings</span>
+                <span className={`md:text-[40px] text-[23px] font-bold text-[${colors.primary}]`}>Settings</span>
             </div>
 
-            <div className="w-full flex flex-row mb-2 gap-10 border-b-[0.1px] mt-[35px] border-b-gray-200">
-                <button onClick={() => navigate('/@profile/about')} className="text-[14px] pb-4 border-b-[0.1px] text-gray-400 cursor-pointer hover:text-gray-900 border-b-transparent">
-                    Account
-                </button>
-                <button onClick={() => navigate('/@profile/about')} className="text-[14px] pb-4 border-b-[0.1px] text-gray-400 cursor-pointer hover:text-gray-900 border-b-transparent">
-                    Publishing
-                </button>
-                <button onClick={() => navigate('/@profile')} className="text-[14px] pb-4 border-b-[0.1px] text-gray-400 cursor-pointer hover:text-gray-900 border-b-transparent">
-                    Notifications
-                </button>
-                <button onClick={() => navigate('/@profile')} className="text-[14px] pb-4 text-gray-900 border-b-[0.1px] cursor-pointer border-b-gray-900">
-                    Membership & payment
-                </button>
-                <button onClick={() => navigate('/@profile/about')} className="text-[14px] pb-4 border-b-[0.1px] text-gray-400 cursor-pointer hover:text-gray-900 border-b-transparent">
-                    Security & apps
-                </button>
-            </div>
+            <PlainHorizontalNavigations className="md:flex hidden" navs={settingsNavigation}/>
+            <HorizontalNavigationCarousel className="md:hidden flex mt-5" navs={settingsNavigation}/>
             <div className="py-[35px] flex flex-row">
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { UserCircle, UserCircle2 } from "lucide-react";
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 type Article = {
     title:string;
@@ -8,6 +8,7 @@ type Article = {
 }
 
 const SettingsLayout: React.FC = () => {
+    const navigate = useNavigate();
 
     const [ suggestedArticles, setSuggestedArticles ] = useState<Article[]>([
         {
@@ -48,15 +49,15 @@ const SettingsLayout: React.FC = () => {
 
     return (
        <div className="flex flex-row font-ptsans-regular w-full min-h-[90vh]">
-            <div className="w-full md:w-2/3 px-[9%] pt-[35px] h-full ">
+            <div className="w-full md:w-2/3 md:px-[9%] px-[5%] pt-[35px] h-full ">
                <Outlet />
             </div>
             <div className={`border-l-[0.1px] px-[3%] fixed pt-[100px] py-[35px] md:flex flex-col justify-between border-l-gray-200 hidden bottom-0 right-0 h-full w-1/3`}>
                 <div className="w-full flex flex-col gap-4">
                     <span className="mb-2">Suggested help articles</span> 
-                    { suggestedArticles.map( ( { title, url }) => {
+                    { suggestedArticles.map( ( { title, url }, index) => {
                         return (
-                            <button className="w-full text-start cursor-pointer text-gray-500 hover:text-gray-800 text-[14px]">{title}</button>
+                            <button key={index} onClick={()=>{ navigate(url)}} className="w-full text-start cursor-pointer text-gray-500 hover:text-gray-800 text-[14px]">{title}</button>
                         )
                     })}
                 </div>

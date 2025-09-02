@@ -15,7 +15,7 @@ const Header:React.FC = () => {
 
     const navigateTo = (path: string) => {
         navigate(path);
-        if (popUpNav) togglePopUpNav();
+        if (popUpNav) {togglePopUpNav()}
     };
 
     return (
@@ -52,7 +52,7 @@ const Header:React.FC = () => {
         </div>
 
         { popUpNav && (
-            <div className={`bg-white border border-gray-200 rounded-[3px] flex flex-col shadow-md absolute h-[calc(100vh-80px)] top-[70px] right-0 w-[300px]`}>
+            <div className={`bg-white z-[20] border border-gray-200 rounded-[3px] flex flex-col shadow-md absolute h-[calc(100vh-80px)] top-[70px] right-0 w-[300px]`}>
                 <div className="flex flex-col border-b-[0.1px] pl-4 border-gray-200 py-4">
                     <button onClick={() => { navigateTo("/@profile"); }} className="flex flex-row items-center gap-2 p-2 cursor-pointer text-gray-500 hover:text-gray-900 transition-all duration-300 ease-in-out">
                         <User strokeWidth={1} className={`md:h-6 md:w-6 h-7 w-7`}/>
@@ -72,7 +72,7 @@ const Header:React.FC = () => {
                     </button>
                 </div>
                 <div className="flex flex-col border-b-[0.1px] pl-5 border-gray-200 py-4">
-                    <button className={`md:text-[14px] text-[17px]  text-left p-1 cursor-pointer w-full font-ptsans-regular text-gray-500 hover:text-gray-900 transition-all duration-300 ease-in-out`}>Settings</button>
+                    <button onClick={()=>{navigate('/me/settings')}} className={`md:text-[14px] text-[17px]  text-left p-1 cursor-pointer w-full font-ptsans-regular text-gray-500 hover:text-gray-900 transition-all duration-300 ease-in-out`}>Settings</button>
                     <button className={`md:text-[14px] text-[17px]  text-left p-1 cursor-pointer w-full font-ptsans-regular text-gray-500 hover:text-gray-900 transition-all duration-300 ease-in-out`}>Refine recommendations</button>
                     <button className={`md:text-[14px] text-[17px]  text-left p-1 cursor-pointer w-full font-ptsans-regular text-gray-500 hover:text-gray-900 transition-all duration-300 ease-in-out`}>Manage publications</button>
                     <button className={`md:text-[14px] text-[17px]  text-left p-1 cursor-pointer w-full font-ptsans-regular text-gray-500 hover:text-gray-900 transition-all duration-300 ease-in-out`}>Help</button>

@@ -20,7 +20,7 @@ const EllipsisOption:React.FC<EllipsisOptionProps> = ( { list, className='' } ) 
                 <Ellipsis className="w-5 text-gray-500 hover:text-gray-900"/>
             </button>
             {isOpen && (
-                <div className="absolute w-fit bg-white border border-gray-200 flex flex-col justify-center items-center rounded rounded-tl-0 shadow-lg z-10">
+                <div className="absolute w-[150px] ml-[-130px] bg-white border border-gray-200 flex flex-col justify-center items-center rounded rounded-tl-0 shadow-lg z-10">
                     
                     <ul className="py-1 w-full">
                         {list.map((item, index) => (
