@@ -8,12 +8,20 @@ interface TextInputProps {
 }
 
 const TextInput: React.FC<TextInputProps> = ({ value, onChange, placeholder, className }) => {
+    const input = document.getElementById('inputBox');
+
+    input?.addEventListener( "input", function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + "px";
+    });
+
     return (
         <textarea
+            id="inputBox"
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            className={`${className} border-0 border-transparent outline-0 text-[20px] px-3 rounded-md p-2`}
+            className={`${className} border-0 border-transparent outline-0 text-[20px] rounded-md py-2`}
         />
     );
 };
