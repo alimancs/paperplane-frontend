@@ -3,6 +3,7 @@ import colors from "../../utils/colors";
 import { useNavigate } from "react-router-dom";
 import PlainHorizontalNavigations from "../../components/ui/PlainHorizontalNavigation";
 import HorizontalNavigationCarousel from "../../components/ui/HorizontalNavigationCarousel";
+import { SquareArrowOutUpRight } from "lucide-react";
 
 const SettingsPublishing: React.FC = () => {
     const navigate = useNavigate();
@@ -22,7 +23,10 @@ const SettingsPublishing: React.FC = () => {
 
             <PlainHorizontalNavigations className="md:flex hidden" navs={settingsNavigation}/>
             <HorizontalNavigationCarousel className="md:hidden flex mt-5" navs={settingsNavigation}/>
-            <div className="py-[35px] flex flex-row">
+            <div className="py-6 flex flex-col text-[14px] gap-6">
+                <button className="w-full text-start cursor-pointer ">
+                    <span className="text-gray-900">Manage publication</span>
+                </button>
             </div>
         </div>
     );

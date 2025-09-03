@@ -52,7 +52,7 @@ const Header:React.FC = () => {
         </div>
 
         { popUpNav && (
-            <div className={`bg-white z-[20] border border-gray-200 rounded-[3px] flex flex-col shadow-md absolute h-[calc(100vh-80px)] top-[70px] right-0 w-[300px]`}>
+            <div className={`bg-white z-[30] border border-gray-200 rounded-[3px] flex flex-col shadow-md fixed h-[calc(100vh-80px)] top-[70px] right-0 w-[300px]`}>
                 <div className="flex flex-col border-b-[0.1px] pl-4 border-gray-200 py-4">
                     <button onClick={() => { navigateTo("/@profile"); }} className="flex flex-row items-center gap-2 p-2 cursor-pointer text-gray-500 hover:text-gray-900 transition-all duration-300 ease-in-out">
                         <User strokeWidth={1} className={`md:h-6 md:w-6 h-7 w-7`}/>
