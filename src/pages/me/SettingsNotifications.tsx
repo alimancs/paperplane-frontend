@@ -23,7 +23,37 @@ const SettingsNotifications: React.FC = () => {
 
             <PlainHorizontalNavigations className="md:flex hidden" navs={settingsNavigation}/>
             <HorizontalNavigationCarousel className="md:hidden flex mt-5" navs={settingsNavigation}/>
-            <div className="py-[35px] flex flex-row">
+            <div className="py-6 flex flex-col text-[14px] gap-6">
+                <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
+                    <div className="flex flex-col items-start gap-1">
+                        <span className="text-gray-900">Recommended reading</span>
+                        <span className="text-gray-500">Featured stories, columns and collections we think you&apos;ll enjoy based on your reading history.</span>
+                    </div>
+                    <input className="accent-blue-600 h-[17px] w-[17px]" type="checkbox"/>
+                </button>
+                <div className="w-full flex flex-col gap-6 border-t-[0.1px] pt-6 border-t-gray-300">
+                    <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
+                        <span className="text-gray-900">Follows and matching highlights</span>
+                        <input className="accent-blue-600 h-[17px] w-[17px]" type="checkbox"/>
+                    </button>
+                    <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
+                        <span className="text-gray-900">Replies to your responses</span>
+                        <input className="accent-blue-600 h-[17px] w-[17px]" type="checkbox"/>
+                    </button>
+                    <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
+                        <span className="text-gray-900">Activity on your published stories</span>
+                        <input className="accent-blue-600 h-[17px] w-[17px]" type="checkbox"/>
+                    </button>
+                </div>
+                <div className="w-full flex flex-col gap-6 border-t-[0.1px] pt-6 border-t-gray-300">
+                <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
+                    <div className="flex flex-col items-start gap-1">
+                        <span className="text-gray-900">Allow email notifications</span>
+                        <span className="text-gray-500">You&apos;ll still receive administrative emails even if this settings is off.</span>
+                    </div>
+                    <input className="accent-blue-600 h-[17px] w-[17px]" type="checkbox"/>
+                </button>
+                </div>
             </div>
         </div>
     );

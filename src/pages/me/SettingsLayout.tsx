@@ -1,4 +1,3 @@
-import { UserCircle, UserCircle2 } from "lucide-react";
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
