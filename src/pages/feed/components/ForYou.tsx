@@ -1,3 +1,4 @@
+import PlainHorizontalNavigations from "../../../components/ui/PlainHorizontalNavigation";
 import PostCardDesktop from "../../../components/PostCardDesktop";
 import PostCardMobile from "../../../components/PostCardMobile";
 import React from "react";
@@ -7,16 +8,14 @@ interface ForYouProps {
 }
 
 const ForYou: React.FC<ForYouProps> = ({ toFeatured }) => {
+    const navs = [
+        { title:"For you", url:'/', current:true },
+        { title:"Featured", url:'/?feed=featured', current:false }
+    ]
+
     return (
         <div className="w-full">
-            <div className="w-full flex flex-row mb-[20px] gap-10 border-b-[0.1px] mt-[15px] border-b-gray-200">
-                <button className="text-[14px] pb-4 text-gray-900 border-b-[0.1px] cursor-pointer border-b-gray-900">
-                    For you
-                </button>
-                <button onClick={toFeatured} className="text-[14px] pb-4 border-b-[0.1px] text-gray-400 cursor-pointer hover:text-gray-900 border-b-transparent">
-                    Featured
-                </button>
-            </div>
+            <PlainHorizontalNavigations navs={navs}/>
             { [0, 0, 0, 0, 0, 0, 0, 0 ].map( () => {
                 return (
                 <>

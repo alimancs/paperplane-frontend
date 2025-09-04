@@ -9,10 +9,9 @@ const MainFeed:React.FC = () => {
     const [ sideBarPosition, setSideBarPosition ] = useState<string>("");
     const lastScrollY = useRef(window.scrollY);
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    // const [ sideBarCoord, setSideBarCoord ] = useState<number>(0);
-    const [ feedVisibleHeight, setFeedVisibleHeight ] = useState<number>(0);
-    let sideBarCoord = 0;
 
+    let sideBarCoord = 0;
+    
     const isBottomVisible = (element: HTMLElement) => {
         const rect = element.getBoundingClientRect();
         

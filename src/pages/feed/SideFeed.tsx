@@ -69,7 +69,7 @@ const SideFeed: React.FC = () => {
         <div>
           { bottomNavs.map(( { nav, url } ) => {
             return (
-              <a href={url} className="text-[11px] mr-2 inline text-left font-ptsans-regular text-gray-500 hover:underline cursor-pointer">
+              <a key={url} href={url} className="text-[11px] mr-2 inline text-left font-ptsans-regular text-gray-500 hover:underline cursor-pointer">
                 {nav}
               </a>
             )
