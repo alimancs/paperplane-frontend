@@ -21,8 +21,7 @@ const ProfileHome: React.FC = () => {
                 <span className={`md:text-[40px] text-[25px] font-bold text-[${colors.primary}]`}>Elon Musk</span>
                 <EllipsisOption
                     list={[
-                        { label: "Edit Profile", onClick: () => navigate('/@profile/edit') },
-                        { label: "Settings", onClick: () => navigate('/@profile/settings') },
+                        { label: "Edit Profile", onClick: () => navigate('/me/settings') },
                     ]}
                 />
             </div>

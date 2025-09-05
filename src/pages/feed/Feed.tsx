@@ -4,10 +4,10 @@ import PostCardDesktop from "../../components/PostCardDesktop";
 import PostCardMobile from "../../components/PostCardMobile";
 import ForYou from "./components/ForYou";
 import Featured from "./components/Featured";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const Feed: React.FC = () => {
-  const params = useParams();
+  const { search } = useLocation();
   const [ section, setSection ] = React.useState("FOR_YOU");
 
   const handleSectionChange = (newSection: string) => {
@@ -15,8 +15,9 @@ const Feed: React.FC = () => {
   };
 
   useEffect(()=> {
-    const feed = params?.feed;
-    console.log(params)
+    const query = new URLSearchParams(search);
+    const feed = query.get("feed");
+
     if (feed) {
       if (feed === "featured") {
         handleSectionChange("FEATURED");
@@ -24,12 +25,12 @@ const Feed: React.FC = () => {
     } else {
       handleSectionChange("FOR_YOU");
     }
-  }, [ params ])
+  }, [ search ]);
 
   return (
     <div className="flex-[0.69] md:px-[10%] pt-[20px] pb-5 min-h-[90vh] overflow-hidden">
-      { section === "FOR_YOU" && <ForYou toFeatured={() => handleSectionChange("FEATURED")} /> }
-      { section === "FEATURED" && <Featured toForYou={() => handleSectionChange("FOR_YOU")} /> }
+      { section === "FOR_YOU" && <ForYou /> }
+      { section === "FEATURED" && <Featured /> }
     </div>
   );
 };

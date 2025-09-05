@@ -3,11 +3,8 @@ import PostCardDesktop from "../../../components/PostCardDesktop";
 import PostCardMobile from "../../../components/PostCardMobile";
 import React from "react";
 
-interface ForYouProps {
-    toFeatured: () => void;
-}
 
-const ForYou: React.FC<ForYouProps> = ({ toFeatured }) => {
+const ForYou: React.FC = () => {
     const navs = [
         { title:"For you", url:'/', current:true },
         { title:"Featured", url:'/?feed=featured', current:false }
@@ -15,7 +12,7 @@ const ForYou: React.FC<ForYouProps> = ({ toFeatured }) => {
 
     return (
         <div className="w-full">
-            <PlainHorizontalNavigations navs={navs}/>
+            <PlainHorizontalNavigations className="md:mx-0 mx-[4%]"  navs={navs}/>
             { [0, 0, 0, 0, 0, 0, 0, 0 ].map( () => {
                 return (
                 <>
