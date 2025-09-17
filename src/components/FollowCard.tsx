@@ -1,7 +1,5 @@
 import React from "react";
-import ProfileTag from "./ui/ProfileTag";
-import colors from "../utils/colors";
-import { BookmarkPlus, Ellipsis, MessageCircle, MinusCircleIcon, ThumbsUp } from "lucide-react";
+import CircleShapeImage from "./ui/CircleShapeImage";
 
 const FollowCard:React.FC = () => {
     const profile = {
@@ -10,21 +8,19 @@ const FollowCard:React.FC = () => {
         pp:"/elon.webp"
     }
     return (
-        <div className={`flex flex-row w-full text-[${colors.primary}] hover:cursor-pointer justify-between gap-3 items-start`}>
-            <div className="h-[35px] rounded-full overflow-hidden w-[35px]">
-                <img src={profile?.pp} className="w-[100%] h-[100%]" />
-            </div>
+        <div className={`flex flex-row w-full text-gray-900 hover:cursor-pointer justify-between gap-3 items-start`}>
+            <CircleShapeImage alt="Profile Picture" size={35} src={profile.pp}/>
             
             <div className="flex flex-row flex-1 justify-between">
                 <div className="w-3/5 flex flex-col">
-                    <span className={`font-extrabold leading-tight text-[14px]`}>
+                    <span className={`font-bold leading-tight text-[14px]`}>
                         {profile?.fullname}
                     </span>
                     <span className={`font-ptsans-regular mt-1 text-gray-500 leading-relaxed text-[13px]`}>
                         {profile?.bio.length > 53 ? (profile?.bio.slice(0, 53) + "...") : profile?.bio }
                     </span>
                 </div>
-                <button className={`text-[14px] px-5 rounded-[30px] hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out py-1 h-fit border border-[${colors.primary}] items-center justify-between text-[${colors.primary}]`}>
+                <button className={`text-[14px] px-5 rounded-[30px] hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out py-1 h-fit border border-gray-900 items-center justify-between text-gray-900`}>
                     Follow
                 </button>
             </div>

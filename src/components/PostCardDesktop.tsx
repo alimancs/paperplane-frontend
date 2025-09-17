@@ -5,7 +5,7 @@ import { BookmarkPlus, Ellipsis, MessageCircle, MinusCircleIcon, ThumbsUp } from
 
 const PostCardDesktop:React.FC = () => {
     return (
-        <div className={`md:flex hidden border-b border-gray-200 flex-row w-full md:px-0 px-5 text-[${colors.primary}] hover:cursor-pointer justify-between items-center h-[300px] md:h-[250px]`}>
+        <div className={`md:flex hidden border-b border-gray-200 flex-row w-full md:px-0 px-5 text-gray-900 hover:cursor-pointer justify-between items-center h-[300px] md:h-[250px]`}>
             <div className="w-[68%] flex flex-col h-full  justify-center">
                 <ProfileTag className={"mb-5"}/>
                 <span className={`font-extrabold leading-tight text-[16px] md:text-[18px]`}>

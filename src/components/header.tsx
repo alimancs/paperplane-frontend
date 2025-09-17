@@ -3,6 +3,7 @@ import { Bell, Search, UserCircle2, PenBox, User, BarChart, Bookmark, BookOpenTe
 import colors from "../utils/colors";
 import { InputWithIcon } from "./ui/Input";
 import { useNavigate } from "react-router-dom";
+import CircleShapeImage from "./ui/CircleShapeImage";
 
 const Header:React.FC = () => {
 
@@ -22,7 +23,7 @@ const Header:React.FC = () => {
         <>
         <div className={`h-[70px] z-[1000] fixed bg-white flex flex-row justify-between items-center md:px-10 px-4 w-full border-b-[0.1px] border-b-gray-200`}>
             <div className="h-fit w-fit flex flex-row items-center gap-2">
-                <span onClick={() => { navigateTo("/"); }} className={`text-[24px] text-[${colors.primary}] cursor-pointer font-lobster text-center`}>Paperplane</span>
+                <span onClick={() => { navigateTo("/"); }} className={`text-[24px] text-gray-900 cursor-pointer font-ptsans-regular font-bold text-center`}>Paperplane</span>
                 <div className="hidden md:flex flex-row items-center gap-2">
                     <InputWithIcon
                     setVal={() => {}}
@@ -45,8 +46,8 @@ const Header:React.FC = () => {
                 <button className="cursor-pointer hover:bg-gray-100 rounded-full p-1 transition-all duration-300 ease-in-out">
                     <Bell strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7 text-gray-500 hover:text-[${colors.primary}]`}/>
                 </button>
-                <button onClick={togglePopUpNav} className={`${popUpNav ? "border-gray-500" : "border-transparent"} cursor-pointer hover:bg-gray-100 border rounded-full p-1 transition-all duration-300 ease-in-out`}>
-                    <UserCircle2 strokeWidth={1} className={`h-7 w-7 text-gray-500 hover:text-[${colors.primary}]`}/>
+                <button onClick={togglePopUpNav} className={`${popUpNav ? "border-gray-500" : "border-transparent"} cursor-pointer hover:bg-gray-100 border rounded-full p-[3px] transition-all duration-300 ease-in-out`}>
+                    <CircleShapeImage src={"/elon.webp"} alt="profile picture" size={30}/>
                 </button>
             </div>
         </div>

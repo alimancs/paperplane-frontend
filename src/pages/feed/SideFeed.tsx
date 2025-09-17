@@ -30,7 +30,7 @@ const SideFeed: React.FC = () => {
   return (
     <div className="hidden md:flex flex-col flex-[0.31] px-[10%] pt-9 pb-3 h-fit border-l border-[#dad9eb] overflow-hidden">
       <div className="flex flex-col gap-4">
-        <span className={`font-semibold text-[15px] mb-2 text-[${colors.primary}]`}>Staff picks</span>
+        <span className={`font-semibold text-[15px] mb-2 text-gray-900`}>Staff picks</span>
         <StaffPickCard/>
         <StaffPickCard/>
         <StaffPickCard/>
@@ -38,7 +38,7 @@ const SideFeed: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-4 mt-5">
-        <span className={`font-semibold text-[15px] mb-2 text-[${colors.primary}]`}>Recommended topics</span>
+        <span className={`font-semibold text-[15px] mb-2 text-gray-900`}>Recommended topics</span>
         <div className="flex flex-row flex-wrap gap-2">
           { recommendedTopics.map( ( topic) => {
             return (
@@ -52,7 +52,7 @@ const SideFeed: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-4 mt-5">
-        <span className={`font-semibold text-[15px] mb-2 text-[${colors.primary}]`}>Who to follow</span>
+        <span className={`font-semibold text-[15px] mb-2 text-gray-900`}>Who to follow</span>
         <FollowCard/>
         <FollowCard/>
         <FollowCard/>
@@ -60,10 +60,10 @@ const SideFeed: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-4 mt-5">
-        <span className={`font-semibold text-[15px] text-[${colors.primary}]`}>Reading list</span>
+        <span className={`font-semibold text-[15px] text-gray-900`}>Reading list</span>
         <div className="font-ptsans-regular text-gray-500 text-[14px] gap-1">
           <span>Click the</span>
-          <BookmarkPlus strokeWidth={1} size={'25px'} className="inline" color={colors.primary}/>
+          <BookmarkPlus strokeWidth={1} size={'25px'} className="inline" color={"#101828"}/>
           <span>{"on any story to easily add it to your reading list or a custom list that you can share."}</span>
         </div>
         <div>

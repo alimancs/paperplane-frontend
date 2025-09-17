@@ -3,6 +3,7 @@ import React, { use } from "react";
 import colors from "../../utils/colors";
 import { useNavigate } from "react-router-dom";
 import EllipsisOption from "../../components/ui/EllipsisOption";
+import ProfileTag from "../../components/ui/ProfileTag";
 
 const ProfileHome: React.FC = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const ProfileHome: React.FC = () => {
     return (
         <div className="w-full">
             <div className="w-full flex flex-row justify-between items-center">
-                <span className={`md:text-[40px] text-[25px] font-bold text-[${colors.primary}]`}>Elon Musk</span>
+                <span className={`md:text-[40px] text-[25px] font-bold text-gray-900`}>Elon Musk</span>
                 <EllipsisOption
                     className="mt-3"
                     list={[
@@ -30,11 +31,8 @@ const ProfileHome: React.FC = () => {
             </div>
             <div className="w-full h-[130px] bg-gray-100 flex flex-row justify-between border-gray-200 border-[0.1px] rounded-[2px]">
                 <div className="w-[59%] h-full px-[4%] flex flex-col gap-2 justify-center">
-                    <div className="flex flex-row gap-2 items-center">
-                        <UserCircle2 className="h-5 w-5 text-gray-400"/>
-                        <span className="text-black text-[14px]">Elon Musk</span>
-                    </div>
-                    <span className={`text-[18px] font-extrabold text-[${colors.primary}]`}>Reading list</span>
+                    <ProfileTag className={"mb-2"}/>
+                    <span className={`text-[18px] font-extrabold text-gray-900`}>Reading list</span>
                     <div className="w-full flex flex-row justify-between items-center">
                         <div className="flex flex-row items-center">
                             <span className="text-[14px]">No stories</span>

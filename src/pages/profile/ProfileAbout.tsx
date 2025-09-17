@@ -18,7 +18,7 @@ const ProfileHome: React.FC = () => {
     return (
         <div className="w-full">
             <div className="w-full flex flex-row justify-between items-center">
-                <span className={`md:text-[40px] text-[25px] font-bold text-[${colors.primary}]`}>Elon Musk</span>
+                <span className={`md:text-[40px] text-[25px] font-bold text-gray-900`}>Elon Musk</span>
                 <EllipsisOption
                     list={[
                         { label: "Edit Profile", onClick: () => navigate('/me/settings') },

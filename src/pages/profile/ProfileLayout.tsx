@@ -1,3 +1,4 @@
+import CircleShapeImage from "../../components/ui/CircleShapeImage";
 import { UserCircle, UserCircle2 } from "lucide-react";
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -26,9 +27,9 @@ const ProfileLayout: React.FC = () => {
             </div>
             <div className={`border-l-[0.1px] px-[3%] fixed pt-[100px] py-[35px] md:flex flex-col justify-between border-l-gray-200 hidden bottom-0 right-0 h-full w-1/3`}>
                 <div className="w-full flex flex-col">
-                    <UserCircle2 strokeWidth={1} className="h-25 w-25 text-gray-500"/>
-                    <div className="w-full flex flex-col mt-2">
-                        <span className="font-semibold text-[15px]">Elon Musk</span>
+                    <CircleShapeImage src={"/elon.webp"} alt="profile picture" size={90}/>
+                    <div className="w-full flex flex-col mt-3">
+                        <span className="font-semibold text-[17px]">Elon Musk</span>
                         <button onClick={()=>{router('/me/settings')}} className="mt-5 text-left text-[14px] hover:text-blue-950 cursor-pointer text-blue-700">
                             Edit profile
                         </button>

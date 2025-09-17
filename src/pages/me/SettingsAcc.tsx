@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import colors from "../../utils/colors";
 import PlainHorizontalNavigations from "../../components/ui/PlainHorizontalNavigation";
 import HorizontalNavigationCarousel from "../../components/ui/HorizontalNavigationCarousel";
-import { SquareArrowOutUpRight, UserCircle2 } from "lucide-react";
+import { SquareArrowOutUpRight } from "lucide-react";
 import EditInformation from "./components/EditInformation";
 import EditEmailAddress from "./components/EditEmailAddress";
+import CircleShapeImage from "../../components/ui/CircleShapeImage";
 
 const SettingsAcc: React.FC = () => {
     const [ isEditInfo, setIsEditInfo ] = useState<boolean>(false);
@@ -47,7 +48,7 @@ const SettingsAcc: React.FC = () => {
     return (
         <div ref={bodyRef} style={{height:isEditInfo?visibleContentHeight:"100%"}} className={`w-full ${isEditInfo?"overflow-y-hidden":""}`}>
             <div className="w-full flex flex-row justify-start items-center">
-                <span className={`md:text-[40px] text-[23px] font-bold text-[${colors.primary}]`}>Settings</span>
+                <span className={`md:text-[40px] text-[23px] font-bold text-gray-900`}>Settings</span>
             </div>
 
             { isEditInfo && <EditInformation closeModal={handleEditInfo}/> }
@@ -71,7 +72,7 @@ const SettingsAcc: React.FC = () => {
                     </div>
                     <div className="w-fit flex flex-row items-start gap-2 text-gray-500">
                         <span>@Aliman2952003</span>
-                        <UserCircle2 size={25} strokeWidth={1}/>
+                        <CircleShapeImage src={"/elon.webp"} alt="profile picture" size={25}/>
                     </div>
                 </button>
                 <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">

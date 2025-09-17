@@ -22,7 +22,7 @@ const SettingsSA: React.FC = () => {
     return (
         <div className="w-full">
             <div className="w-full flex flex-row justify-start items-center">
-                <span className={`md:text-[40px] text-[23px] font-bold text-[${colors.primary}]`}>Settings</span>
+                <span className={`md:text-[40px] text-[23px] font-bold text-gray-900`}>Settings</span>
             </div>
 
             <PlainHorizontalNavigations className="md:flex hidden" navs={settingsNavigation}/>
