@@ -27,7 +27,7 @@ const SettingsNotifications: React.FC = () => {
                 <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
                     <div className="flex flex-col items-start gap-1">
                         <span className="text-gray-900">Recommended reading</span>
-                        <span className="text-gray-500">Featured stories, columns and collections we think you&apos;ll enjoy based on your reading history.</span>
+                        <span className="text-gray-500 text-start">Featured stories, columns and collections we think you&apos;ll enjoy based on your reading history.</span>
                     </div>
                     <input className="accent-blue-600 h-[17px] w-[17px]" type="checkbox"/>
                 </button>
@@ -49,7 +49,7 @@ const SettingsNotifications: React.FC = () => {
                 <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
                     <div className="flex flex-col items-start gap-1">
                         <span className="text-gray-900">Allow email notifications</span>
-                        <span className="text-gray-500">You&apos;ll still receive administrative emails even if this settings is off.</span>
+                        <span className="text-gray-500 text-start">You&apos;ll still receive administrative emails even if this settings is off.</span>
                     </div>
                     <input className="accent-blue-600 h-[17px] w-[17px]" type="checkbox"/>
                 </button>

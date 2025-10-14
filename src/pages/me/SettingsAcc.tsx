@@ -68,7 +68,7 @@ const SettingsAcc: React.FC = () => {
                 <button onClick={handleEditInfo} className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
                     <div className="flex flex-col items-start gap-1">
                         <span className="text-gray-900">Profile information</span>
-                        <span className="text-gray-500">Edit photo, name, pronouns, short bio, etc.</span>
+                        <span className="text-gray-500 text-start">Edit photo, name, pronouns, short bio, etc.</span>
                     </div>
                     <div className="w-fit flex flex-row items-start gap-2 text-gray-500">
                         <span>@Aliman2952003</span>
@@ -86,7 +86,7 @@ const SettingsAcc: React.FC = () => {
                     <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
                         <div className="flex flex-col items-start gap-1">
                             <span className="text-gray-900">Refine recommendations</span>
-                            <span className="text-gray-500">Adjust recommendations by updating what you&apos;re following and more.</span>
+                            <span className="text-gray-500 text-start">Adjust recommendations by updating what you&apos;re following and more.</span>
                         </div>
                         <SquareArrowOutUpRight size={20} strokeWidth={1}/>
                     </button>
@@ -97,11 +97,11 @@ const SettingsAcc: React.FC = () => {
                 <div className="w-full flex flex-col gap-4 border-t-[0.1px] pt-6 border-t-gray-300">
                     <button className="w-full flex flex-col gap-1 transition-all ease-in-out duration-300 cursor-pointer items-start text-gray-500">
                         <span className="text-red-600">Deactivate account</span>
-                        <span>Deactivating will suspend your account until ou sign in back.</span>
+                        <span className="text-start">Deactivating will suspend your account until ou sign in back.</span>
                     </button>
                     <button className="w-full flex flex-col gap-1 transition-all ease-in-out duration-300 cursor-pointer items-start text-gray-500">
                         <span className="text-red-600">Delete account</span>
-                        <span>Permanently delete your account and all your content.</span>
+                        <span className="text-start">Permanently delete your account and all your content.</span>
                     </button>
                 </div>
             </div>

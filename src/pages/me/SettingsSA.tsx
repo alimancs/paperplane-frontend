@@ -30,11 +30,11 @@ const SettingsSA: React.FC = () => {
             <div className="py-6 flex flex-col text-[14px] gap-6">
                 <button className="w-full flex flex-col gap-1 transition-all ease-in-out duration-300 cursor-pointer items-start text-gray-500">
                     <span className="text-red-600">Sign out of all other sessions</span>
-                    <span>Sign out of other sessions in other browsers or on other computers.</span>
+                    <span className="text-start">Sign out of other sessions in other browsers or on other computers.</span>
                 </button>
                 <button className="w-full flex flex-col gap-1 transition-all ease-in-out duration-300 cursor-pointer items-start text-gray-500">
                     <span className="text-gray-900">Download your information</span>
-                    <span>Download a copy of your information you&apos;ve shared on paperplane to zip file.</span>
+                    <span className="text-start">Download a copy of your information you&apos;ve shared on paperplane to zip file.</span>
                 </button>
                 <div className="w-full flex flex-col gap-6 border-t-[0.1px] pt-6 border-t-gray-300">
                     <button className="w-full flex flex-row transition-all justify-between ease-in-out duration-300 cursor-pointer items-start hover:text-gray-900 text-gray-500">
@@ -42,7 +42,7 @@ const SettingsSA: React.FC = () => {
                             <GoogleIcon size="20px" />
                             <div className="flex flex-col items-start gap-1 h-fit">
                                 <span className="text-gray-900">Connect Google</span>
-                                <span className="text-gray-500">we&apos;ll never post to Google or message your friends without your permission.</span>
+                                <span className="text-gray-500 text-start">we&apos;ll never post to Google or message your friends without your permission.</span>
                             </div>  
                         </div>
                         <SquareArrowOutUpRight size={20} strokeWidth={1}/>
@@ -53,7 +53,7 @@ const SettingsSA: React.FC = () => {
                             <XIcon size="20px" />
                             <div className="flex flex-col items-start gap-1 h-fit">
                                 <span className="text-gray-900">Connect X</span>
-                                <span className="text-gray-500">we&apos;ll never post to X or message your friends without your permission.</span>
+                                <span className="text-gray-500 text-start">we&apos;ll never post to X or message your friends without your permission.</span>
                             </div>  
                         </div>
                         <SquareArrowOutUpRight size={20} strokeWidth={1}/>
@@ -64,7 +64,7 @@ const SettingsSA: React.FC = () => {
                             <FacebookIcon size="20px" />
                             <div className="flex flex-col items-start gap-1 h-fit">
                                 <span className="text-gray-900">Connect Facebook</span>
-                                <span className="text-gray-500">we&apos;ll never post to Facebook or message your friends without your permission.</span>
+                                <span className="text-gray-500 text-start">we&apos;ll never post to Facebook or message your friends without your permission.</span>
                             </div>  
                         </div>
                         <SquareArrowOutUpRight size={20} strokeWidth={1}/>

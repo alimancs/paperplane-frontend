@@ -39,14 +39,14 @@ const Header:React.FC = () => {
                 <button className="md:hidden flex cursor-pointer hover:bg-gray-100 rounded-full p-1 transition-all duration-300 ease-in-out">
                     <Search strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7 hover:text-[${colors.secondary}] text-[${colors.primary}]`}/>
                 </button>
-                <button className="md:flex hidden cursor-pointer hover:bg-gray-100 rounded-full hover:px-3 transition-all duration-300 ease-in-out flex-row items-center gap-1">
-                    <PenBox strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7 text-gray-500 hover:text-[${colors.primary}]`}/>
-                    <span className={`md:text-[14px] text-[17px]  font-ptsans-regular text-gray-500 hover:text-[${colors.primary}]`}>Write</span>
+                <button className="md:flex hidden cursor-pointer hover:text-black text-gray-500 transition-all duration-300 ease-in-out flex-row items-center gap-1">
+                    <PenBox strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7`}/>
+                    <span className={`md:text-[14px] text-[17px]  font-ptsans-regular`}>Write</span>
                 </button>
-                <button className="cursor-pointer hover:bg-gray-100 rounded-full p-1 transition-all duration-300 ease-in-out">
-                    <Bell strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7 text-gray-500 hover:text-[${colors.primary}]`}/>
+                <button className="cursor-pointer hover:text-black text-gray-500 rounded-full p-1 transition-all duration-300 ease-in-out">
+                    <Bell strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7`}/>
                 </button>
-                <button onClick={togglePopUpNav} className={`${popUpNav ? "border-gray-500" : "border-transparent"} cursor-pointer hover:bg-gray-100 border rounded-full p-[3px] transition-all duration-300 ease-in-out`}>
+                <button onClick={togglePopUpNav} className={`${popUpNav ? "border-gray-600" : "border-transparent"} cursor-pointer border rounded-full p-[3px] transition-all duration-300 ease-in-out`}>
                     <CircleShapeImage src={"/elon.webp"} alt="profile picture" size={30}/>
                 </button>
             </div>

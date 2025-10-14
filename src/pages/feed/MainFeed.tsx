@@ -22,23 +22,22 @@ const MainFeed:React.FC = () => {
     const calculateVisibleHeight = () => {
       if (feedRef.current) {
         const rect = feedRef.current.getBoundingClientRect();
-        console.log('main feed bottom', Math.abs(rect.top)+viewportHeight);
         return Math.abs(rect.top) + viewportHeight;
       }
     };
 
     // Usage in React:
     useEffect(() => {
+        // function to handle scroll and set side bar to a fixed form whenever client scrolls to a certain to the bottom of the side bar
         const handleScroll = () => {
             const presentFeedHeight = calculateVisibleHeight();
             const currentScrollY = window.scrollY;
 
             if ( currentScrollY < lastScrollY.current ) {
-                console.log("scrolled Up");
                 if ( presentFeedHeight ) {
                     if ( presentFeedHeight <= sideBarCoord ) {
                         setSideBarPosition('static');
-                        console.log("set back to static");
+                        //set back to static
                         sideBarCoord = 0;
                         lastScrollY.current = currentScrollY;
                         return;
@@ -50,13 +49,12 @@ const MainFeed:React.FC = () => {
 
             if (sideFeedRef.current) {
                 if ( isBottomVisible(sideFeedRef.current) ) {
-                    console.log('Side bar coord', sideBarCoord)
                     if (sideBarCoord===0) {
                         setSideBarPosition('fixed');
-                        console.log("set to fixed");
+                        //set to fixed
                         if (presentFeedHeight) {
                             sideBarCoord = presentFeedHeight;
-                            console.log("Side bar coords set to:", sideBarCoord);
+                            // side bar coordinate set to sideBarCoord
                         }
                     }
                 } 
