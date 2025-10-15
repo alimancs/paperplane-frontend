@@ -16,11 +16,10 @@ const AllNotifications: React.FC = () => {
                 <span className={`md:text-[40px] text-[23px] font-bold text-gray-900`}>Notifications</span>
             </div>
 
-            <PlainHorizontalNavigations className="md:flex hidden" navs={notificationsNavigation}/>
+            <PlainHorizontalNavigations navs={notificationsNavigation}/>
             <div className="py-6 flex flex-col text-[14px] gap-6">
-                <div className="flex flex-row justify-between w-full items-center text-[13px]">
+                <div className="flex flex-row justify-between w-full items-start text-[13px]">
                     <span className="text-gray-600">You&apos;re all caught up</span>
-                    <span className="text-blue-600">Your stats</span>
                 </div>
             </div>
         </div>
