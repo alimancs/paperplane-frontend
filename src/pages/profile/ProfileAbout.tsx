@@ -1,10 +1,9 @@
 import { Ellipsis } from "lucide-react";
 import React from "react";
-import colors from "../../utils/colors";
 import { useNavigate } from "react-router-dom";
-import EllipsisOption from "../../components/ui/EllipsisOption";
 import EditAbout from "./components/EditAbout";
 import About from "./components/About";
+import DropdownButton from "../../components/ui/DropdownButton";
 
 const ProfileHome: React.FC = () => {
     const navigate = useNavigate();
@@ -15,15 +14,16 @@ const ProfileHome: React.FC = () => {
         setActiveComponent(component);
     };
 
+    const EllipsisIcon = ()=><Ellipsis strokeWidth={2}  className="text-gray-500 transition-all duration-300 ease-in-out hover:text-gray-900" size={'22px'}/>;
+    const ellipsisOption = [
+        { title: "Edit profile", isDangerButton:false, action: () => navigate('/me/settings') },
+    ]
+
     return (
         <div className="w-full">
             <div className="w-full flex flex-row justify-between items-center">
                 <span className={`md:text-[40px] text-[25px] font-bold text-gray-900`}>Elon Musk</span>
-                <EllipsisOption
-                    list={[
-                        { label: "Edit Profile", onClick: () => navigate('/me/settings') },
-                    ]}
-                />
+                <DropdownButton options={ellipsisOption} icon={EllipsisIcon}/>
             </div>
 
             <div className="w-full flex flex-row mb-2 gap-10 border-b-[0.1px] mt-[35px] border-b-gray-200">

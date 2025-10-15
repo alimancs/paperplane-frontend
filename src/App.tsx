@@ -16,6 +16,7 @@ import SettingsSA from './pages/me/SettingsSA';
 import AllNotifications from './pages/notifications/AllNotifications';
 import NotificationsLayout from './pages/notifications/NotificationsLayout';
 import NotificationsResponses from './pages/notifications/NotificationResponses';
+import Publication from './pages/publication/Publication';
 
 function App() {
 
@@ -30,9 +31,10 @@ function App() {
             <Route index element={<AllNotifications/>}/>
             <Route path='r' element={<NotificationsResponses/>}/>
           </Route>
-          <Route path=':slug' element={<ProfileLayout/>}>
+          <Route path=':username' element={<ProfileLayout/>}>
             <Route index element={<ProfileHome/>}/>
             <Route path='about' element={<ProfileAbout/>}/>
+            <Route path=':slug' element={<Publication/>}/>
           </Route>
           <Route path='me/settings' element={<SettingsLayout/>}>
             <Route index element={<SettingsAcc/>}/>

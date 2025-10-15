@@ -1,24 +1,30 @@
-import { Ellipsis, Lock, UserCircle2 } from "lucide-react";
-import React, { use } from "react";
-import colors from "../../utils/colors";
+import { Ellipsis, Lock } from "lucide-react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import EllipsisOption from "../../components/ui/EllipsisOption";
 import ProfileTag from "../../components/ui/ProfileTag";
+import DropdownButton from "../../components/ui/DropdownButton";
 
 const ProfileHome: React.FC = () => {
     const navigate = useNavigate();
+
+    const EllipsisIcon = ()=><Ellipsis strokeWidth={2}  className="text-gray-500 transition-all duration-300 ease-in-out hover:text-gray-900" size={'22px'}/>;
+    const ellipsisOption1 = [
+        { title: "Copy link to profile", isDangerButton:false, action: () => navigate('/@profile/edit') },
+        { title: "Design to profile", isDangerButton:false, action: () => navigate('/@profile/settings') },
+    ]
+
+    const ellipsisOption2 = [
+        { title: "Copy link", isDangerButton:false, action: () => console.log("option button clicked") },
+        { title: "Edit list info", isDangerButton:false, action: () => console.log("option button clicked") },
+        { title: "Make list public", isDangerButton:false, action: () => console.log("option button clicked") },
+        { title: "Hide responses", isDangerButton:false, action: () => console.log("option button clicked") },
+    ]
 
     return (
         <div className="w-full">
             <div className="w-full flex flex-row justify-between items-center">
                 <span className={`md:text-[40px] text-[25px] font-bold text-gray-900`}>Elon Musk</span>
-                <EllipsisOption
-                    className="mt-3"
-                    list={[
-                        { label: "Copy link to profile", onClick: () => navigate('/@profile/edit') },
-                        { label: "Design to profile", onClick: () => navigate('/@profile/settings') },
-                    ]}
-                />
+                <DropdownButton options={ellipsisOption1} icon={EllipsisIcon}/>
             </div>
 
             <div className="w-full flex flex-row mb-[20px] gap-10 border-b-[0.1px] mt-[35px] border-b-gray-200">
@@ -38,15 +44,7 @@ const ProfileHome: React.FC = () => {
                             <span className="text-[14px]">No stories</span>
                             <Lock className="h-3 w-3 text-gray-700 inline ml-2"/>
                         </div>
-                        <EllipsisOption
-                            
-                            list={[
-                                { label:"Copy link", onClick:()=>{console.log("Copy link")} },
-                                { label:"Edit list info", onClick:()=>{console.log("Copy link")} },
-                                { label:"Make list public", onClick:()=>{console.log("Copy link")} },
-                                { label:"Hide responses", onClick:()=>{console.log("Copy link")} },
-                            ]}
-                        />
+                        <DropdownButton options={ellipsisOption2} icon={EllipsisIcon}/>
                     </div>
                 </div>
                 <div className="w-[19%] h-full bg-gray-200"></div>

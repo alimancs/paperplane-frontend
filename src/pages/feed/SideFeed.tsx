@@ -40,9 +40,9 @@ const SideFeed: React.FC = () => {
       <div className="flex flex-col gap-4 mt-5">
         <span className={`font-semibold text-[15px] mb-2 text-gray-900`}>Recommended topics</span>
         <div className="flex flex-row flex-wrap gap-2">
-          { recommendedTopics.map( ( topic) => {
+          { recommendedTopics.map( ( topic, index ) => {
             return (
-              <button className="bg-gray-100 cursor-pointer text-gray-800 px-3 text-[13px] py-2 rounded-[25px]">
+              <button key={`topic-${index}`} className="bg-gray-100 cursor-pointer text-gray-800 px-3 text-[13px] py-2 rounded-[25px]">
                 <span>{topic}</span>
               </button>
             )
