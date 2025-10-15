@@ -23,7 +23,7 @@ const ProfileHome: React.FC = () => {
         <div className="w-full">
             <div className="w-full flex flex-row justify-between items-center">
                 <span className={`md:text-[40px] text-[25px] font-bold text-gray-900`}>Elon Musk</span>
-                <DropdownButton options={ellipsisOption} icon={EllipsisIcon}/>
+                <DropdownButton dropDownPositionClass="md:ml-[-110px] ml-[-210px]" options={ellipsisOption} icon={EllipsisIcon}/>
             </div>
 
             <div className="w-full flex flex-row mb-2 gap-10 border-b-[0.1px] mt-[35px] border-b-gray-200">

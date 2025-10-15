@@ -5,6 +5,25 @@ import FollowCard from "../../components/FollowCard";
 import { BookmarkPlus } from "lucide-react";
 
 const SideFeed: React.FC = () => {
+
+  const staffPicks = [
+    { title:"From Bumblebee to Optimus Gen-2: An Era of AI Evolution",
+      timestamp:"Aug 8, 2025",
+      author:{ fullname:"Elon Musk", pp:"/elon.webp", username:"@elonmusk"}
+    },
+    { title:"From Bumblebee to Optimus Gen-2: An Era of AI Evolution",
+      timestamp:"Aug 8, 2025",
+      author:{ fullname:"Elon Musk", pp:"/elon.webp", username:"@elonmusk"}
+    },
+    { title:"From Bumblebee to Optimus Gen-2: An Era of AI Evolution",
+      timestamp:"Aug 8, 2025",
+      author:{ fullname:"Elon Musk", pp:"/elon.webp", username:"@elonmusk"}
+    },
+    { title:"From Bumblebee to Optimus Gen-2: An Era of AI Evolution",
+      timestamp:"Aug 8, 2025",
+      author:{ fullname:"Elon Musk", pp:"/elon.webp", username:"@elonmusk"}
+    },
+  ]
   
   const recommendedTopics = [
     "Writing",
@@ -31,9 +50,12 @@ const SideFeed: React.FC = () => {
     <div className="hidden md:flex flex-col flex-[0.31] px-[10%] pt-9 pb-3 h-fit border-l border-[#dad9eb] overflow-hidden">
       <div className="flex flex-col gap-4">
         <span className={`font-semibold text-[15px] mb-2 text-gray-900`}>Staff picks</span>
-        <StaffPickCard/>
-        <StaffPickCard/>
-        <StaffPickCard/>
+        { staffPicks.map(( { timestamp, title, author })=>{
+          return (
+            <StaffPickCard timestamp={timestamp} title={title} author={author}/>
+          )
+        })}
+
         <button className="text-[13.5px] text-left font-ptsans-regular text-gray-500 hover:underline cursor-pointer">See the full list</button>
       </div>
 

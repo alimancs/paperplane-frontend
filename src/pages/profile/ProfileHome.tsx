@@ -24,7 +24,7 @@ const ProfileHome: React.FC = () => {
         <div className="w-full">
             <div className="w-full flex flex-row justify-between items-center">
                 <span className={`md:text-[40px] text-[25px] font-bold text-gray-900`}>Elon Musk</span>
-                <DropdownButton options={ellipsisOption1} icon={EllipsisIcon}/>
+                <DropdownButton dropDownPositionClass="md:ml-[-110px] ml-[-210px]" options={ellipsisOption1} icon={EllipsisIcon}/>
             </div>
 
             <div className="w-full flex flex-row mb-[20px] gap-10 border-b-[0.1px] mt-[35px] border-b-gray-200">
@@ -37,7 +37,7 @@ const ProfileHome: React.FC = () => {
             </div>
             <div className="w-full h-[130px] bg-gray-100 flex flex-row justify-between border-gray-200 border-[0.1px] rounded-[2px]">
                 <div className="w-[59%] h-full px-[4%] flex flex-col gap-2 justify-center">
-                    <ProfileTag className={"mb-2"}/>
+                    <ProfileTag username="@elonmusk" pp="/elon.webp" fullname="Elon Musk" className={"mb-2"}/>
                     <span className={`text-[18px] font-extrabold text-gray-900`}>Reading list</span>
                     <div className="w-full flex flex-row justify-between items-center">
                         <div className="flex flex-row items-center">

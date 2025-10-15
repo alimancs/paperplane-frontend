@@ -1,6 +1,4 @@
 import PlainHorizontalNavigations from "../../../components/ui/PlainHorizontalNavigation";
-import PostCardDesktop from "../../../components/PostCardDesktop";
-import PostCardMobile from "../../../components/PostCardMobile";
 import React from "react";
 import { LucideCaptionsOff } from "lucide-react";
 

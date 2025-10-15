@@ -4,9 +4,10 @@ import { FC, useEffect, useRef, useState } from "react";
 interface components {
     icon:React.ElementType;
     options:{ title:string, isDangerButton:boolean, action:()=>void }[];
+    dropDownPositionClass?:string;
 }
 
-const DropdownButton:FC<components> = ( { icon:Icon, options }) => {
+const DropdownButton:FC<components> = ( { icon:Icon, options, dropDownPositionClass = "ml-[-110px]" }) => {
   const [open, setOpen] = useState<boolean>(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +33,7 @@ const DropdownButton:FC<components> = ( { icon:Icon, options }) => {
       </button>
 
       {open && (
-        <div className="absolute mt-2 z-[500] bg-white border border-gray-200 rounded-lg shadow-lg text-[14px] w-60 py-2">
+        <div className={`${dropDownPositionClass} absolute mt-1 z-[500] bg-white border border-gray-200 rounded-lg shadow-md text-[14px] w-60 py-2`}>
             { options.map(( { title, isDangerButton, action }, index) => {
                 return (
                     <button key={`options-b-${index}`} onClick={action} className={`${isDangerButton?"text-red-600 hover:text-red-800":"text-gray-600 hover:text-gray-900"} block w-full text-left px-4 py-2 cursor-pointer`}>
