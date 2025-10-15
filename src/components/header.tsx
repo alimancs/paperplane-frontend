@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Bell, Search, UserCircle2, PenBox, User, BarChart, Bookmark, BookOpenText  } from "lucide-react";
 import colors from "../utils/colors";
 import { InputWithIcon } from "./ui/Input";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CircleShapeImage from "./ui/CircleShapeImage";
 
 const Header:React.FC = () => {
@@ -43,9 +43,9 @@ const Header:React.FC = () => {
                     <PenBox strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7`}/>
                     <span className={`md:text-[14px] text-[17px]  font-ptsans-regular`}>Write</span>
                 </button>
-                <button className="cursor-pointer hover:text-black text-gray-500 rounded-full p-1 transition-all duration-300 ease-in-out">
+                <Link to={"/notifications"} className="cursor-pointer hover:text-black text-gray-500 rounded-full p-1 transition-all duration-300 ease-in-out">
                     <Bell strokeWidth={1} className={`md:h-5 md:w-5 h-7 w-7`}/>
-                </button>
+                </Link>
                 <button onClick={togglePopUpNav} className={`${popUpNav ? "border-gray-600" : "border-transparent"} cursor-pointer border rounded-full p-[3px] transition-all duration-300 ease-in-out`}>
                     <CircleShapeImage src={"/elon.webp"} alt="profile picture" size={30}/>
                 </button>

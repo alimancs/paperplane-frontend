@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 type Article = {
     title:string;
@@ -63,9 +63,9 @@ const SettingsLayout: React.FC = () => {
                 <div>
                 { bottomNavs.map(( { nav, url } ) => {
                     return (
-                    <a key={url} href={url} className="text-[11px] mr-2 inline text-left font-ptsans-regular text-gray-500 hover:underline cursor-pointer">
+                    <Link key={url} to={url} className="text-[11px] mr-2 inline text-left font-ptsans-regular text-gray-500 hover:underline cursor-pointer">
                         {nav}
-                    </a>
+                    </Link>
                     )
                 })}
                 </div>

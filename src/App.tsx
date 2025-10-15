@@ -13,6 +13,9 @@ import SettingsPublishing from './pages/me/SettingsPublishing';
 import SettingsNotifications from './pages/me/SettingsNotifications';
 import SettingsMP from './pages/me/SettingsMP';
 import SettingsSA from './pages/me/SettingsSA';
+import AllNotifications from './pages/notifications/AllNotifications';
+import NotificationsLayout from './pages/notifications/NotificationsLayout';
+import NotificationsResponses from './pages/notifications/NotificationResponses';
 
 function App() {
 
@@ -23,6 +26,10 @@ function App() {
       <Route path={'/' } element={<Layout/>}>
           <Route index element={<MainFeed/>}/>
           <Route path='feed' element={<MainFeed/>}/>
+          <Route path='notifications' element={<NotificationsLayout/>}>
+            <Route index element={<AllNotifications/>}/>
+            <Route path='r' element={<NotificationsResponses/>}/>
+          </Route>
           <Route path=':slug' element={<ProfileLayout/>}>
             <Route index element={<ProfileHome/>}/>
             <Route path='about' element={<ProfileAbout/>}/>
